@@ -1,4 +1,4 @@
 # ericnlchen.github.io
 My Personal Website
 
-Eric Chen's website.
+Eric Chen's personal website.
