@@ -1,3 +1,14 @@
-h1 {
-    color: yellow;
-}
+  body {
+    margin-left: 35px;
+    background-image: ;
+  }
+  .sections {
+    margin-left: 35px;
+  }
+  .title{
+    text-align: center;
+    font-size: 200%;
+  }
+  h1 {
+   padding-bottom: 0;
+  }
