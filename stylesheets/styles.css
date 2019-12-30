@@ -40,5 +40,6 @@ li a:hover {
 }
 
 .main {
-  margin-left: 160px;
+  margin: auto;
+  width: 45%;
 }
