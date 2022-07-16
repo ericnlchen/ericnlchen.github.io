@@ -6,10 +6,12 @@ function setup() {
 function draw() {
   background(255);
   frameRate(30);
-  stroke(0);
+  stroke(255, 0, 0);
   /// JUST FOR FUN ///
   let a = (mouseX / width) * 180;
   theta = radians(a);
+  let wt = (mouseY / height) * 255;
+  background(wt);
   ////////////////////
   translate(width/3, height/2);
   
@@ -18,7 +20,7 @@ function draw() {
     "F": "F+G",
     "G": "F-G"
   }
-  var iters = 10;
+  var iters = 11;
   
   Lstring = Lsystem(0, start, rules, iters);
   console.log(Lstring);
@@ -49,7 +51,7 @@ function grow(axiom, rules) {
 }
 
 function draw_Lsystem(Lstring, theta) {
-  let l = 10;
+  let l = 5;
   for (var i = 0; i < Lstring.length; i++) {
     if (Lstring[i] == 'F' || Lstring[i] == 'G') {
       line(0,0,0,-l);
