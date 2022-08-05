@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
+  <meta charset=‘utf-8’/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
-  <script src="test.js"></script>
-  <!-- <script src="../addons/p5.sound.js"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L-Systems</title>
 </head>
-
 <body>
-  <main>
+  Axiom:
+  <div>
+    <input type="text" id="axiom" name="axiom"><br>
+  </div>
+  Rules:
+  <div>
+    <input type="text" id="rule_0_input" name="rule_0_input">
+    ==>
+    <input type="text" id="rule_0_output" name="rule_0_output"><br>
 
-  </main>
+    <input type="text" id="rule_1_input" name="rule_1_input">
+    ==>
+    <input type="text" id="rule_1_output" name="rule_1_output"><br>
+  </div>
+  <script src="index.js"></script>
 </body>
-
-</html>
