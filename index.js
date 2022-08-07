@@ -2,26 +2,34 @@
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+
+    const addBtn = document.getElementById("add_button");
+    addBtn.addEventListener('click', () => {
+        const ul = document.getElementById("rules_list");
+        const last_item = ul.lastElementChild;
+        const new_item = last_item.cloneNode(true);
+        // const last_index = last_item.children[0].id.match(/\d+/)[0];
+        // new_item.children[0].id = `rule_${+last_index + 1}_input`;
+        // new_item.children[1].id = `rule_${+last_index + 1}_output`;
+        ul.appendChild(new_item);
+    });
 }
 
 function draw() {
     background(255);
-    frameRate(30);
+    frameRate(10);
     stroke(255, 0, 0);
     let theta = radians(90);
     translate(width / 3, height / 2);
 
     const axiom = document.getElementById("axiom").value;
     const rules = new Map();
-    for (let i=0; i<2; i++) {
-        const rule_i_input = document.getElementById(`rule_${i}_input`).value;
-        const rule_i_output = document.getElementById(`rule_${i}_output`).value;
-        rules.set(rule_i_input, rule_i_output);
+    const rules_list = document.getElementById("rules_list");
+    for (let i = 0; i < rules_list.children.length; i++) {
+        const rule = rules_list.children[i];
+        rules.set(rule.children[0].value, rule.children[1].value);
     }
-    // let rules = {
-    //     F: "F+G",
-    //     G: "F-G",
-    // };
+
     let iters = 11;
 
     let Lstring = Lsystem(0, axiom, rules, iters);
@@ -30,7 +38,7 @@ function draw() {
 }
 
 function Lsystem(alphabet, axiom, rules, iters) {
-    // validate input
+    // TODO: validate input
     let i = 0;
     while (i < iters) {
         axiom = grow(axiom, rules);

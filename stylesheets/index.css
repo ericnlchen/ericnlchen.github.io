@@ -1,0 +1,18 @@
+ul.no_bullet {
+    list-style-type: none;
+}
+
+li.large_text {
+    font-size: 24px;
+}
+
+button.add_styled {
+    background-color:aquamarine;
+    color:blue;
+    border-radius: 8px;
+    
+}
+
+.input_area {
+    width: 500px;
+}
