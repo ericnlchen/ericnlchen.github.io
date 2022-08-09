@@ -6,13 +6,59 @@ li.large_text {
     font-size: 24px;
 }
 
-button.add_styled {
-    background-color:aquamarine;
-    color:blue;
+button.round {
+    color:rgb(0, 0, 0);
     border-radius: 8px;
-    
+}
+
+button.plus {
+    background-color:rgb(173, 226, 171);
+}
+
+button.minus {
+    background-color:rgb(247, 196, 196);
 }
 
 .input_area {
     width: 500px;
+}
+
+p {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 24px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+h1 {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h2 {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+input {
+    border-radius: 6px;
+}
+
+html {
+    background-color: white;
+}
+
+b {
+    color: black;
 }

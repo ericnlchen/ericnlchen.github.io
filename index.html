@@ -9,9 +9,21 @@
 </head>
 
 <body>
+  <div class="title">
+    <h1>L-Systems</h1>
+  </div>
+  <div class="introduction">
+    <p>
+      An <b>L-System</b> is a mathematical object which can be used to generate organic looking shapes.
+      To define an L-System, you specify an <b>axiom</b> and <b>rules</b>. An axiom is kind of like a seed
+      which describes what a plant looks like before it begins to grow. You can think of the rules as the plant's
+      DNA which dictates how it changes as it grows. For example, we could have the following L-System:
+    </p>
+  </div>
+
   <div class="input_area">
     <div class="axiom_area">
-      <h1>Axiom:</h1>
+      <h2>Axiom:</h2>
       <ul class="no_bullet">
         <li>
           <input type="text" id="axiom" name="axiom"><br>
@@ -21,16 +33,16 @@
     <br><br>
     
     <div class="rules_area">
-      <h1>Rules:</h1>
+      <h2>Rules:</h2>
       <ul id="rules_list" class="no_bullet">
-        <li class="large_text">
+        <li id="rule_0" class="large_text">
           <input type="text" id="rule_0_input" name="rule_input">
           &#8614;
-          <input type="text" id="rule_0_output" name="rule_output"><br>
+          <input type="text" id="rule_0_output" name="rule_output">
         </li>
       </ul>
       <div>
-        <button id="add_button" class="add_styled">+</button>
+        <button id="plus_button" class="round plus">+</button>
       </div>
     </div>
   </div>

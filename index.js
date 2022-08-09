@@ -3,15 +3,32 @@
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    const addBtn = document.getElementById("add_button");
-    addBtn.addEventListener('click', () => {
-        const ul = document.getElementById("rules_list");
-        const last_item = ul.lastElementChild;
+    const plusBtn = document.getElementById("plus_button");
+    plusBtn.addEventListener('click', () => {
+        const rules_list = document.getElementById("rules_list");
+        const last_item = rules_list.lastElementChild;
         const new_item = last_item.cloneNode(true);
+        new_item.id = "rule";
         // const last_index = last_item.children[0].id.match(/\d+/)[0];
         // new_item.children[0].id = `rule_${+last_index + 1}_input`;
         // new_item.children[1].id = `rule_${+last_index + 1}_output`;
-        ul.appendChild(new_item);
+        if (last_item.id === "rule_0") {
+            const minusBtn = document.createElement('button');
+            minusBtn.className = "minus round";
+            minusBtn.innerHTML = "-";
+            minusBtn.addEventListener('click', () => {
+                minusBtn.parentElement.remove();
+            })
+            new_item.appendChild(minusBtn);
+        }
+        else {
+            const minusBtn = new_item.lastElementChild;
+            minusBtn.addEventListener('click', () => {
+                minusBtn.parentElement.remove();
+            })
+        }
+        // TODO: no minus button on the first rule, add a new minus button for each new rule, add event listener to the new minus button
+        rules_list.appendChild(new_item);
     });
 }
 
