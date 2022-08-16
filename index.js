@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_SIZE = 1000000;
+const max_string_length = 100000;
 
 function setup() {
     createCanvas(windowWidth/2, windowHeight/2);
@@ -57,7 +57,7 @@ function setup() {
 }
 
 function draw() {
-    console.log("Drawing now");
+    console.log("draw");
     background(255);
     frameRate(4);
     stroke(255, 0, 0);
@@ -71,9 +71,9 @@ function draw() {
         const rule = rules_list.children[i];
         rules.set(rule.children[0].value, rule.children[1].value);
     }
-
-    let iters = 10;
-
+    
+    const iters_input = document.getElementById("iters_input");
+    const iters = iters_input.value;
     let Lstring = Lsystem(0, axiom, rules, iters);
     draw_Lsystem(Lstring, theta);
 }
@@ -82,12 +82,21 @@ function Lsystem(alphabet, axiom, rules, iters) {
     // TODO: validate input
     let i = 0;
     while (i < iters) {
-        console.log(axiom.length);
-        if (axiom.length > MAX_SIZE) {
-            alert(`Max length exceeded at iteration ${i}!`);
+        let old_axiom = axiom;
+        axiom = grow(axiom, rules);
+        // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
+        const iter_warning = document.getElementById("iter_warning");
+        if (axiom.length > max_string_length) { 
+            console.log(`Max string length exceeded at iteration ${i}`);
+            const iters_input = document.getElementById("iters_input");
+            iters_input.value = i;
+            axiom = old_axiom; // revert to previous axiom
+            iter_warning.textContent = `The string has grown too long! Cannot exceed ${i} iterations.`;
             break;
         }
-        axiom = grow(axiom, rules);
+        else {
+            iter_warning.textContent = "";
+        }
         i++;
     }
     return axiom;
