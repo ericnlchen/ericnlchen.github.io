@@ -62,7 +62,6 @@ function draw() {
     frameRate(4);
     stroke(255, 0, 0);
     let theta = radians(90);
-    translate(width / 3, height / 2);
 
     const axiom = document.getElementById("axiom").value;
     const rules = new Map();
@@ -75,7 +74,7 @@ function draw() {
     const iters_input = document.getElementById("iters_input");
     const iters = iters_input.value;
     let Lstring = Lsystem(0, axiom, rules, iters);
-    draw_Lsystem(Lstring, theta);
+    show_Lsystem(Lstring, theta);
 }
 
 function Lsystem(alphabet, axiom, rules, iters) {
@@ -112,26 +111,66 @@ function grow(axiom, rules) {
     return new_axiom;
 }
 
-function draw_Lsystem(Lstring, theta) {
+function show_Lsystem(Lstring, theta) {
+    // This function draws the Lsystem, resizes canvas to fit the whole drawing, and then redraws
+    const [min_x, max_x, min_y, max_y] = draw_Lsystem(Lstring, theta, 0, 0); // draw once
+    console.log(min_x, max_x, min_y, max_y);
+    resizeCanvas(Math.abs(max_x - min_x), Math.abs(max_y - min_y), true); // resize
+    draw_Lsystem(Lstring, theta, Math.abs(min_x), Math.abs(min_y)); // draw again
+
+}
+
+function draw_Lsystem(Lstring, theta, x_offset, y_offset) {
+    const canvas = document.querySelector('.p5Canvas');
+    const ctx = canvas.getContext('2d');
+    let matrix = new Matrix(ctx);
+
+    matrix.translate(x_offset, y_offset);
+    let stack = [];
+    let min_x = matrix.e,
+        max_x = matrix.e,
+        min_y = matrix.f,
+        max_y = matrix.f;
     let l = 5;
     for (let i = 0; i < Lstring.length; i++) {
         if (Lstring[i] == "F" || Lstring[i] == "G") { // Draw forward
             line(0, 0, 0, -l);
-            translate(0, -l);
+            matrix.translate(0, -l);
         } else if (Lstring[i] == "f" || Lstring[i] == "g") { // Move forward
-            translate(0, -l);
+            matrix.translate(0, -l);
         } else if (Lstring[i] == "L" || Lstring[i] == "+") {  // Left 90 deg
-            rotate(radians(90));
+            matrix.rotate(radians(90));
         } else if (Lstring[i] == "R" || Lstring[i] == "-") { // Right 90 deg
-            rotate(-radians(90));
-        } else if (Lstring[i] == "l") { // Left 30 deg
-            rotate(radians(30));
-        } else if (Lstring[i] == "r") { // Right 30 deg
-            rotate(-radians(30))
+            matrix.rotate(-radians(90));
+        } else if (Lstring[i] == "l") { // Left 25 deg
+            matrix.rotate(radians(25));
+        } else if (Lstring[i] == "r") { // Right 25 deg
+            matrix.rotate(-radians(25))
         } else if (Lstring[i] == "[") { // push
-            push();
+            stack.push({e: matrix.e, f: matrix.f, b: matrix.b, c: matrix.c});
         } else if (Lstring[i] == "]") { // pop
-            pop();
+            const transf = stack.pop();
+            matrix.e = transf.e;
+            matrix.f = transf.f;
+            matrix.b = transf.b;
+            matrix.c = transf.c;
+        }
+        // Update x, y bounds:
+        if (matrix.e < min_x) {
+            min_x = matrix.e;
+        }
+        if (matrix.e > max_x) {
+            max_x = matrix.e;
+        }
+        if (matrix.f < min_y) {
+            min_y = matrix.f;
+        }
+        if (matrix.f > max_y) {
+            max_y = matrix.f;
         }
     }
+    return [min_x, max_x, min_y, max_y];
 }
+
+// TODO: Why is the plant fractal not filling the space alloted on the canvas?
+// Fl[[X]rX]rF[rFX]lX
