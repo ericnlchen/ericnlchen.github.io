@@ -3,7 +3,12 @@
 const max_string_length = 100000;
 
 function setup() {
-    createCanvas(windowWidth/2, windowHeight/2);
+    const CANVAS_WIDTH = 500;
+    const CANVAS_HEIGHT = 500;
+    createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    const canvas = document.querySelector('.p5Canvas');
+    canvas.setAttribute('width', 500);
+    canvas.setAttribute('height', 500);
     // Logic for adding a new rule with the plus button
     const plusBtn = document.getElementById("plus_button");
     plusBtn.addEventListener('click', () => {
@@ -61,7 +66,6 @@ function draw() {
     background(255);
     frameRate(4);
     stroke(255, 0, 0);
-    let theta = radians(90);
 
     const axiom = document.getElementById("axiom").value;
     const rules = new Map();
@@ -74,7 +78,7 @@ function draw() {
     const iters_input = document.getElementById("iters_input");
     const iters = iters_input.value;
     let Lstring = Lsystem(0, axiom, rules, iters);
-    show_Lsystem(Lstring, theta);
+    show_Lsystem(Lstring);
 }
 
 function Lsystem(alphabet, axiom, rules, iters) {
@@ -111,20 +115,38 @@ function grow(axiom, rules) {
     return new_axiom;
 }
 
-function show_Lsystem(Lstring, theta) {
+function show_Lsystem(Lstring) {
     // This function draws the Lsystem, resizes canvas to fit the whole drawing, and then redraws
-    const [min_x, max_x, min_y, max_y] = draw_Lsystem(Lstring, theta, 0, 0); // draw once
+    const [min_x, max_x, min_y, max_y] = draw_Lsystem(Lstring, 1, 0, 0); // draw once
     console.log(min_x, max_x, min_y, max_y);
-    resizeCanvas(Math.abs(max_x - min_x), Math.abs(max_y - min_y), true); // resize
-    draw_Lsystem(Lstring, theta, Math.abs(min_x), Math.abs(min_y)); // draw again
+    clear();
+    // resizeCanvas(Math.abs(max_x - min_x), Math.abs(max_y - min_y), true); // resize
 
+    const canvasWidth = width;
+    const canvasHeight = height;
+    const drawingWidth = Math.abs(max_x - min_x);
+    const drawingHeight = Math.abs(max_y - min_y);
+
+    const x_scale = canvasWidth / drawingWidth;
+    const y_scale = canvasHeight / drawingHeight;
+    const scale = Math.min(x_scale, y_scale);
+
+    const x_offset = Math.abs(min_x);
+    const y_offset = Math.abs(min_y);
+
+    console.log(`og drawing width: ${drawingWidth}, og drawing height: ${drawingHeight}`);
+    console.log(`scale: ${scale}`);
+    console.log(`canvasWidth: ${canvasWidth}, canvasHeight: ${canvasHeight}`);
+
+
+    draw_Lsystem(Lstring, scale, x_offset, y_offset); // draw again
 }
 
-function draw_Lsystem(Lstring, theta, x_offset, y_offset) {
+function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     const canvas = document.querySelector('.p5Canvas');
     const ctx = canvas.getContext('2d');
     let matrix = new Matrix(ctx);
-
+    matrix.scale(scale, scale);
     matrix.translate(x_offset, y_offset);
     let stack = [];
     let min_x = matrix.e,
@@ -172,5 +194,4 @@ function draw_Lsystem(Lstring, theta, x_offset, y_offset) {
     return [min_x, max_x, min_y, max_y];
 }
 
-// TODO: Why is the plant fractal not filling the space alloted on the canvas?
 // Fl[[X]rX]rF[rFX]lX
