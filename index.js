@@ -6,9 +6,10 @@ function setup() {
     const CANVAS_WIDTH = 500;
     const CANVAS_HEIGHT = 500;
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    // Ensure that the canvas display size and coordinate system size match
     const canvas = document.querySelector('.p5Canvas');
-    canvas.setAttribute('width', 500);
-    canvas.setAttribute('height', 500);
+    canvas.setAttribute('width', CANVAS_WIDTH);
+    canvas.setAttribute('height', CANVAS_HEIGHT);
     // Logic for adding a new rule with the plus button
     const plusBtn = document.getElementById("plus_button");
     plusBtn.addEventListener('click', () => {
