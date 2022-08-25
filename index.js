@@ -204,3 +204,6 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     }
     return [min_x, max_x, min_y, max_y];
 }
+
+// TODO: fix bug where when you copy paste F+F-F-F+F (for the Koch curve) it sometimes just draws a weird arch thing and ignores the "-"s
+// It's really weird I can't tell when it does that and when it actually draws the Koch...
