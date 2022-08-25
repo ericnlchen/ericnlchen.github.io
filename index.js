@@ -10,6 +10,7 @@ function setup() {
     const canvas = document.querySelector('.p5Canvas');
     canvas.setAttribute('width', CANVAS_WIDTH);
     canvas.setAttribute('height', CANVAS_HEIGHT);
+
     // Logic for adding a new rule with the plus button
     const plusBtn = document.getElementById("plus_button");
     plusBtn.addEventListener('click', () => {
@@ -67,6 +68,10 @@ function draw() {
     background(255);
     frameRate(4);
     stroke(255, 0, 0);
+    strokeWeight(1)
+    strokeJoin(ROUND);
+    // strokeCap(PROJECT);
+    smooth();
 
     const axiom = document.getElementById("axiom").value;
     const rules = new Map();
@@ -125,8 +130,8 @@ function show_Lsystem(Lstring) {
 
     const canvasWidth = width;
     const canvasHeight = height;
-    const drawingWidth = Math.abs(max_x - min_x);
-    const drawingHeight = Math.abs(max_y - min_y);
+    let drawingWidth = Math.abs(max_x - min_x);
+    let drawingHeight = Math.abs(max_y - min_y);
 
     const x_scale = canvasWidth / drawingWidth;
     const y_scale = canvasHeight / drawingHeight;
@@ -134,16 +139,11 @@ function show_Lsystem(Lstring) {
 
     const x_offset = Math.abs(min_x);
     const y_offset = Math.abs(min_y);
-
-    console.log(`og drawing width: ${drawingWidth}, og drawing height: ${drawingHeight}`);
-    console.log(`scale: ${scale}`);
-    console.log(`canvasWidth: ${canvasWidth}, canvasHeight: ${canvasHeight}`);
-
-
     draw_Lsystem(Lstring, scale, x_offset, y_offset); // draw again
 }
 
 function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
+    console.log(Lstring);
     const canvas = document.querySelector('.p5Canvas');
     const ctx = canvas.getContext('2d');
     let matrix = new Matrix(ctx);
@@ -159,24 +159,34 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
         if (Lstring[i] == "F" || Lstring[i] == "G") { // Draw forward
             line(0, 0, 0, -l);
             matrix.translate(0, -l);
+            console.log("making a line");
         } else if (Lstring[i] == "f" || Lstring[i] == "g") { // Move forward
             matrix.translate(0, -l);
         } else if (Lstring[i] == "L" || Lstring[i] == "+") {  // Left 90 deg
-            matrix.rotate(radians(90));
-        } else if (Lstring[i] == "R" || Lstring[i] == "-") { // Right 90 deg
             matrix.rotate(-radians(90));
+            console.log("turning left 90");
+        } else if (Lstring[i] == "R" || Lstring[i] == "-") { // Right 90 deg
+            matrix.rotate(radians(90));
+            console.log("turning right 90");
         } else if (Lstring[i] == "l") { // Left 25 deg
-            matrix.rotate(radians(25));
+            matrix.rotate(-radians(25));
+            console.log("turning left 25");
         } else if (Lstring[i] == "r") { // Right 25 deg
-            matrix.rotate(-radians(25))
+            matrix.rotate(radians(25))
+            console.log("turning right 25");
         } else if (Lstring[i] == "[") { // push
-            stack.push({e: matrix.e, f: matrix.f, b: matrix.b, c: matrix.c});
+            stack.push({a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d, e: matrix.e, f: matrix.f});
+            console.log("push");
         } else if (Lstring[i] == "]") { // pop
             const transf = stack.pop();
-            matrix.e = transf.e;
-            matrix.f = transf.f;
+            matrix.a = transf.a;
             matrix.b = transf.b;
             matrix.c = transf.c;
+            matrix.d = transf.d;
+            matrix.e = transf.e;
+            matrix.f = transf.f;
+            matrix._setCtx();
+            console.log("pop");
         }
         // Update x, y bounds:
         if (matrix.e < min_x) {
@@ -194,5 +204,3 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     }
     return [min_x, max_x, min_y, max_y];
 }
-
-// Fl[[X]rX]rF[rFX]lX
