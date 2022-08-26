@@ -165,7 +165,7 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
         } else if (Lstring[i] == "L" || Lstring[i] == "+") {  // Left 90 deg
             matrix.rotate(-radians(90));
             console.log("turning left 90");
-        } else if (Lstring[i] == "R" || Lstring[i] == "-") { // Right 90 deg
+        } else if (Lstring[i] == "R" || Lstring[i] == "-" || Lstring[i] == '\u2212') { // Right 90 deg (Note there are multiple - characters)
             matrix.rotate(radians(90));
             console.log("turning right 90");
         } else if (Lstring[i] == "l") { // Left 25 deg
