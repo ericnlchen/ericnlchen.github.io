@@ -12,8 +12,8 @@ function setup() {
     canvas.setAttribute('height', CANVAS_HEIGHT);
 
     // Logic for adding a new rule with the plus button
-    const plusBtn = document.getElementById("plus_button");
-    plusBtn.addEventListener('click', () => {
+    const plusRule = document.getElementById("plus_rule");
+    plusRule.addEventListener('click', () => {
         const rules_list = document.getElementById("rules_list");
         const last_item = rules_list.lastElementChild;
         const new_item = last_item.cloneNode(true); // create a clone of previous rule
@@ -50,6 +50,12 @@ function setup() {
         );
         rules_list.appendChild(new_item);   // Append new rule to the DOM
         // TODO: rename "items" to "rules"
+    });
+
+    // Logic for adding a new symbol with the plus button
+    const plusSymbol = document.getElementById("plus_symbol");
+    plusSymbol.addEventListener('click', () => {
+        // TODO: Implement logic for adding a new symbol, also don't forget about the minus button
     });
 
     const input_elements = document.querySelectorAll("input");
@@ -204,6 +210,3 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     }
     return [min_x, max_x, min_y, max_y];
 }
-
-// TODO: fix bug where when you copy paste F+F-F-F+F (for the Koch curve) it sometimes just draws a weird arch thing and ignores the "-"s
-// It's really weird I can't tell when it does that and when it actually draws the Koch...
