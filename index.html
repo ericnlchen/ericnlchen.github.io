@@ -57,31 +57,36 @@
 
   <div id="interactive-example">
     <div id="user-inputs">
-      <h2>Axiom:</h2>
-      <ul class="no-bullet">
-        <li>
-          <input type="text" id="axiom" name="axiom"><br>
-        </li>
-      </ul>
-      <h2>Rules:</h2>
-      <ul id="rules-list" class="no-bullet">
-        <li id="rule0" class="large-text">
-          <input type="text" id="rule0-input" name="rule-input">
-          &#8614;
-          <input type="text" id="rule0-output" name="rule-output">
-        </li>
-      </ul>
-      <div>
-        <button id="plus-rule" class="round plus">+</button>
-      </div>
-      <h2>Iterations:</h2>
-      <ul class="no-bullet">
-        <li>
-          <input type="number" id="iters-input" name="iters-input" min="0" value="3" />
-          <div id="iter-warning"></div>
-        </li>
-      </ul>
 
+      <div id="axiom-input">
+        <h2>Axiom:</h2>
+        <input type="text" maxlength="1" class="short" id="axiom" name="axiom"><br>
+      </div>
+      <br>
+      <div id="rules-input">
+        <h2>Rules:</h2>
+        <ul id="rules-list" class="no-bullet">
+          <li id="rule0" class="large-text">
+            <input type="text" maxlength="1" class="short" id="rule0-input" name="rule-input">
+            &#8614;
+            <input type="text" class="medium" id="rule0-output" name="rule-output">
+          </li>
+        </ul>
+        <div class="button-holder">
+          <button id="plus-rule" class="round plus">+</button>
+        </div>
+      </div>
+      <br>
+      <div id="iterations-input">
+        <h2>Iterations:</h2>
+        <ul class="no-bullet">
+          <li>
+            <input type="number" class="number" id="iters-input" name="iters-input" min="0" value="3" />
+            <div id="iter-warning"></div>
+          </li>
+        </ul>
+      </div>
+      <br>
       <h2>Alphabet:</h2>
       <table>
         <tr>

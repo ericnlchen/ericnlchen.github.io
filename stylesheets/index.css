@@ -1,5 +1,7 @@
 ul.no-bullet {
     list-style-type: none;
+    padding: 0px;
+    margin: auto 0px;
 }
 
 li.large-text {
@@ -13,6 +15,7 @@ button.round {
 
 button.plus {
     background-color:rgb(173, 226, 171);
+    margin: 0px 0px 0px 40px;
 }
 
 button.minus {
@@ -49,10 +52,6 @@ h2 {
     font-weight: 300;
     line-height: 32px;
     margin: 0 0;
-}
-
-input {
-    border-radius: 6px;
 }
 
 b {
@@ -97,8 +96,38 @@ img {
 
 #user-inputs {
     border: 5px solid green;
+    padding: 20px;
 }
 
 #sketch-holder {
     border: 5px solid red;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin: 5px;
+    border-radius: 6px;
+}
+
+input.number {
+    width: 30px;
+}
+
+input.short {
+    width: 20px;
+}
+
+input.medium {
+    width: 80px;
+}
+
+#axiom-input {
+    display: flex;
+}
+
+#iterations-input {
+    display: flex;
 }

@@ -3,8 +3,8 @@
 const max_string_length = 100000;
 
 function setup() {
-    const CANVAS_WIDTH = 500;
-    const CANVAS_HEIGHT = 500;
+    const CANVAS_WIDTH = 600;
+    const CANVAS_HEIGHT = 600;
     const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     canvas.parent("sketch-holder");
     // Ensure that the canvas display size and coordinate system size match
@@ -16,11 +16,11 @@ function setup() {
     const plusRule = document.getElementById("plus-rule");
     plusRule.addEventListener('click', () => {
         const rules_list = document.getElementById("rules-list");
-        const last_item = rules_list.lastElementChild;
-        const new_item = last_item.cloneNode(true); // create a clone of previous rule
-        new_item.id = "rule";                       // all new rules have ID = "rule"
+        const last_rule = rules_list.lastElementChild;
+        const new_rule = last_rule.cloneNode(true); // create a clone of previous rule
+        new_rule.id = "rule";                       // all new rules have ID = "rule"
         // If new rule is a copy of the first rule, add a minus button and add event listener
-        if (last_item.id === "rule0") {
+        if (last_rule.id === "rule0") {
             const minusBtn = document.createElement('button');
             minusBtn.className = "minus round";
             minusBtn.innerHTML = "-";
@@ -28,11 +28,11 @@ function setup() {
                 minusBtn.parentElement.remove();
                 redraw();
             })
-            new_item.appendChild(minusBtn);
+            new_rule.appendChild(minusBtn);
         }
         // If new rule is NOT a copy of the first rule, just add event listener to minus button
         else {
-            const minusBtn = new_item.lastElementChild;
+            const minusBtn = new_rule.lastElementChild;
             minusBtn.addEventListener('click', () => {
                 minusBtn.parentElement.remove();
                 redraw();
@@ -40,7 +40,7 @@ function setup() {
         }
         // We also need to add event listeners to the new input elements
         // ... And clear their values
-        const input_elements = new_item.querySelectorAll("input");
+        const input_elements = new_rule.querySelectorAll("input");
         input_elements.forEach(
             function (currentValue) {
                 currentValue.addEventListener('input', () => {
@@ -49,8 +49,7 @@ function setup() {
                 currentValue.value = "";
             }
         );
-        rules_list.appendChild(new_item);   // Append new rule to the DOM
-        // TODO: rename "items" to "rules"
+        rules_list.appendChild(new_rule);   // Append new rule to the DOM
     });
 
     const input_elements = document.querySelectorAll("input");
@@ -101,7 +100,8 @@ function Lsystem(alphabet, axiom, rules, iters) {
             const iters_input = document.getElementById("iters-input");
             iters_input.value = i;
             axiom = old_axiom; // revert to previous axiom
-            iter_warning.textContent = `The string has grown too long! Cannot exceed ${i} iterations.`;
+            iter_warning.setAttribute('style', 'white-space: pre-line;')
+            iter_warning.textContent = `The string has grown too long!\r\nCannot exceed ${i} iterations.`;
             break;
         }
         else {
@@ -199,6 +199,8 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     return [min_x, max_x, min_y, max_y];
 }
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
+// function windowResized() {
+//     resizeCanvas(windowWidth, windowHeight);
+// }
+
+// Fl[[X]rX]rF[rFX]lX
