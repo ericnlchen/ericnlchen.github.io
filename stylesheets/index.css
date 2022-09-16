@@ -1,8 +1,8 @@
-ul.no_bullet {
+ul.no-bullet {
     list-style-type: none;
 }
 
-li.large_text {
+li.large-text {
     font-size: 24px;
 }
 
@@ -19,7 +19,7 @@ button.minus {
     background-color:rgb(247, 196, 196);
 }
 
-.input_area {
+.input-area {
     width: 500px;
 }
 
@@ -48,7 +48,7 @@ h2 {
     font-size: 20px;
     font-weight: 300;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0;
 }
 
 input {
@@ -67,15 +67,38 @@ table {
     font-family: 'Helvetica Neue', sans-serif;
   }
   
-  td, th {
+td, th {
     border: 1px solid rgb(190,190,190);
     padding: 10px 20px;
-  }
+}
   
-  th {
+th {
     background-color: rgb(235,235,235);
-  }
+}
   
-  td {
+td {
     text-align: center;
-  }
+}
+
+body {
+    margin: 0 100px;
+    padding: 20px 20px 20px 20px;
+    border: 5px solid black;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+#interactive-example {
+    display: flex;
+}
+
+#user-inputs {
+    border: 5px solid green;
+}
+
+#sketch-holder {
+    border: 5px solid red;
+}

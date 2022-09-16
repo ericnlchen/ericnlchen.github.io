@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset='utf-8'/>
+  <meta charset='utf-8' />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>L-Systems</title>
@@ -9,91 +9,79 @@
 </head>
 
 <body>
-  <div class="title">
-    <h1>L-Systems and Why Math is a Tree</h1>
-  </div>
-  <div class="introduction">
-    <p>
-      An <b>L-System</b> is a mathematical object which can be used to generate organic looking shapes.
-      To define an L-System, you specify an <b>axiom</b> and <b>rules</b>. An axiom is kind of like a seed
-      which describes what a plant looks like before it begins to grow. You can think of the rules as the plant's
-      DNA which dictates how it changes as it grows. For example, we could have the following L-System:<br>
-      Axiom = A<br>
-      Rules = {A &#8614; AB, B &#8614; A}
-    </p>
-    <img src="ex1.jpeg" alt="A simple example of an L-System">
-    <p>
-      To "grow" an L-System, we apply the rules to the axiom. Each rule represents a subsitution; wherever we see
-      the character on the left side of a rule, we substitute it for the character or characters on the right side.
-      In our example above, we apply both rules to get:
-    </p>
+  <h1>L-Systems</h1>
+  <p>
+    An <b>L-System</b> is a mathematical object which can be used to generate organic looking shapes.
+    To define an L-System, you specify an <b>axiom</b> and <b>rules</b>. An axiom is kind of like a seed
+    which describes what a plant looks like before it begins to grow. You can think of the rules as the plant's
+    DNA which dictates how it changes as it grows. For example, we could have the following L-System:<br>
+  </p>
+  <img src="ex1.jpeg" alt="A simple example of an L-System">
+  <p>
+    To "grow" an L-System, we apply the rules to the axiom. Each rule represents a subsitution; wherever we see
+    the character on the left side of a rule, we substitute it for the character or characters on the right side.
+    In our example above, we apply both rules to get:
+  </p>
 
-    <p>
-      At each step (or iteration), we apply all the rules we can to obtain a new string. This string becomes our input
-      for the next iteration.
-    </p>
-    <p>
-      If we continue this process for many iterations, we can end up with very long and/or complex strings, even if our
-      axiom and rules were relatively simple.
-    </p>
-    <p>
-      But how can we examine the structure of the strings we create? The mess of symbols that we generated in the example
-      above doesn't appear particularly interesting or complex to the eye as it is.
-    </p>
-    <p>
-      Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
-      fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
-      of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our robot.
-      For example, let's say that "F" means "draw forward." And let's say that "+" means turn left 90 degrees. Now to
-      transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol, following the
-      instructions one at a time. (Those who are familiar with the turtle module in Python might find this method of drawing familiar).
-      When we do this with the string we generated above, this beautiful picture emerges:
-    </p>
-    <p>
-      Here is an interactive example (if you're curious how I created it, click here) where you can create your own L-System by
-      inputting an axiom and a set of rules. The resulting image will automatically be drawn according to the visual interpretations of each
-      symbol as shown in the table. You can click on the presets to autofill the inputs with some famous examples of L-Systems.
-    </p>
-    
-  </div>
+  <p>
+    At each step (or iteration), we apply all the rules we can to obtain a new string. This string becomes our input
+    for the next iteration.
+  </p>
+  <p>
+    If we continue this process for many iterations, we can end up with very long and/or complex strings, even if our
+    axiom and rules were relatively simple.
+  </p>
+  <p>
+    But how can we examine the structure of the strings we create? The mess of symbols that we generated in the example
+    above doesn't appear particularly interesting or complex to the eye as it is.
+  </p>
+  <p>
+    Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
+    fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
+    of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
+    robot.
+    For example, let's say that "F" means "draw forward." And let's say that "+" means turn left 90 degrees. Now to
+    transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol, following the
+    instructions one at a time. (Those who are familiar with the turtle module in Python might find this method of
+    drawing familiar).
+    When we do this with the string we generated above, this beautiful picture emerges:
+  </p>
+  <p>
+    Here is an interactive example (if you're curious how I created it, click here) where you can create your own
+    L-System by
+    inputting an axiom and a set of rules. The resulting image will automatically be drawn according to the visual
+    interpretations of each
+    symbol as shown in the table. You can click on the presets to autofill the inputs with some famous examples of
+    L-Systems.
+  </p>
 
-  <div class="input_area">
-
-    <div class="axiom_area">
+  <div id="interactive-example">
+    <div id="user-inputs">
       <h2>Axiom:</h2>
-      <ul class="no_bullet">
+      <ul class="no-bullet">
         <li>
           <input type="text" id="axiom" name="axiom"><br>
         </li>
       </ul>
-    </div>
-    <br><br>
-    
-    <div class="rules_area">
       <h2>Rules:</h2>
-      <ul id="rules_list" class="no_bullet">
-        <li id="rule_0" class="large_text">
-          <input type="text" id="rule_0_input" name="rule_input">
+      <ul id="rules-list" class="no-bullet">
+        <li id="rule0" class="large-text">
+          <input type="text" id="rule0-input" name="rule-input">
           &#8614;
-          <input type="text" id="rule_0_output" name="rule_output">
+          <input type="text" id="rule0-output" name="rule-output">
         </li>
       </ul>
       <div>
-        <button id="plus_rule" class="round plus">+</button>
+        <button id="plus-rule" class="round plus">+</button>
       </div>
-    </div>
-
-    <div class="iterations_area">
       <h2>Iterations:</h2>
-      <ul class="no_bullet">
+      <ul class="no-bullet">
         <li>
-          <input type="number" id="iters_input" name="iters_input" min="0" value="3"/>
-          <div id="iter_warning"></div>
+          <input type="number" id="iters-input" name="iters-input" min="0" value="3" />
+          <div id="iter-warning"></div>
         </li>
       </ul>
-    </div>
 
-    <div class="alphabet_area">
       <h2>Alphabet:</h2>
       <table>
         <tr>
@@ -142,8 +130,10 @@
         </tr>
       </table>
     </div>
-
+    <div id="sketch-holder">
+      <!-- Our p5 sketch will go here. -->
+    </div>
+    <script src="matrix.min.js"></script>
+    <script src="index.js"></script>
   </div>
-  <script src="matrix.min.js"></script>
-  <script src="index.js"></script>
 </body>

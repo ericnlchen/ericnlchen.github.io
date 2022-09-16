@@ -5,21 +5,22 @@ const max_string_length = 100000;
 function setup() {
     const CANVAS_WIDTH = 500;
     const CANVAS_HEIGHT = 500;
-    createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    canvas.parent("sketch-holder");
     // Ensure that the canvas display size and coordinate system size match
-    const canvas = document.querySelector('.p5Canvas');
-    canvas.setAttribute('width', CANVAS_WIDTH);
-    canvas.setAttribute('height', CANVAS_HEIGHT);
+    const p5canvas = document.querySelector('.p5Canvas');
+    p5canvas.setAttribute('width', CANVAS_WIDTH);
+    p5canvas.setAttribute('height', CANVAS_HEIGHT);
 
     // Logic for adding a new rule with the plus button
-    const plusRule = document.getElementById("plus_rule");
+    const plusRule = document.getElementById("plus-rule");
     plusRule.addEventListener('click', () => {
-        const rules_list = document.getElementById("rules_list");
+        const rules_list = document.getElementById("rules-list");
         const last_item = rules_list.lastElementChild;
         const new_item = last_item.cloneNode(true); // create a clone of previous rule
         new_item.id = "rule";                       // all new rules have ID = "rule"
         // If new rule is a copy of the first rule, add a minus button and add event listener
-        if (last_item.id === "rule_0") {
+        if (last_item.id === "rule0") {
             const minusBtn = document.createElement('button');
             minusBtn.className = "minus round";
             minusBtn.innerHTML = "-";
@@ -52,12 +53,6 @@ function setup() {
         // TODO: rename "items" to "rules"
     });
 
-    // Logic for adding a new symbol with the plus button
-    const plusSymbol = document.getElementById("plus_symbol");
-    plusSymbol.addEventListener('click', () => {
-        // TODO: Implement logic for adding a new symbol, also don't forget about the minus button
-    });
-
     const input_elements = document.querySelectorAll("input");
     input_elements.forEach(
         function (currentValue) {
@@ -81,13 +76,13 @@ function draw() {
 
     const axiom = document.getElementById("axiom").value;
     const rules = new Map();
-    const rules_list = document.getElementById("rules_list");
+    const rules_list = document.getElementById("rules-list");
     for (let i = 0; i < rules_list.children.length; i++) {
         const rule = rules_list.children[i];
         rules.set(rule.children[0].value, rule.children[1].value);
     }
     
-    const iters_input = document.getElementById("iters_input");
+    const iters_input = document.getElementById("iters-input");
     const iters = iters_input.value;
     let Lstring = Lsystem(0, axiom, rules, iters);
     show_Lsystem(Lstring);
@@ -100,10 +95,10 @@ function Lsystem(alphabet, axiom, rules, iters) {
         let old_axiom = axiom;
         axiom = grow(axiom, rules);
         // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
-        const iter_warning = document.getElementById("iter_warning");
+        const iter_warning = document.getElementById("iter-warning");
         if (axiom.length > max_string_length) { 
             console.log(`Max string length exceeded at iteration ${i}`);
-            const iters_input = document.getElementById("iters_input");
+            const iters_input = document.getElementById("iters-input");
             iters_input.value = i;
             axiom = old_axiom; // revert to previous axiom
             iter_warning.textContent = `The string has grown too long! Cannot exceed ${i} iterations.`;
@@ -130,7 +125,7 @@ function grow(axiom, rules) {
 function show_Lsystem(Lstring) {
     // This function draws the Lsystem, resizes canvas to fit the whole drawing, and then redraws
     const [min_x, max_x, min_y, max_y] = draw_Lsystem(Lstring, 1, 0, 0); // draw once
-    console.log(min_x, max_x, min_y, max_y);
+    // console.log(min_x, max_x, min_y, max_y);
     clear();
     // resizeCanvas(Math.abs(max_x - min_x), Math.abs(max_y - min_y), true); // resize
 
@@ -149,7 +144,7 @@ function show_Lsystem(Lstring) {
 }
 
 function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
-    console.log(Lstring);
+    // console.log(Lstring);
     const canvas = document.querySelector('.p5Canvas');
     const ctx = canvas.getContext('2d');
     let matrix = new Matrix(ctx);
@@ -165,24 +160,18 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
         if (Lstring[i] == "F" || Lstring[i] == "G") { // Draw forward
             line(0, 0, 0, -l);
             matrix.translate(0, -l);
-            console.log("making a line");
         } else if (Lstring[i] == "f" || Lstring[i] == "g") { // Move forward
             matrix.translate(0, -l);
         } else if (Lstring[i] == "L" || Lstring[i] == "+") {  // Left 90 deg
             matrix.rotate(-radians(90));
-            console.log("turning left 90");
         } else if (Lstring[i] == "R" || Lstring[i] == "-" || Lstring[i] == '\u2212') { // Right 90 deg (Note there are multiple - characters)
             matrix.rotate(radians(90));
-            console.log("turning right 90");
         } else if (Lstring[i] == "l") { // Left 25 deg
             matrix.rotate(-radians(25));
-            console.log("turning left 25");
         } else if (Lstring[i] == "r") { // Right 25 deg
             matrix.rotate(radians(25))
-            console.log("turning right 25");
         } else if (Lstring[i] == "[") { // push
             stack.push({a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d, e: matrix.e, f: matrix.f});
-            console.log("push");
         } else if (Lstring[i] == "]") { // pop
             const transf = stack.pop();
             matrix.a = transf.a;
@@ -192,7 +181,6 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
             matrix.e = transf.e;
             matrix.f = transf.f;
             matrix._setCtx();
-            console.log("pop");
         }
         // Update x, y bounds:
         if (matrix.e < min_x) {
@@ -209,4 +197,8 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
         }
     }
     return [min_x, max_x, min_y, max_y];
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
