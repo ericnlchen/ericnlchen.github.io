@@ -67,7 +67,7 @@ function draw() {
     console.log("draw");
     background(255);
     frameRate(4);
-    stroke(255, 0, 0);
+    stroke(200, 200, 200);
     strokeWeight(1)
     strokeJoin(ROUND);
     // strokeCap(PROJECT);

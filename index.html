@@ -11,36 +11,51 @@
 <body>
   <h1>L-Systems</h1>
   <p>
-    An <b>L-System</b> is a mathematical object which can be used to generate organic looking shapes.
-    To define an L-System, you specify an <b>axiom</b> and <b>rules</b>. An axiom is kind of like a seed
-    which describes what a plant looks like before it begins to grow. You can think of the rules as the plant's
-    DNA which dictates how it changes as it grows. For example, we could have the following L-System:<br>
+    An <b>L-System</b> is a mathematical object which uses simple rules to generate complex organic shapes, like this fern:
   </p>
-  <img src="ex1.jpeg" alt="A simple example of an L-System">
+  <img src="fern.png" alt="an L-System that looks like a fern">
   <p>
-    To "grow" an L-System, we apply the rules to the axiom. Each rule represents a subsitution; wherever we see
-    the character on the left side of a rule, we substitute it for the character or characters on the right side.
-    In our example above, we apply both rules to get:
-  </p>
-
-  <p>
-    At each step (or iteration), we apply all the rules we can to obtain a new string. This string becomes our input
-    for the next iteration.
+    In this article, we will describe the inner-workings of L-Systems and explore the elegant patterns they give rise to. Then we will
+    dive deeper into the theoretical importance of systems that bear close resemblance to L-Systems.
   </p>
   <p>
-    If we continue this process for many iterations, we can end up with very long and/or complex strings, even if our
-    axiom and rules were relatively simple.
+    An L-System consist of two main components: the <b>axiom</b> and the <b>rules</b>. The axiom describes
+    the initial state of the system. You can think of it like a seed; it describes what the plant looks like
+    before it begins to develop. The axiom will always be a single symbol. For example, <span class="math">Axiom = <em>A</em></span>
   </p>
   <p>
-    But how can we examine the structure of the strings we create? The mess of symbols that we generated in the example
-    above doesn't appear particularly interesting or complex to the eye as it is.
+    The rules, on the other hand, describe how the system grows and changes over time.
+    Building on the plant analogy, you can think of the rules as the plant's DNA.
+    Each rule will tell us how to substitute one symbol for another string of one or more symobls. Here is an example of a rule:
+    <span class="math">Rule = <em>A &#8614; AB</em></span>
+    This rule means that whenever we see they symbol <em>A</em>, we need to substitute it with the string <em>AB</em>.
+  </p>
+  <p>To "grow" the L-System,
+    we start by applying the rules to the axiom. This means we look at the axiom and wherever we see a symbol which occurs
+    on the left side of a rule, we replace it with the string on the right side of that rule. In our example we have an <em>A</em> in
+    our axiom and our rule has an <em>A</em> on the left side, so we replace
+    <em>A</em> with <em>AB</em>. Then all we do is repeat. We take our newly formed string <em>AB</em> and apply the
+    rules again. Once again we substitute <em>A</em> with <em>AB</em> and leave the <em>B</em> alone (since we have no rule telling us to do something
+    with <em>B</em>) leaving us with the string <em>ABB</em>. We can repeat this process for as many iterations as we want. In this case
+    our L-System yields the strings <em>ABBB...</em> with the number of <em>B</em>'s equal to the number of iterations.
+  </p>
+  <p>
+    Let's look at another example. INSERT DRAGON EXAMPLE HERE
+  </p>
+  <p>
+    At this point, you might be wondering how this process of generating strings of symbols like "ABB" has anything to do with
+    generating elegant shapes like the fern.
+  </p>
+  <p>
+    The string that we generated in the example
+    above doesn't appear particularly interesting or complex to the eye as it is -- it just looks like a mess.
   </p>
   <p>
     Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
     fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
     of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
     robot.
-    For example, let's say that "F" means "draw forward." And let's say that "+" means turn left 90 degrees. Now to
+    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means turn left 90 degrees. Now to
     transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol, following the
     instructions one at a time. (Those who are familiar with the turtle module in Python might find this method of
     drawing familiar).
