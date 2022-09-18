@@ -18,12 +18,12 @@ function setup() {
         const rules_list = document.getElementById("rules-list");
         const last_rule = rules_list.lastElementChild;
         const new_rule = last_rule.cloneNode(true); // create a clone of previous rule
-        new_rule.id = "rule";                       // all new rules have ID = "rule"
+        new_rule.id = "new-rule";                       // all new rules have ID = "new-rule" to distinguish from first-rule
         // If new rule is a copy of the first rule, add a minus button and add event listener
-        if (last_rule.id === "rule0") {
+        if (last_rule.id ==="first-rule") {
             const minusBtn = document.createElement('button');
             minusBtn.className = "minus round";
-            minusBtn.innerHTML = "-";
+            minusBtn.innerHTML = "&minus;";
             minusBtn.addEventListener('click', () => {
                 minusBtn.parentElement.remove();
                 redraw();

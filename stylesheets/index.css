@@ -4,7 +4,8 @@ ul.no-bullet {
     margin: auto 0px;
 }
 
-li.large-text {
+li {
+    margin: 0px;
     font-size: 24px;
 }
 
@@ -20,10 +21,6 @@ button.plus {
 
 button.minus {
     background-color:rgb(247, 196, 196);
-}
-
-.input-area {
-    width: 500px;
 }
 
 p {
@@ -97,13 +94,12 @@ img {
 }
 
 #user-inputs {
-    border: 5px solid green;
     padding: 20px;
     margin: 0 auto;
 }
 
 #sketch-holder {
-    border: 5px solid green;
+    border: 5px solid rgb(200,200,200);
     padding: 20px;
     display: flex;
     justify-content: center;
