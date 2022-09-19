@@ -28,7 +28,7 @@ p {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 14px;
     line-height: 24px;
-    margin: 0 0 24px;
+    margin: 0;
     text-align: justify;
     text-justify: inter-word;
 }
@@ -141,6 +141,27 @@ span.math {
     line-height: 24px;
     text-justify: inter-word;
     font-weight: bold;
+    margin: 1% auto;
+}
+
+div.math {
+    color: darkgreen;
+    font-family: 'TimesNewRoman', "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-size: 18px;
+    line-height: 24px;
+    text-justify: inter-word;
+    font-weight: bold;
+    margin: auto auto auto 35%;
+}
+
+div.algo {
+    margin: 0 5%;
+    border: 1px solid rgb(200,200,200);
+    padding: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    text-justify: inter-word;
 }
 
 em {

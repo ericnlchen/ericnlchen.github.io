@@ -13,39 +13,61 @@
   <p>
     An <b>L-System</b> is a mathematical object which uses simple rules to generate complex organic shapes, like this fern:
   </p>
+  <br>
   <img src="fern.png" alt="an L-System that looks like a fern">
   <p>
-    In this article, we will describe the inner-workings of L-Systems and explore the elegant patterns they give rise to. Then we will
-    dive deeper into the theoretical importance of systems that bear close resemblance to L-Systems.
+    An L-System consist of two main components: the <b>axiom</b> and the <b>rules</b>.
   </p>
-  <p>
-    An L-System consist of two main components: the <b>axiom</b> and the <b>rules</b>. The axiom describes
+  <br>
+  <p>The axiom describes
     the initial state of the system. You can think of it like a seed; it describes what the plant looks like
-    before it begins to develop. The axiom will always be a single symbol. For example, <span class="math">Axiom = <em>A</em></span>
+    before it begins to develop. The axiom will always be a single symbol. For example, <span class="math">axiom = <em>A</em></span>
   </p>
   <p>
     The rules, on the other hand, describe how the system grows and changes over time.
-    Building on the plant analogy, you can think of the rules as the plant's DNA.
-    Each rule will tell us how to substitute one symbol for another string of one or more symobls. Here is an example of a rule:
-    <span class="math">Rule = <em>A &#8614; AB</em></span>
-    This rule means that whenever we see they symbol <em>A</em>, we need to substitute it with the string <em>AB</em>.
+    Building on the plant analogy, you can imagine that the rules are the plant's DNA.
+    Each rule dictates how a symbol changes over time. For example, this rule tells us that the
+    symbol <em>A</em> turns into the string <em>AB</em>:
+    <span class="math">rule1: <em>A &#8614; AB</em></span>
+    And this rule tells us that a <em>B</em> turns into an <em>A</em>:
+    <span class="math">rule2: <em>B &#8614; A</em></span>
   </p>
-  <p>To "grow" the L-System,
-    we start by applying the rules to the axiom. This means we look at the axiom and wherever we see a symbol which occurs
-    on the left side of a rule, we replace it with the string on the right side of that rule. In our example we have an <em>A</em> in
-    our axiom and our rule has an <em>A</em> on the left side, so we replace
-    <em>A</em> with <em>AB</em>. Then all we do is repeat. We take our newly formed string <em>AB</em> and apply the
-    rules again. Once again we substitute <em>A</em> with <em>AB</em> and leave the <em>B</em> alone (since we have no rule telling us to do something
-    with <em>B</em>) leaving us with the string <em>ABB</em>. We can repeat this process for as many iterations as we want. In this case
-    our L-System yields the strings <em>ABBB...</em> with the number of <em>B</em>'s equal to the number of iterations.
+  <p>Now that we have an axiom and rules, we can start to simulate the growth of the L-System. To do so, we follow
+    this simple procedure:
   </p>
-  <p>
-    Let's look at another example. INSERT DRAGON EXAMPLE HERE
-  </p>
+  <br>
+  <div class="algo">
+    Start by setting the current string equal to the axiom.<span class="math">currentString = <em>A</em></span>
+    For each symbol in the current string, check whether it occurs on the left side of a rule. In this case, <em>A</em> occurs on the left side
+    of <em>rule1</em>, which tells us to turn it into <em>AB</em>. In other words, we substitute or replace <em>A</em> with <em>AB</em>. Doing so gives us a new string:
+    <span class="math">currentString = <em>AB</em></span>
+    Now, we repeat! Look at each character in the current string and make substitutions as dictated by the rules. In this case, <em>A</em> changes into <em>AB</em> by <em>rule1</em>
+    and <em>B</em> changes into <em>A</em> by <em>rule2</em>. So we get:
+    <span class="math">currentString = <em>ABA</em></span>
+    Repeat again to get:
+    <span class="math">currentString = <em>ABAAB</em></span>
+    and again to get:
+    <span class="math">currentString = <em>ABAABABA</em></span>
+    and so on for as many iterations as you like.
+  </div>
+  <br>
   <p>
     At this point, you might be wondering how this process of generating strings of symbols like "ABB" has anything to do with
-    generating elegant shapes like the fern.
+    generating elegant shapes like the fern. Let's answer this question via another example.
+    <span class="math">axiom = <em>F</em></span><span class="math">rule1: <em>F &#8614; F+G</em><br>rule2: <em>G &#8614; F&minus;G</em></span>
+    Note that <em>F</em>, <em>G</em>, <em>+</em>, and <em>&minus;</em> are being used as symbols here, just the same as <em>A</em> and <em>B</em> from before. In particular,
+    <em>+</em> and <em>&minus;</em> have no mathematical significance in this context.
+    If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
   </p>
+  <br>
+  <div class="math">Iteration 0: F<br>
+  Iteration 1: F+G<br>
+  Iteration 2: F+G+F&minus;G<br>
+  Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
+  Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
+  ...
+  </div>
+  <br>
   <p>
     The string that we generated in the example
     above doesn't appear particularly interesting or complex to the eye as it is -- it just looks like a mess.
@@ -55,12 +77,20 @@
     fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
     of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
     robot.
-    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means turn left 90 degrees. Now to
+  </p>
+  <p>
+    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means turn left 90 degrees, while
+    <em>&minus;</em> means turn right 90 degrees. Now to
     transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol, following the
     instructions one at a time. (Those who are familiar with the turtle module in Python might find this method of
     drawing familiar).
-    When we do this with the string we generated above, this beautiful picture emerges:
+    When we do this with the string we generated above at iteration 4, this picture emerges:
   </p>
+  <img src="dragon.jpeg">
+  <p>
+    If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator yourself!
+  </p>
+  <br>
   <p>
     Here is an interactive example (if you're curious how I created it, click here) where you can create your own
     L-System by
