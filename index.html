@@ -10,6 +10,7 @@
 
 <body>
   <h1>L-Systems</h1>
+  <h4>9/19/2022 &middot; Eric Chen</h4>
   <p>
     An <b>L-System</b> is a mathematical object which uses simple rules to generate complex organic shapes, like this fern:
   </p>
@@ -60,46 +61,57 @@
     If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
   </p>
   <br>
-  <div class="math">Iteration 0: F<br>
-  Iteration 1: F+G<br>
-  Iteration 2: F+G+F&minus;G<br>
-  Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
-  Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
-  ...
+  <div class="math-container">
+    <div class="math">
+      Iteration 0: F<br>
+      Iteration 1: F+G<br>
+      Iteration 2: F+G+F&minus;G<br>
+      Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
+      Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
+      ...
+    </div>
   </div>
   <br>
   <p>
     The string that we generated in the example
-    above doesn't appear particularly interesting or complex to the eye as it is -- it just looks like a mess.
+    above doesn't appear particularly interesting or complex to the eye as it is &mdash; it just looks like a mess.
   </p>
+  <br>
   <p>
     Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
     fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
     of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
     robot.
   </p>
+  <br>
   <p>
-    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means turn left 90 degrees, while
-    <em>&minus;</em> means turn right 90 degrees. Now to
-    transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol, following the
-    instructions one at a time. (Those who are familiar with the turtle module in Python might find this method of
+    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means "turn left 90 degrees", while
+    <em>&minus;</em> means "turn right 90 degrees". Now to
+    transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol following the
+    instructions one at a time. (Those who are familiar with the <a href="https://docs.python.org/3/library/turtle.html">turtle</a> module in Python might find this method of
     drawing familiar).
     When we do this with the string we generated above at iteration 4, this picture emerges:
   </p>
+  <br>
   <img src="dragon.jpeg">
+  <br>
   <p>
     If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator yourself!
   </p>
   <br>
   <p>
-    Here is an interactive example (if you're curious how I created it, click here) where you can create your own
+    Here is an interactive example where you can create your own
     L-System by
     inputting an axiom and a set of rules. The resulting image will automatically be drawn according to the visual
     interpretations of each
     symbol as shown in the table. You can click on the presets to autofill the inputs with some famous examples of
     L-Systems.
   </p>
-
+  <br>
+  <p>
+    If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
+  </p>
+  <br>
   <div id="interactive-example">
     <div id="user-inputs">
 
@@ -192,6 +204,9 @@
     <div id="sketch-holder">
       <!-- Our p5 sketch will go here. -->
     </div>
+
+    
+
     <script src="matrix.min.js"></script>
     <script src="index.js"></script>
   </div>

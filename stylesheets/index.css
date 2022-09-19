@@ -1,3 +1,24 @@
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
+    font-style: italic, oblique;
+}
+@font-face {
+    font-family: "Computer Modern";
+    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
 ul.no-bullet {
     list-style-type: none;
     padding: 0px;
@@ -26,8 +47,8 @@ button.minus {
 p {
     color: #111;
     font-family: 'Helvetica Neue', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 26px;
     margin: 0;
     text-align: justify;
     text-justify: inter-word;
@@ -39,7 +60,7 @@ h1 {
     font-size: 40px;
     font-weight: 300;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 10px;
 }
 
 h2 {
@@ -77,14 +98,15 @@ td {
 }
 
 body {
-    margin: 0 7%;
-    padding: 2% 3%;
-    border: 5px solid black;
+    margin: 0 12%;
+    padding: 4% 7%;
 }
 
 img {
     display: block;
     margin: 10px auto;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 @media (min-width: 1080px) {
@@ -136,34 +158,55 @@ span.math {
     display: block;
     text-align: center;
     color: darkgreen;
-    font-family: 'TimesNewRoman', "Times New Roman", Times, Baskerville, Georgia, serif;
-    font-size: 18px;
-    line-height: 24px;
+    font-family: 'Computer Modern', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
     text-justify: inter-word;
     font-weight: bold;
     margin: 1% auto;
 }
 
+div.math-container {
+    display: flex;
+}
+
 div.math {
     color: darkgreen;
-    font-family: 'TimesNewRoman', "Times New Roman", Times, Baskerville, Georgia, serif;
-    font-size: 18px;
-    line-height: 24px;
+    font-family: 'Computer Modern', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
     text-justify: inter-word;
     font-weight: bold;
-    margin: auto auto auto 35%;
+    margin: auto;
 }
 
 div.algo {
-    margin: 0 5%;
+    margin: 0 8%;
     border: 1px solid rgb(200,200,200);
     padding: 20px;
     font-family: 'Helvetica Neue', sans-serif;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 26px;
     text-justify: inter-word;
 }
 
 em {
     color: darkgreen;
+}
+
+header {
+    display: flex;
+}
+
+h4 {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 24px 0;
+}
+
+a:hover {
+    background-color:rgb(173, 226, 171);
 }
