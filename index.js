@@ -1,6 +1,5 @@
 "use strict";
 
-
 const max_string_length = 100000;
 
 function setup() {
