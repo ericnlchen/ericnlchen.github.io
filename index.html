@@ -1,228 +1,41 @@
 <!DOCTYPE html>
 
+<html>
+
 <head>
-  <meta charset='utf-8' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L-Systems</title>
-  <link href="./stylesheets/index.css" rel="stylesheet">
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" rel="stylesheet">
+    <title></title>
 </head>
 
 <body>
-  <h1>L-Systems</h1>
-  <h4>9/19/2022 &middot; Eric Chen</h4>
-  <p>
-    An <b>L-System</b> is a mathematical object which uses simple rules to generate complex organic shapes, like this fern:
-  </p>
-  <br>
-  <img src="fern.png" alt="an L-System that looks like a fern">
-  <p>
-    An L-System consist of two main components: the <b>axiom</b> and the <b>rules</b>.
-  </p>
-  <br>
-  <p>The axiom describes
-    the initial state of the system. You can think of it like a seed; it describes what the plant looks like
-    before it begins to develop. The axiom will always be a single symbol. For example, <span class="math">axiom = <em>A</em></span>
-  </p>
-  <p>
-    The rules, on the other hand, describe how the system grows and changes over time.
-    Building on the plant analogy, you can imagine that the rules are the plant's DNA.
-    Each rule dictates how a symbol changes over time. For example, this rule tells us that the
-    symbol <em>A</em> turns into the string <em>AB</em>:
-    <span class="math">rule1: <em>A &#8614; AB</em></span>
-    And this rule tells us that a <em>B</em> turns into an <em>A</em>:
-    <span class="math">rule2: <em>B &#8614; A</em></span>
-  </p>
-  <p>Now that we have an axiom and rules, we can start to simulate the growth of the L-System. To do so, we follow
-    this simple procedure:
-  </p>
-  <br>
-  <div class="algo">
-    Start by setting the current string equal to the axiom.<span class="math">currentString = <em>A</em></span>
-    For each symbol in the current string, check whether it occurs on the left side of a rule. In this case, <em>A</em> occurs on the left side
-    of <em>rule1</em>, which tells us to turn it into <em>AB</em>. In other words, we substitute or replace <em>A</em> with <em>AB</em>. Doing so gives us a new string:
-    <span class="math">currentString = <em>AB</em></span>
-    Now, we repeat! Look at each character in the current string and make substitutions as dictated by the rules. In this case, <em>A</em> changes into <em>AB</em> by <em>rule1</em>
-    and <em>B</em> changes into <em>A</em> by <em>rule2</em>. So we get:
-    <span class="math">currentString = <em>ABA</em></span>
-    Repeat again to get:
-    <span class="math">currentString = <em>ABAAB</em></span>
-    and again to get:
-    <span class="math">currentString = <em>ABAABABA</em></span>
-    and so on for as many iterations as you like.
-  </div>
-  <br>
-  <p>
-    At this point, you might be wondering how this process of generating strings of symbols like "ABB" has anything to do with
-    generating elegant shapes like the fern. Let's answer this question via another example.
-    <span class="math">axiom = <em>F</em></span><span class="math">rule1: <em>F &#8614; F+G</em><br>rule2: <em>G &#8614; F&minus;G</em></span>
-    Note that <em>F</em>, <em>G</em>, <em>+</em>, and <em>&minus;</em> are being used as symbols here, just the same as <em>A</em> and <em>B</em> from before. In particular,
-    <em>+</em> and <em>&minus;</em> have no mathematical significance in this context.
-    If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
-  </p>
-  <br>
-  <div class="math-container">
-    <div class="math">
-      Iteration 0: F<br>
-      Iteration 1: F+G<br>
-      Iteration 2: F+G+F&minus;G<br>
-      Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
-      Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
-      ...
-    </div>
-  </div>
-  <br>
-  <p>
-    The string that we generated in the example
-    above doesn't appear particularly interesting or complex to the eye as it is &mdash; it just looks like a mess.
-  </p>
-  <br>
-  <p>
-    Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
-    fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
-    of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
-    robot.
-  </p>
-  <br>
-  <p>
-    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means "turn left 90 degrees", while
-    <em>&minus;</em> means "turn right 90 degrees". Now to
-    transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol following the
-    instructions one at a time. (Those who are familiar with the <a href="https://docs.python.org/3/library/turtle.html">turtle</a> module in Python might find this method of
-    drawing familiar).
-    When we do this with the string we generated above at iteration 4, this picture emerges:
-  </p>
-  <br>
-  <img src="dragon.jpeg">
-  <br>
-  <p>
-    If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator yourself!
-  </p>
-  <br>
-  <p>
-    Here is an interactive example where you can create your own
-    L-System by
-    inputting an axiom and a set of rules. The resulting image will automatically be drawn according to the visual
-    interpretations of each
-    symbol as shown in the table. You can click on the presets to autofill the inputs with some famous examples of
-    L-Systems.
-  </p>
-  <br>
-  <p>
-    If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
-  </p>
-  <br>
-  <div id="interactive-example">
-    <div id="user-inputs">
-
-      <div id="axiom-input">
-        <h2>Axiom:</h2>
-        <input type="text" maxlength="1" class="short" id="axiom" name="axiom"><br>
-      </div>
-      <br>
-      <div id="rules-input">
-        <h2>Rules:</h2>
-        <ul id="rules-list" class="no-bullet">
-          <li id="first-rule">
-            <input type="text" maxlength="1" class="short" name="rule-input">
-            &#8614;
-            <input type="text" class="medium" name="rule-output">
-          </li>
+    <ul id="nav-bar" class="no-bullet">
+        <li><a href="#about">about</a></li>
+    </ul>
+    <h1 id="main-title">&nbsp;Undefined Behavior.&nbsp;</h1>
+    <h2 id="sub-title">Eric Chen</h2>
+    <!--
+    <div id="menu-box">
+        <ul id="menu" class="no-bullet">
+            <li><a href="blog">blog</a></li>
+            <li><a href="math">math</a></li>
+            <li><a href="art">art</a></li>
         </ul>
-        <div class="button-holder">
-          <button id="plus-rule" class="round plus">+</button>
-        </div>
-      </div>
-      <br>
-      <div id="iterations-input">
-        <h2>Iterations:</h2>
-        <ul class="no-bullet">
-          <li>
-            <input type="number" class="number" id="iters-input" name="iters-input" min="0" value="3" />
-            <div id="iter-warning"></div>
-          </li>
-        </ul>
-      </div>
-      <br>
-      <h2>Alphabet:</h2>
-      <table>
-        <tr>
-          <th>Symbol</th>
-          <th>Visual Meaning</th>
-        </tr>
-        <tr>
-          <td>F</td>
-          <td>draw forward</td>
-        </tr>
-        <tr>
-          <td>G</td>
-          <td>draw forward</td>
-        </tr>
-        <tr>
-          <td>f</td>
-          <td>move forward</td>
-        </tr>
-        <tr>
-          <td>g</td>
-          <td>move forward</td>
-        </tr>
-        <tr>
-          <td>L</td>
-          <td>turn left 90&#176;</td>
-        </tr>
-        <tr>
-          <td>R</td>
-          <td>turn right 90&#176;</td>
-        </tr>
-        <tr>
-          <td>l</td>
-          <td>turn left 25&#176;</td>
-        </tr>
-        <tr>
-          <td>r</td>
-          <td>turn right 25&#176;</td>
-        </tr>
-        <tr>
-          <td>[</td>
-          <td>save position (push)</td>
-        </tr>
-        <tr>
-          <td>]</td>
-          <td>restore position (pop)</td>
-        </tr>
-      </table>
-      <div id="presets">
-        <h2>Presets:</h2>
-        <select name="presets" id="preset-select">
-          <option value=""></option>
-          <option value="dragon">Dragon Curve</option>
-          <option value="fern">Fern</option>
-          <option value="koch">Koch Curve</option>
-        </select>
-      </div>
     </div>
-    <div id="sketch-holder">
-      <!-- Our p5 sketch will go here. -->
+    -->
+    <div class="typed-container">
+        <span id="typed"></span>
     </div>
-    <script src="matrix.min.js"></script>
-    <script src="index.js"></script>
-  </div>
-  <br><br>
-  <h3>Connections with Formal Systems</h3>
-  <p>
-    At this point you hopefully know what an L-System is. You might agree that they're cool mathematical gadgets and that they can generate some pretty complex
-    structures. While all of this is true, I think there is something even more interesting to say about L-Systems. Specifically, we can apply some minor tweaks to L-Systems to
-    create a framework for proving mathematical theorems.
-  </p>
-  <br>
-  <p>
-    To give you a sense for where we're going before we dive into the details, this is the general analogy we are making:
-  </p>
-  <br>
-  <p>
-    The axiom or starting string of the system 
-  </p>
-  <p>
-    In 
-  </p>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed("#typed", {
+            strings: ["<span class='keyword'>class</span> Human {^1000 <br>&emsp;&emsp;<span class='keyword'>public</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>string</span> mannerisms[];^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> converse();^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> greet();^1000 <br>&emsp;&emsp;<span class='keyword'>private</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Thought</span> selfImage;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Fear</span> greatestFear;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Dream</span> futureHope;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Emotion</span> presentState;^1000 <br>}"],
+            typeSpeed: 80,
+            backSpeed: 80,
+            loop: false,
+            cursorChar: '&#10074;'
+        });
+    </script>
 </body>
+</html>
