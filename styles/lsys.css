@@ -1,33 +1,127 @@
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-}
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsx.otf');
-    font-weight: bold;
-}
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunsi.otf');
-    font-style: italic, oblique;
-}
-@font-face {
-    font-family: "Computer Modern";
-    src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunbxo.otf');
-    font-weight: bold;
-    font-style: italic, oblique;
+/* || GENERAL STYLES */
+body {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
 }
 
-ul.no-bullet {
-    list-style-type: none;
+article {
+    margin: 0 17%;
+}
+
+p {
+    font-size: 16px;
+    line-height: 26px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 10px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 240;
+    line-height: 32px;
+    margin: 0;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 24px 0;
+}
+
+/* ul {
     padding: 0px;
-    margin: auto 0px;
-}
+    margin: auto 0px; this should only be for some ul's
+} */
 
-li {
+/* li {
     margin: 0px;
     font-size: 24px;
+} */
+
+#fern-image {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+img {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+div.img-holder {
+    display: flex;
+    margin: 0 0 0 0;
+    justify-content: center;
+}
+
+input {
+    margin: 5px;
+    border-radius: 6px;
+}
+
+/* || SITEWIDE */
+header {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#main-heading, #sub-heading{
+    display: flex;
+    justify-content: center;
+}
+
+#main-heading h1 {
+    font-size: 74px;
+}
+
+#sub-heading h2 {
+    font-size: 22px;
+}
+
+#nav-bar {
+    background-color: rgb(173, 226, 171);
+    padding: 1% 0;
+    margin-bottom: 4%;
+}
+
+#nav-bar ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+}
+
+#nav-bar a {
+    font-family: 'Courier', 'Courier New', serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* || TITLE */
+#main-title {
+    margin: 0 17%;
+}
+
+/* || LSYS WIDGET */
+ul.no-bullet {
+    list-style-type: none;
 }
 
 button.round {
@@ -44,78 +138,42 @@ button.minus {
     background-color:rgb(247, 196, 196);
 }
 
-p {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    line-height: 26px;
-    margin: 0;
-    text-align: justify;
-    text-justify: inter-word;
+input.number {
+    width: 30px;
 }
 
-h1 {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 32px;
-    margin: 0 0 10px;
+input.short {
+    width: 20px;
 }
 
-h2 {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 32px;
-    margin: 0 0;
+input.medium {
+    width: 90px;
 }
 
-b {
-    color: black;
-}
-
-table {
+table.alphabet {
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
     letter-spacing: 1px;
     font-size: 0.8rem;
-    font-family: 'Helvetica Neue', sans-serif;
   }
   
-td, th {
+table.alphabet td, th {
     border: 1px solid rgb(190,190,190);
     padding: 10px 20px;
-}
-  
-th {
-    background-color: rgb(235,235,235);
-}
-  
-td {
     text-align: center;
 }
-
-body {
-    margin: 0 12%;
-    padding: 4% 7%;
-}
-
-img {
-    display: block;
-    margin: 10px auto;
-    max-height: 100%;
-    max-width: 100%;
+  
+table.alphabet th {
+    background-color: rgb(235,235,235);
 }
 
 @media (min-width: 1080px) {
-    #interactive-example {
+    #lsys-widget {
         display: flex;
     }
 }
 
-#user-inputs {
+.user-inputs {
     padding: 20px;
     margin: 0 auto;
 }
@@ -129,31 +187,25 @@ img {
     margin: 0 auto;
 }
 
-input {
-    margin: 5px;
-    border-radius: 6px;
-}
-
-input.number {
-    width: 30px;
-}
-
-input.short {
-    width: 20px;
-}
-
-input.medium {
-    width: 90px;
-}
-
-#axiom-input {
+/* TODO, REMOVE THIS: */
+#axiom-input { 
     display: flex;
 }
+/* IN FAVOR OF THIS */
+.axiom-panel {
+    display: flex;
+}
+/* For all widget things */
 
 #iterations-input {
     display: flex;
 }
 
+#iter-warning {
+    font-size: 10px;
+}
+
+/* || CONTENT */
 span.math {
     display: block;
     text-align: center;
@@ -192,19 +244,6 @@ div.algo {
 
 em {
     color: darkgreen;
-}
-
-header {
-    display: flex;
-}
-
-h4 {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 32px;
-    margin: 0 0 24px 0;
 }
 
 a:hover {

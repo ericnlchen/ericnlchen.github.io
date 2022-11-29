@@ -1,16 +1,42 @@
 "use strict";
 
-const max_string_length = 100000;
+const MAX_STRING_LENGTH = 100000;
 
 function setup() {
     const CANVAS_WIDTH = 600;
     const CANVAS_HEIGHT = 600;
     const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     canvas.parent("sketch-holder");
+
     // Ensure that the canvas display size and coordinate system size match
     const p5canvas = document.querySelector('.p5Canvas');
     p5canvas.setAttribute('width', CANVAS_WIDTH);
     p5canvas.setAttribute('height', CANVAS_HEIGHT);
+
+    // Add event listeners for preset buttons
+    const dragonButton = document.getElementById("dragon-button");
+    dragonButton.addEventListener('click', () => {
+        // Set the axiom
+        const axiom = document.getElementById("axiom");
+        axiom.value = "F";
+
+        // Set the rules
+        const rules_list = document.getElementById("rules-list");
+        const dragonRule1 = document.getElementById("first-rule");
+        dragonRule1.children[0].value = "F";
+        dragonRule1.children[1].value = "F+G";
+        const dragonRule2 = document.getElementById("second-rule");
+        dragonRule2.children[0].value = "G";
+        dragonRule2.children[1].value = "F-G";
+        rules_list.replaceChildren();
+        rules_list.append(dragonRule1);
+        rules_list.append(dragonRule2);
+
+        // Add the event listeners
+
+        // Redraw
+        redraw();
+    });
 
     // Logic for adding a new rule with the plus button
     const plusRule = document.getElementById("plus-rule");
@@ -20,7 +46,7 @@ function setup() {
         const new_rule = last_rule.cloneNode(true); // create a clone of previous rule
         new_rule.id = "new-rule";                       // all new rules have ID = "new-rule" to distinguish from first-rule
         // If new rule is a copy of the first rule, add a minus button and add event listener
-        if (last_rule.id ==="first-rule") {
+        if (last_rule.id !="new-rule") {
             const minusBtn = document.createElement('button');
             minusBtn.className = "minus round";
             minusBtn.innerHTML = "&minus;";
@@ -95,7 +121,7 @@ function Lsystem(alphabet, axiom, rules, iters) {
         axiom = grow(axiom, rules);
         // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
         const iter_warning = document.getElementById("iter-warning");
-        if (axiom.length > max_string_length) { 
+        if (axiom.length > MAX_STRING_LENGTH) { 
             console.log(`Max string length exceeded at iteration ${i}`);
             const iters_input = document.getElementById("iters-input");
             iters_input.value = i;
@@ -198,9 +224,5 @@ function draw_Lsystem(Lstring, scale, x_offset, y_offset) {
     }
     return [min_x, max_x, min_y, max_y];
 }
-
-// function windowResized() {
-//     resizeCanvas(windowWidth, windowHeight);
-// }
 
 // Fl[[X]rX]rF[rFX]lX

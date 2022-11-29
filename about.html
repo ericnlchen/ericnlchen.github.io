@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/index.css" rel="stylesheet">
+    <title></title>
+</head>
+
+<body>
+    <nav>
+        <ul id="nav-bar" class="no-bullet">
+            <li><a href="./index.html">home</a></li>
+            <li><a href="./about.html">about</a></li>
+            <li><a href="./lsys.html">explainers</a></li>
+            <li><a href="./TODO">art</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="typed-container" id="about-me">
+            <span id="typed1" class="typed"></span>
+        </div>
+        <div class="typed-container" id="about-page">
+            <span id="typed2" class="typed"></span>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            var typed = new Typed("#typed1", {
+                strings: ["About Me:<br>&emsp;&emsp;I am a "],
+                typeSpeed: 40,
+                backSpeed: 40,
+                loop: false,
+                cursorChar: '&#10074;'
+            });
+        </script>
+        <script>
+            var typed = new Typed("#typed2", {
+                strings: ["About This Page:<br>&emsp;&emsp;This page"],
+                typeSpeed: 40,
+                backSpeed: 40,
+                loop: false,
+                cursorChar: '&#10074;'
+            });
+        </script>
+    </main>
+</body>
+</html>

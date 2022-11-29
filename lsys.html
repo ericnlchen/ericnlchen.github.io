@@ -1,228 +1,419 @@
 <!DOCTYPE html>
+<html lang="en-US">
 
 <head>
   <meta charset='utf-8' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>L-Systems</title>
   <link href="./styles/lsys.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
 </head>
 
 <body>
-  <h1>L-Systems</h1>
-  <h4>9/19/2022 &middot; Eric Chen</h4>
-  <p>
-    An <b>L-System</b> is a mathematical object which uses simple rules to generate complex organic shapes, like this fern:
-  </p>
-  <br>
-  <img src="images/fern.png" alt="an L-System that looks like a fern">
-  <p>
-    An L-System consist of two main components: the <b>axiom</b> and the <b>rules</b>.
-  </p>
-  <br>
-  <p>The axiom describes
-    the initial state of the system. You can think of it like a seed; it describes what the plant looks like
-    before it begins to develop. The axiom will always be a single symbol. For example, <span class="math">axiom = <em>A</em></span>
-  </p>
-  <p>
-    The rules, on the other hand, describe how the system grows and changes over time.
-    Building on the plant analogy, you can imagine that the rules are the plant's DNA.
-    Each rule dictates how a symbol changes over time. For example, this rule tells us that the
-    symbol <em>A</em> turns into the string <em>AB</em>:
-    <span class="math">rule1: <em>A &#8614; AB</em></span>
-    And this rule tells us that a <em>B</em> turns into an <em>A</em>:
-    <span class="math">rule2: <em>B &#8614; A</em></span>
-  </p>
-  <p>Now that we have an axiom and rules, we can start to simulate the growth of the L-System. To do so, we follow
-    this simple procedure:
-  </p>
-  <br>
-  <div class="algo">
-    Start by setting the current string equal to the axiom.<span class="math">currentString = <em>A</em></span>
-    For each symbol in the current string, check whether it occurs on the left side of a rule. In this case, <em>A</em> occurs on the left side
-    of <em>rule1</em>, which tells us to turn it into <em>AB</em>. In other words, we substitute or replace <em>A</em> with <em>AB</em>. Doing so gives us a new string:
-    <span class="math">currentString = <em>AB</em></span>
-    Now, we repeat! Look at each character in the current string and make substitutions as dictated by the rules. In this case, <em>A</em> changes into <em>AB</em> by <em>rule1</em>
-    and <em>B</em> changes into <em>A</em> by <em>rule2</em>. So we get:
-    <span class="math">currentString = <em>ABA</em></span>
-    Repeat again to get:
-    <span class="math">currentString = <em>ABAAB</em></span>
-    and again to get:
-    <span class="math">currentString = <em>ABAABABA</em></span>
-    and so on for as many iterations as you like.
-  </div>
-  <br>
-  <p>
-    At this point, you might be wondering how this process of generating strings of symbols like "ABB" has anything to do with
-    generating elegant shapes like the fern. Let's answer this question via another example.
-    <span class="math">axiom = <em>F</em></span><span class="math">rule1: <em>F &#8614; F+G</em><br>rule2: <em>G &#8614; F&minus;G</em></span>
-    Note that <em>F</em>, <em>G</em>, <em>+</em>, and <em>&minus;</em> are being used as symbols here, just the same as <em>A</em> and <em>B</em> from before. In particular,
-    <em>+</em> and <em>&minus;</em> have no mathematical significance in this context.
-    If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
-  </p>
-  <br>
-  <div class="math-container">
-    <div class="math">
-      Iteration 0: F<br>
-      Iteration 1: F+G<br>
-      Iteration 2: F+G+F&minus;G<br>
-      Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
-      Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
-      ...
+  <header>
+    <div id="main-heading">
+      <h1>Undefined Behavior</h1>
     </div>
-  </div>
-  <br>
-  <p>
-    The string that we generated in the example
-    above doesn't appear particularly interesting or complex to the eye as it is &mdash; it just looks like a mess.
-  </p>
-  <br>
-  <p>
-    Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure. In
-    fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is a set
-    of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our
-    robot.
-  </p>
-  <br>
-  <p>
-    For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means "turn left 90 degrees", while
-    <em>&minus;</em> means "turn right 90 degrees". Now to
-    transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol following the
-    instructions one at a time. (Those who are familiar with the <a href="https://docs.python.org/3/library/turtle.html">turtle</a> module in Python might find this method of
-    drawing familiar).
-    When we do this with the string we generated above at iteration 4, this picture emerges:
-  </p>
-  <br>
-  <img src="images/dragon.jpeg">
-  <br>
-  <p>
-    If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator yourself!
-  </p>
-  <br>
-  <p>
-    Here is an interactive example where you can create your own
-    L-System by
-    inputting an axiom and a set of rules. The resulting image will automatically be drawn according to the visual
-    interpretations of each
-    symbol as shown in the table. You can click on the presets to autofill the inputs with some famous examples of
-    L-Systems.
-  </p>
-  <br>
-  <p>
-    If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
-  </p>
-  <br>
-  <div id="interactive-example">
-    <div id="user-inputs">
-
-      <div id="axiom-input">
-        <h2>Axiom:</h2>
-        <input type="text" maxlength="1" class="short" id="axiom" name="axiom"><br>
-      </div>
-      <br>
-      <div id="rules-input">
-        <h2>Rules:</h2>
-        <ul id="rules-list" class="no-bullet">
-          <li id="first-rule">
-            <input type="text" maxlength="1" class="short" name="rule-input">
-            &#8614;
-            <input type="text" class="medium" name="rule-output">
-          </li>
-        </ul>
-        <div class="button-holder">
-          <button id="plus-rule" class="round plus">+</button>
+    <div id="sub-heading">
+      <h2>exploring humanity and mathematics through code</h2>
+    </div>
+  </header>
+  <nav id="nav-bar">
+    <ul class="no-bullet">
+      <li><a href="./index.html">home</a></li>
+      <li><a href="./about.html">about</a></li>
+      <li><a href="./lsys.html">explainers</a></li>
+      <li><a href="./TODO">art</a></li>
+    </ul>
+  </nav>
+  <main>
+    <div id="main-title">
+      <h1>L-Systems</h1>
+      <h4>Updated 11/27/2022 &middot; Eric Chen</h4>
+    </div>
+    <article>
+      <section class="intro">
+        <p>
+          Take a look at this drawing of a fern:
+        </p>
+        <div class="img-holder">
+          <img id="fern-image" src="images/fern.png" alt="A line drawing that forms an organic plant-like structure"/>
         </div>
-      </div>
-      <br>
-      <div id="iterations-input">
-        <h2>Iterations:</h2>
-        <ul class="no-bullet">
-          <li>
-            <input type="number" class="number" id="iters-input" name="iters-input" min="0" value="3" />
-            <div id="iter-warning"></div>
-          </li>
-        </ul>
-      </div>
-      <br>
-      <h2>Alphabet:</h2>
-      <table>
-        <tr>
-          <th>Symbol</th>
-          <th>Visual Meaning</th>
-        </tr>
-        <tr>
-          <td>F</td>
-          <td>draw forward</td>
-        </tr>
-        <tr>
-          <td>G</td>
-          <td>draw forward</td>
-        </tr>
-        <tr>
-          <td>f</td>
-          <td>move forward</td>
-        </tr>
-        <tr>
-          <td>g</td>
-          <td>move forward</td>
-        </tr>
-        <tr>
-          <td>L</td>
-          <td>turn left 90&#176;</td>
-        </tr>
-        <tr>
-          <td>R</td>
-          <td>turn right 90&#176;</td>
-        </tr>
-        <tr>
-          <td>l</td>
-          <td>turn left 25&#176;</td>
-        </tr>
-        <tr>
-          <td>r</td>
-          <td>turn right 25&#176;</td>
-        </tr>
-        <tr>
-          <td>[</td>
-          <td>save position (push)</td>
-        </tr>
-        <tr>
-          <td>]</td>
-          <td>restore position (pop)</td>
-        </tr>
-      </table>
-      <div id="presets">
-        <h2>Presets:</h2>
-        <select name="presets" id="preset-select">
-          <option value=""></option>
-          <option value="dragon">Dragon Curve</option>
-          <option value="fern">Fern</option>
-          <option value="koch">Koch Curve</option>
-        </select>
-      </div>
-    </div>
-    <div id="sketch-holder">
-      <!-- Our p5 sketch will go here. -->
-    </div>
-    <script src="scripts/matrix.min.js"></script>
-    <script src="scripts/lsys.js"></script>
-  </div>
-  <br><br>
-  <h3>Connections with Formal Systems</h3>
-  <p>
-    At this point you hopefully know what an L-System is. You might agree that they're cool mathematical gadgets and that they can generate some pretty complex
-    structures. While all of this is true, I think there is something even more interesting to say about L-Systems. Specifically, we can apply some minor tweaks to L-Systems to
-    create a framework for proving mathematical theorems.
-  </p>
-  <br>
-  <p>
-    To give you a sense for where we're going before we dive into the details, this is the general analogy we are making:
-  </p>
-  <br>
-  <p>
-    The axiom or starting string of the system 
-  </p>
-  <p>
-    In 
-  </p>
+        <p>
+          It looks complicated, right? Like it was drawn by an artist or traced from a real plant. If I asked you to
+          come up with a procedure for generating this shape, you might not know where to start. Surprisingly, a simple
+          procedure does exist. The procedure is so simple that anyone could carry it out. The only information it needs
+          is this:
+        </p>
+        <p>
+          AXIOM AND RULES
+        </p>
+        <p>
+          You probably have no idea what this means right now, and that is okay right now. But the big idea is that all
+          of the complexity of the fern shape is captured by running a simple procedure on a small set of information.
+          In this post, we will explore this simple procedure and how it can generate surprising and complex structures
+          from simple inputs. We will begin by studying shapes like the fern above which is an example of a mathematical
+          model called an L-System. Then, we will use what we know about L-Systems to explore how all the complexity of
+          mathematics itself can be generated from the same procedure running on a different set of information.
+        </p>
+      </section>
+      <section class="text-content">
+        <h3>Mathematical plants</h3>
+        <p>
+          Our first goal is to try to understand the mystery procedure that generates the fern. The first thing we need
+          to know is that it is an iterative process which generates a long string of symbols based on the axiom and
+          rules provided as input.
+        </p>
+        <p>
+          The axiom is the starting point of the process. The rules are <b>substitution rules</b>, dictating how to
+          replace each symbol with a new string of symbols during each iteration. If you like you can think of the axiom
+          like a seed and the rules like DNA which dictates how the seed grows over time. Let's take a look at an
+          example:
+        </p>
+        <p><span class="math">axiom = <em>A</em></span>
+        </p>
+        <p>
+          The rules, on the other hand, describe how the system grows and changes over time.
+          Building on the plant analogy, you can imagine that the rules are like the plant's DNA.
+          Each rule dictates how a symbol changes over time. For example, this rule tells us that during each iteration
+          of
+          growth, the
+          symbol <em>A</em> turns into the string <em>AB</em>:
+          <span class="math">rule1: <em>A &#8614; AB</em></span>
+          And this rule tells us that a <em>B</em> turns into an <em>A</em>:
+          <span class="math">rule2: <em>B &#8614; A</em></span>
+        </p>
+        <p>Now that we have an axiom and rules, we can start to simulate the growth of the L-System. To do so, we follow
+          this simple procedure:
+        </p>
+        <div class="algo">
+          Start by setting the current string equal to the axiom.<span class="math">currentString = <em>A</em></span>
+          For each symbol in the current string, check whether it occurs on the left side of a rule. In this case,
+          <em>A</em> occurs on the left side of <em>rule1</em>, which tells us to turn it into <em>AB</em>. In other
+          words,
+          we substitute or replace <em>A</em>
+          with <em>AB</em>. Doing so gives us a new string:
+          <span class="math">currentString = <em>AB</em></span>
+          Now, we repeat! Look at each character in the current string and make substitutions as dictated by the rules.
+          In
+          this case, <em>A</em> changes into <em>AB</em> by <em>rule1</em>
+          and <em>B</em> changes into <em>A</em> by <em>rule2</em>. So we get:
+          <span class="math">currentString = <em>ABA</em></span>
+          Repeat again to get:
+          <span class="math">currentString = <em>ABAAB</em></span>
+          and again to get:
+          <span class="math">currentString = <em>ABAABABA</em></span>
+          and so on for as many iterations as you like.
+        </div>
+        <p>
+          At this point, you might be wondering how this process of generating strings of symbols like "ABB" has
+          anything
+          to
+          do with
+          generating elegant shapes like the fern. Let's answer this question via another example.
+          <span class="math">axiom = <em>F</em></span><span class="math">rule1: <em>F &#8614; F+G</em><br>rule2: <em>G
+              &#8614; F&minus;G</em></span>
+          Note that <em>F</em>, <em>G</em>, <em>+</em>, and <em>&minus;</em> are being used as symbols here, just the
+          same
+          as <em>A</em> and <em>B</em> from before. In particular,
+          <em>+</em> and <em>&minus;</em> have no mathematical significance in this context.
+          If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
+        </p>
+        <div class="math-container">
+          <div class="math">
+            Iteration 0: F<br>
+            Iteration 1: F+G<br>
+            Iteration 2: F+G+F&minus;G<br>
+            Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
+            Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
+            ...
+          </div>
+        </div>
+        <p>
+          The string that we generated in the example
+          above doesn't appear particularly interesting or complex to the eye as it is &mdash; it just looks like a
+          mess.
+        </p>
+        <p>
+          Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure.
+          In
+          fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is
+          a
+          set
+          of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to
+          our
+          robot.
+        </p>
+        <p>
+          For example, let's say that <em>F</em> means "draw forward." And let's say that <em>+</em> means "turn left 90
+          degrees", while
+          <em>&minus;</em> means "turn right 90 degrees". Now to
+          transform our string into a picture, we simply give it to the robot, who reads it symbol by symbol following
+          the
+          instructions one at a time. (Those who are familiar with the <a
+            href="https://docs.python.org/3/library/turtle.html">turtle</a> module in Python might find this method of
+          drawing familiar).
+          When we do this with the string we generated above at iteration 4, this picture emerges:
+        </p>
+        <img src="images/dragon.jpeg">
+        <p>
+          If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator
+          yourself!
+        </p>
+        <p>
+          Here is an interactive example where you can create your own L-System by inputting an axiom and a set of
+          rules.
+          The resulting image will automatically be drawn according to the visual interpretations of each symbol as
+          shown
+          in the table. You can click on the presets to autofill the inputs with some famous examples of L-Systems.
+        </p>
+        <p>
+          If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
+        </p>
+      </section>
+      <section class="interactive-example">
+        <div id="lsys-widget">
+          <div class="user-inputs">
+
+            <div class="axiom-input">
+              <h2>Axiom:</h2>
+              <input type="text" maxlength="1" class="short" id="axiom" name="axiom" value="F"><br>
+            </div>
+            <div id="rules-input">
+              <h2>Rules:</h2>
+              <ul id="rules-list" class="no-bullet">
+                <li id="first-rule">
+                  <input type="text" maxlength="1" class="short" name="rule-input" value="F">
+                  &#8614;
+                  <input type="text" class="medium" name="rule-output" value="F+G">
+                </li>
+                <li id="second-rule">
+                  <input type="text" maxlength="1" class="short" name="rule-input" value="G">
+                  &#8614;
+                  <input type="text" class="medium" name="rule-output" value="F-G">
+                </li>
+              </ul>
+              <div class="button-holder">
+                <button id="plus-rule" class="round plus">+</button>
+              </div>
+            </div>
+            <div id="iterations-input">
+              <h2>Iterations:</h2>
+              <ul class="no-bullet">
+                <li>
+                  <input type="number" class="number" id="iters-input" name="iters-input" min="0" value="10" />
+                  <div id="iter-warning"></div>
+                </li>
+              </ul>
+            </div>
+            <h2>Alphabet:</h2>
+            <table class="alphabet">
+              <tr>
+                <th>Symbol</th>
+                <th>Visual Meaning</th>
+              </tr>
+              <tr>
+                <td>F</td>
+                <td>draw forward</td>
+              </tr>
+              <tr>
+                <td>G</td>
+                <td>draw forward</td>
+              </tr>
+              <tr>
+                <td>f</td>
+                <td>move forward</td>
+              </tr>
+              <tr>
+                <td>g</td>
+                <td>move forward</td>
+              </tr>
+              <tr>
+                <td>L</td>
+                <td>turn left 90&#176;</td>
+              </tr>
+              <tr>
+                <td>R</td>
+                <td>turn right 90&#176;</td>
+              </tr>
+              <tr>
+                <td>l</td>
+                <td>turn left 25&#176;</td>
+              </tr>
+              <tr>
+                <td>r</td>
+                <td>turn right 25&#176;</td>
+              </tr>
+              <tr>
+                <td>[</td>
+                <td>save position (push)</td>
+              </tr>
+              <tr>
+                <td>]</td>
+                <td>restore position (pop)</td>
+              </tr>
+            </table>
+            <div id="presets">
+              <h2>Presets:</h2>
+              <button class="round" id="dragon-button">Dragon</button>
+              <button class="round" id="koch-button">Koch</button>
+              <button class="round" id="fern-button">Fern</button>
+              <div id="react-root"></div>
+            </div>
+          </div>
+          <div id="sketch-holder">
+            <!-- Our p5 sketch will go here. -->
+          </div>
+          <script src="scripts/matrix.min.js"></script>
+          <script src="scripts/lsys.js"></script>
+        </div>
+      </section>
+      <section class="text-content">
+        <h3>Connections with Formal Proof Systems</h3>
+        <p>
+          At this point you hopefully know what an L-System is. You might agree that they're cool mathematical gadgets
+          and
+          that they can generate some pretty complex
+          structures. While all of this is true, I think there is something even more interesting to say about
+          L-Systems.
+          Specifically, the key idea behind the L-Systems:
+          performing substitution on strings of symbols, is the only mechanism required to create a system to prove
+          essentially all mathematical theorems. Abstractly,
+          we represent our most basic set of knowledge, our axioms, as some strings of symbols, and then we use
+          substitution
+          rules to "grow" the axioms
+          into new strings which we call theorems.
+        </p>
+        <p>
+          This idea might be hard to grasp at first, so let's start by taking a step back to talk about mathematical
+          proofs
+          in general.
+        </p>
+        <h3>Formalizing Proofs</h3>
+        <p>
+          In the world of mathematics, we look at various mathematical objects and formulate questions and often guesses
+          for
+          how we think those
+          objects behave. We might even convince ourself that our guess is true. But in order to really KNOW that it's
+          true,
+          we need to somehow
+          prove the result using prior knowledge and some kind of logic. In other words we need to provide some logical
+          line
+          or reasoning which
+          shows that our result must be true.
+        </p>
+        <p>
+          Traditionally, when we prove theorems in math, we write informal proofs using natural language. For example,
+          here
+          is a proof of the infinitude of prime
+          numbers in English:
+        </p>
+        <p>
+          INSERT PROOF HERE
+        </p>
+        <p>
+          This kind of proof is usually good enough for our purposes, since we can follow the logic and reason that it
+          is
+          correct using our
+          understanding of natural language. But math
+          is all about formalisms, and natural language is imprecise. Is it possible to formalize the process of proof,
+          so
+          that
+          we can be absolutely sure that we followed a valid chain of logic to arrive at our conclusion? How might we do
+          this?
+        </p>
+        <h3>Language of Logic</h3>
+        <p>
+          Well, first of all we need some language that allows us to formally talk about math and logic. Of course, we
+          already have symbols
+          with well-defined meanings for mathematical objects like numbers and functions. But what about the logical
+          connectives we use in-between?
+          We could use logical symbols like the following: &#8704; (which means "for all"), &#8707; (which means "there
+          exists"), ...
+        </p>
+        <p>
+          This allows us to express a lot of logical ideas more formally, since each of these symbols has a well-defined
+          meaning. But it's still not
+          clear when we can move from one formal statement using these symbols to another.
+        </p>
+        <h3>All math is set theory</h3>
+        <p>
+          Another question that comes up when trying to design this mathematical proof system is: what do we use as our
+          axioms? This is a powerful
+          question. What is the most basic set of knowledge we need to assume about math which will allow us to prove
+          everything else? We need to
+          assume some knowledge that is strong enough to allow us to prove interesting results. But ideally
+          we don't want our axioms to be redundant. Without a background in pure math you might imagine that we would
+          start
+          by assuming some
+          facts about the natural numbers or the integers, mathematical objects which we learned about from a young age.
+        </p>
+        <p>
+          However, the true starting point for all of math turns out to be Set Theory, and the axioms we typically use
+          describe rules about how
+          the workings of mathematical objects known as sets. A set is a very simple mathematical object. It is just an
+          unordered collection of items
+          with no repeats. For example, {apples, oranges, bananas}, {1,9,23}, the infinite set of natural numbers
+          {1,2,3,...}, or the empty set {}.
+        </p>
+        <p>
+          This is kind of amazing. It means that the only knowledge we need to assume to reconstruct all of math is just
+          the
+          behavior of sets.
+          You might wonder how we can reconstruct all of math from sets. How do we talk about numbers, operations,
+          functions, or literally
+          anything important? It turns out that any mathematical object we can conceive can be modelled as a set.
+          Specifically, some complex
+          set of sets of sets of sets. And the characteristics and behaviors of the mathematical object are simulated by
+          the
+          simple behaviors
+          of the constituent sets. This is so cool!
+        </p>
+        <p>
+          For example, when we formalize math using Set Theory, the first 3 natural numbers are defined as follows:
+          0 := {}
+          1 := {{}}
+          2 := {{},{{}}}
+          Where the successor operation or "+1" operation is defined for a set X as X U {X}, in other words, take
+          everything in the previous set and then add the previous set itself. The same thing can be done with more
+          complex mathematical objects, reducing them to extremely complex groups of nested sets. One crazy thing to
+          note
+          is that at the lowest level, all of the sets are empty, they contain nothing. So ultimately all mathematical
+          objects can be reduced down to some extremely intricate, possibly infinite group of nested parentheses.
+        </p>
+        <h3>Formal Proof System</h3>
+        <p>
+          Now that we have our axioms of set theory, we need some formal way of deducing new theorems from the axioms.
+          The
+          mind-blowing fact is that we can prove any mathematical theorem by performing mechanical substitutions on the
+          axioms to arrive at the theorem.
+        </p>
+        <p>
+          I know we seem to have strayed quite far from L-Systems, so let's bring it all back together. It turns out
+          that
+          symbol manipulation is universal and powerful. The act of starting with some axiom string and manipulating it
+          with some subsitution rules is not just a mechanism we see in L-Systems. It is the same exact mechanism that
+          is
+          used in a system which can prove any mathematical theorem starting from the axioms of ZFC.
+        </p>
+        <p>
+          This amazing fact never fails to give me a sense of wonder. I like to imagine that the axioms of ZFC are like
+          a
+          seed out of which we can grow a massive tree of mathematics with towering branches. Something I am curious
+          about
+          is whether we could assign
+          graphical interpretations to the logical symbols in the language of set theory to visualize mathematical
+          theorems the same way we visualize L-Systems.
+        </p>
+      </section>
+    </article>
+  </main>
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- Load our React component. -->
+  <script src="scripts/lsys_app.js"></script>
 </body>
+
+</html>

@@ -6,36 +6,35 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./styles/index.css" rel="stylesheet">
-    <title></title>
+    <title>Undefined Behavior</title>
 </head>
 
 <body>
-    <ul id="nav-bar" class="no-bullet">
-        <li><a href="./lsys.html">explainers</a></li>
-    </ul>
-    <h1 id="main-title">&nbsp;Undefined Behavior.&nbsp;</h1>
-    <h2 id="sub-title">Eric Chen</h2>
-    <!--
-    <div id="menu-box">
-        <ul id="menu" class="no-bullet">
-            <li><a href="blog">blog</a></li>
-            <li><a href="math">math</a></li>
-            <li><a href="art">art</a></li>
+    <nav id="nav-bar">
+        <ul class="no-bullet">
+            <li><a href="./index.html">home</a></li>
+            <li><a href="./about.html">about</a></li>
+            <li><a href="./lsys.html">archive</a></li>
         </ul>
+    </nav>
+    <div id="splash-page">
+        <div id="titles">
+            <h1 id="main-title">&nbsp;Undefined Behavior.&nbsp;</h1>
+            <h2 id="sub-title">Eric Chen</h2>
+        </div>
+        <div class="typed-container">
+            <span id="typed" class="typed"></span>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            let string = `<span class='keyword'>class</span> Human {^300 <br>&emsp;&emsp;<span class='keyword'>public</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Image</span> appearance;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>string</span> mannerisms[];^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Emotion</span> attitude;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> greet();^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> converse();^300 <br>&emsp;&emsp;<span class='keyword'>private</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Thought</span> selfImage;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Accumulated</span> experience;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>View</span> perspective;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Dream</span> futureAspiration;^300 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Emotion</span> presentState;^300 <br>}`;
+            var typed = new Typed("#typed", {
+                strings: [string],
+                typeSpeed: 25,
+                loop: false,
+                cursorChar: '&#10074;'
+            });
+        </script>
     </div>
-    -->
-    <div class="typed-container">
-        <span id="typed"></span>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script>
-        var typed = new Typed("#typed", {
-            strings: ["<span class='keyword'>class</span> Human {^1000 <br>&emsp;&emsp;<span class='keyword'>public</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>string</span> mannerisms[];^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> converse();^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>void</span> greet();^1000 <br>&emsp;&emsp;<span class='keyword'>private</span>:<br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Thought</span> selfImage;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Fear</span> greatestFear;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Dream</span> futureHope;^1000 <br>&emsp;&emsp;&emsp;&emsp;<span class='typename'>Emotion</span> presentState;^1000 <br>}"],
-            typeSpeed: 80,
-            backSpeed: 80,
-            loop: false,
-            cursorChar: '&#10074;'
-        });
-    </script>
 </body>
 </html>

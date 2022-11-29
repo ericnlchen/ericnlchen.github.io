@@ -1,80 +1,46 @@
+/* || GENERAL STYLES */
+
 html {
     background-color: antiquewhite;
 }
 
-#main-title {
-    color: #111;
-    background-color:#ffff73;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 110px;
-    font-weight: 300;
-    position: absolute;
-    bottom: 30px;
-    right: 0;
-    margin: 3%;
+/*
+body {
+
 }
 
-#sub-title {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 25px;
-    font-weight: 300;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 3%;
+h1,
+h2,
+h3,
+h4 {
+
 }
 
-#typed {
-    font-family: 'Courier', 'Courier New', serif;
-    font-size: 30px;
-}
+ul {
 
-.typed-container {
-    margin: 2% 0 0 2%;
 }
+*/
 
-.typed-cursor {
-    font-size: 30px;
-}
+/* || UTILITIES */
 
-ul.no-bullet{
+.no-bullet{
     list-style-type: none;
 }
 
-#nav-bar {
-    position: absolute;
-    top: 2%;
-    right: 2%;
-}
-
-#nav-bar a {
-    float: right;
-    color: #111;
-    display: block;
-    text-align: center;
+.typed {
     font-family: 'Courier', 'Courier New', serif;
-    padding: 14px 30px;
-    text-decoration: none;
-    font-size: 17px;
+    font-size: 3vh;
 }
 
-#menu li {
-    display: inline;
-}
-
-#menu a {
-    color: #111;
-    display: inline;
-    text-align: center;
-    font-family: 'Courier', 'Courier New', serif;
-    padding: 0;
-    margin: 0;
+.typed-container {
     position: absolute;
-    bottom: 50px;
-    right: 10px;
-    text-decoration: none;
-    font-size: 17px;
+    top: 0;
+    left: 0;
+    margin: 5%;
+}
+
+.typed-cursor {
+    font-size: 3vh;
 }
 
 .keyword {
@@ -83,4 +49,48 @@ ul.no-bullet{
 
 .typename {
     color:indianred;
+}
+
+/* || SITEWIDE */
+
+#nav-bar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5%;
+}
+
+#nav-bar a {
+    font-family: 'Courier', 'Courier New', serif;
+    color: #111;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* || HOMEPAGE */
+
+#titles {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5%;
+}
+
+#main-title {
+    background-color:#ffff73;
+    /* font-size: 110px; */
+    font-size: 7vw;
+    font-weight: 300;
+    margin: 0;
+}
+
+#sub-title {
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 2vw;
+    font-weight: 300;
+    margin: 0;
 }
