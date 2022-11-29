@@ -53,20 +53,20 @@ h4 {
     font-size: 24px;
 } */
 
-#fern-image {
-    max-height: 50%;
-    max-width: 50%;
-}
-
-img {
-    max-height: 50%;
-    max-width: 50%;
+div.audio-holder {
+    display: flex;
+    justify-content: center;
 }
 
 div.img-holder {
     display: flex;
-    margin: 0 0 0 0;
+    margin: 0;
     justify-content: center;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 input {
@@ -206,6 +206,12 @@ table.alphabet th {
 }
 
 /* || CONTENT */
+aside {
+    background-color: rgb(178, 178, 178);
+    border-radius: 8px;
+    padding: 2% 4%;
+}
+
 span.math {
     display: block;
     text-align: center;
@@ -248,4 +254,9 @@ em {
 
 a:hover {
     background-color:rgb(173, 226, 171);
+}
+
+#fern-image {
+    max-height: 50%;
+    max-width: 50%;
 }

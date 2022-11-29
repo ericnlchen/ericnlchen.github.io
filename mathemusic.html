@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathemusic</title>
+    <link href="./styles/lsys.css" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script> -->
+</head>
+
+<body>
+    <header>
+        <div id="main-heading">
+            <h1>Undefined Behavior</h1>
+        </div>
+        <div id="sub-heading">
+            <h2>exploring humanity and mathematics through code</h2>
+        </div>
+    </header>
+    <nav id="nav-bar">
+        <ul class="no-bullet">
+            <li><a href="./index.html">home</a></li>
+            <li><a href="./about.html">about</a></li>
+            <li><a href="./lsys.html">lsystems</a></li>
+            <li><a href="./mathemusic.html">mathemusic</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="main-title">
+            <h1>Mathemusic</h1>
+            <h4>Updated 11/28/2022 &middot; Eric Chen</h4>
+        </div>
+        <article>
+            <section class="intro">
+                <p>
+                    When you listen to music, each note has a certain frequency which governs how "high" or "low" it
+                    sounds. As you ascend the piano chromatically (which means to increase one note at a time, including
+                    the black notes) you can hear the frequency rising steadily higher.
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/chromatic-piano-climb.wav"></audio>
+                </div>
+                <p>
+                    Based on what you hear you might think that the frequency of the notes is increasing linearly. If we
+                    were to plot the frequency of each note on a graph you might expect to see something like this:
+                </p>
+                <div class="image-holder">
+                    <img src="images/piano-graph-linear.png" />
+                </div>
+                <p>
+                    But that would be inaccurate. As it turns out, frequency increases <b>exponentially</b> as you climb
+                    chromatically. So the true picture looks something like this:
+                </p>
+                <div class="image-holder">
+                    <img src="images/piano-graph-exponential.png" />
+                </div>
+                <p>
+                    In other words, moving up by one note (which is called moving up a half step) corresponds to
+                    <b>multiplying by a constant frequency ratio</b>, rather than adding a constant frequency
+                    difference.
+                </p>
+                <aside>
+                    As an aside, frequency ratios form the basis for the theory of harmony. For example, doubling the
+                    frequency of a note preserves its "pitch class," leaving it as the same note, only higher.
+                    Various other ratios besides the 2:1 ratio for the octave exist which create unique sounds. These
+                    are called intervals and they are stacked together to create chords.
+                </aside>
+                <p>
+                    When I realized that my initial intuition about frequency was wrong, I started to wonder what would
+                    happen if the relationship between notes
+                    and frequency really was linear rather than exponential. What would music sound like?
+                    Furthermore, what if we tried using other functions like polynomials or logarithms? In an effort to
+                    find out, I wrote some Python code that takes a
+                    function as input and re-maps the frequencies of a music file according to the function.
+                </p>
+                <div class="img-holder">
+                    <img src="images/python-function-diagram.png" />
+                </div>
+                <p>
+                    With this tool in hand, I could dream up any function and then listen to how that choice affected a
+                    familiar piece of music. The first thing I experimented with was a linear function. Here is what
+                    chromatically ascending on a piano would sound like with a linear frequency function.
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/chromatic-piano-climb-transformed-linear.wav"></audio>
+                </div>
+                <p>
+
+                </p>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
