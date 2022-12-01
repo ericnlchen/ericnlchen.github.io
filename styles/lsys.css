@@ -168,8 +168,9 @@ table.alphabet th {
 }
 
 @media (min-width: 1080px) {
-    #lsys-widget {
+    .lsystem-app {
         display: flex;
+        justify-content: space-around;
     }
 }
 

@@ -171,103 +171,13 @@
           If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
         </p>
       </section>
-      <section class="interactive-example">
-        <div id="lsys-widget">
-          <div class="user-inputs">
 
-            <div class="axiom-input">
-              <h2>Axiom:</h2>
-              <input type="text" maxlength="1" class="short" id="axiom" name="axiom" value="F"><br>
-            </div>
-            <div id="rules-input">
-              <h2>Rules:</h2>
-              <ul id="rules-list" class="no-bullet">
-                <li id="first-rule">
-                  <input type="text" maxlength="1" class="short" name="rule-input" value="F">
-                  &#8614;
-                  <input type="text" class="medium" name="rule-output" value="F+G">
-                </li>
-                <li id="second-rule">
-                  <input type="text" maxlength="1" class="short" name="rule-input" value="G">
-                  &#8614;
-                  <input type="text" class="medium" name="rule-output" value="F-G">
-                </li>
-              </ul>
-              <div class="button-holder">
-                <button id="plus-rule" class="round plus">+</button>
-              </div>
-            </div>
-            <div id="iterations-input">
-              <h2>Iterations:</h2>
-              <ul class="no-bullet">
-                <li>
-                  <input type="number" class="number" id="iters-input" name="iters-input" min="0" value="10" />
-                  <div id="iter-warning"></div>
-                </li>
-              </ul>
-            </div>
-            <h2>Alphabet:</h2>
-            <table class="alphabet">
-              <tr>
-                <th>Symbol</th>
-                <th>Visual Meaning</th>
-              </tr>
-              <tr>
-                <td>F</td>
-                <td>draw forward</td>
-              </tr>
-              <tr>
-                <td>G</td>
-                <td>draw forward</td>
-              </tr>
-              <tr>
-                <td>f</td>
-                <td>move forward</td>
-              </tr>
-              <tr>
-                <td>g</td>
-                <td>move forward</td>
-              </tr>
-              <tr>
-                <td>L</td>
-                <td>turn left 90&#176;</td>
-              </tr>
-              <tr>
-                <td>R</td>
-                <td>turn right 90&#176;</td>
-              </tr>
-              <tr>
-                <td>l</td>
-                <td>turn left 25&#176;</td>
-              </tr>
-              <tr>
-                <td>r</td>
-                <td>turn right 25&#176;</td>
-              </tr>
-              <tr>
-                <td>[</td>
-                <td>save position (push)</td>
-              </tr>
-              <tr>
-                <td>]</td>
-                <td>restore position (pop)</td>
-              </tr>
-            </table>
-            <div id="presets">
-              <h2>Presets:</h2>
-              <button class="round" id="dragon-button">Dragon</button>
-              <button class="round" id="koch-button">Koch</button>
-              <button class="round" id="fern-button">Fern</button>
-              <div id="react-root"></div>
-            </div>
-          </div>
-          <div id="sketch-holder">
-            <!-- Our p5 sketch will go here. -->
-          </div>
-          <script src="scripts/matrix.min.js"></script>
-          <script src="scripts/lsys.js"></script>
-        </div>
+      <section class="react-interactive-example">
+        <div id="react-root"></div>
+        <script src="scripts/matrix.min.js"></script>
+        <script src="scripts/lsys.js"></script>
       </section>
+
       <section class="text-content">
         <h3>Connections with Formal Proof Systems</h3>
         <p>

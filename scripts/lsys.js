@@ -13,80 +13,80 @@ function setup() {
     p5canvas.setAttribute('width', CANVAS_WIDTH);
     p5canvas.setAttribute('height', CANVAS_HEIGHT);
 
-    // Add event listeners for preset buttons
-    const dragonButton = document.getElementById("dragon-button");
-    dragonButton.addEventListener('click', () => {
-        // Set the axiom
-        const axiom = document.getElementById("axiom");
-        axiom.value = "F";
+    // // Add event listeners for preset buttons
+    // const dragonButton = document.getElementById("dragon-button");
+    // dragonButton.addEventListener('click', () => {
+    //     // Set the axiom
+    //     const axiom = document.getElementById("axiom");
+    //     axiom.value = "F";
 
-        // Set the rules
-        const rules_list = document.getElementById("rules-list");
-        const dragonRule1 = document.getElementById("first-rule");
-        dragonRule1.children[0].value = "F";
-        dragonRule1.children[1].value = "F+G";
-        const dragonRule2 = document.getElementById("second-rule");
-        dragonRule2.children[0].value = "G";
-        dragonRule2.children[1].value = "F-G";
-        rules_list.replaceChildren();
-        rules_list.append(dragonRule1);
-        rules_list.append(dragonRule2);
+    //     // Set the rules
+    //     const rules_list = document.getElementById("rules-list");
+    //     const dragonRule1 = document.getElementById("first-rule");
+    //     dragonRule1.children[0].value = "F";
+    //     dragonRule1.children[1].value = "F+G";
+    //     const dragonRule2 = document.getElementById("second-rule");
+    //     dragonRule2.children[0].value = "G";
+    //     dragonRule2.children[1].value = "F-G";
+    //     rules_list.replaceChildren();
+    //     rules_list.append(dragonRule1);
+    //     rules_list.append(dragonRule2);
 
-        // Add the event listeners
+    //     // Add the event listeners
 
-        // Redraw
-        redraw();
-    });
+    //     // Redraw
+    //     redraw();
+    // });
 
-    // Logic for adding a new rule with the plus button
-    const plusRule = document.getElementById("plus-rule");
-    plusRule.addEventListener('click', () => {
-        const rules_list = document.getElementById("rules-list");
-        const last_rule = rules_list.lastElementChild;
-        const new_rule = last_rule.cloneNode(true); // create a clone of previous rule
-        new_rule.id = "new-rule";                       // all new rules have ID = "new-rule" to distinguish from first-rule
-        // If new rule is a copy of the first rule, add a minus button and add event listener
-        if (last_rule.id !="new-rule") {
-            const minusBtn = document.createElement('button');
-            minusBtn.className = "minus round";
-            minusBtn.innerHTML = "&minus;";
-            minusBtn.addEventListener('click', () => {
-                minusBtn.parentElement.remove();
-                redraw();
-            })
-            new_rule.appendChild(minusBtn);
-        }
-        // If new rule is NOT a copy of the first rule, just add event listener to minus button
-        else {
-            const minusBtn = new_rule.lastElementChild;
-            minusBtn.addEventListener('click', () => {
-                minusBtn.parentElement.remove();
-                redraw();
-            })
-        }
-        // We also need to add event listeners to the new input elements
-        // ... And clear their values
-        const input_elements = new_rule.querySelectorAll("input");
-        input_elements.forEach(
-            function (currentValue) {
-                currentValue.addEventListener('input', () => {
-                    redraw();
-                });
-                currentValue.value = "";
-            }
-        );
-        rules_list.appendChild(new_rule);   // Append new rule to the DOM
-    });
+    // // Logic for adding a new rule with the plus button
+    // const plusRule = document.getElementById("plus-rule");
+    // plusRule.addEventListener('click', () => {
+    //     const rules_list = document.getElementById("rules-list");
+    //     const last_rule = rules_list.lastElementChild;
+    //     const new_rule = last_rule.cloneNode(true); // create a clone of previous rule
+    //     new_rule.id = "new-rule";                       // all new rules have ID = "new-rule" to distinguish from first-rule
+    //     // If new rule is a copy of the first rule, add a minus button and add event listener
+    //     if (last_rule.id !="new-rule") {
+    //         const minusBtn = document.createElement('button');
+    //         minusBtn.className = "minus round";
+    //         minusBtn.innerHTML = "&minus;";
+    //         minusBtn.addEventListener('click', () => {
+    //             minusBtn.parentElement.remove();
+    //             redraw();
+    //         })
+    //         new_rule.appendChild(minusBtn);
+    //     }
+    //     // If new rule is NOT a copy of the first rule, just add event listener to minus button
+    //     else {
+    //         const minusBtn = new_rule.lastElementChild;
+    //         minusBtn.addEventListener('click', () => {
+    //             minusBtn.parentElement.remove();
+    //             redraw();
+    //         })
+    //     }
+    //     // We also need to add event listeners to the new input elements
+    //     // ... And clear their values
+    //     const input_elements = new_rule.querySelectorAll("input");
+    //     input_elements.forEach(
+    //         function (currentValue) {
+    //             currentValue.addEventListener('input', () => {
+    //                 redraw();
+    //             });
+    //             currentValue.value = "";
+    //         }
+    //     );
+    //     rules_list.appendChild(new_rule);   // Append new rule to the DOM
+    // });
 
-    const input_elements = document.querySelectorAll("input");
-    input_elements.forEach(
-        function (currentValue) {
-            currentValue.addEventListener('input', () => {
-                redraw();
-            })
-        }
-    );
-    noLoop();
+    // const input_elements = document.querySelectorAll("input");
+    // input_elements.forEach(
+    //     function (currentValue) {
+    //         currentValue.addEventListener('input', () => {
+    //             redraw();
+    //         })
+    //     }
+    // );
+    // noLoop();
 }
 
 function draw() {
