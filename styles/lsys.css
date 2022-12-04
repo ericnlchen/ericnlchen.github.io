@@ -240,9 +240,9 @@ div.math {
 }
 
 div.algo {
-    margin: 0 8%;
+    margin: 3%;
     border: 1px solid rgb(200,200,200);
-    padding: 20px;
+    padding: 5%;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 16px;
     line-height: 26px;

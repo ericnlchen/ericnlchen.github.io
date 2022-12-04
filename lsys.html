@@ -46,58 +46,49 @@
           is this:
         </p>
         <p>
-          AXIOM AND RULES
+          <span class="math">axiom = <em>X</em></span>
         </p>
         <p>
-          You probably have no idea what this means right now, and that is okay right now. But the big idea is that all
-          of the complexity of the fern shape is captured by running a simple procedure on a small set of information.
-          In this post, we will explore this simple procedure and how it can generate surprising and complex structures
-          from simple inputs. We will begin by studying shapes like the fern above which is an example of a mathematical
-          model called an L-System. Then, we will use what we know about L-Systems to explore how all the complexity of
-          mathematics itself can be generated from the same procedure running on a different set of information.
+          <span class="math">rule1 = <em>X &#8614; Fl[[X]rX]rF[rFX]lX</em></span>
+          <span class="math">rule2 = <em>F &#8614; FF</em></span>
+        </p>
+        <p>
+          You probably have no idea what this means right now, and that is okay. But the big idea is that all
+          of the complexity of the fern shape is captured by running a simple procedure on a small set of information. The simple procedure
+          is at its core just <b>textual substitution</b>.
+          In this post, we will explore what that means. We will begin by studying textual substitution in the context of shapes like the fern above which is an example of a mathematical
+          model called an L-system. Then, we will use what we know about L-systems to explore how all the complexity of
+          mathematics itself can be generated from the same underlying mechanism of textual substitution running on a different set of information.
         </p>
       </section>
       <section class="text-content">
-        <h3>Mathematical plants</h3>
+        <h3>Find-and-Replace</h3>
         <p>
-          Our first goal is to try to understand the mystery procedure that generates the fern. The first thing we need
-          to know is that it is an iterative process which generates a long string of symbols based on the axiom and
-          rules provided as input.
+          Have you ever used the "find-and-replace" tool in a code editor or word processor? That is how textual substitution works for L-systems. We start with the axiom and iteratively apply find-and-replace using the rules. Let's take a look at an example:
         </p>
         <p>
-          The axiom is the starting point of the process. The rules are <b>substitution rules</b>, dictating how to
-          replace each symbol with a new string of symbols during each iteration. If you like you can think of the axiom
-          like a seed and the rules like DNA which dictates how the seed grows over time. Let's take a look at an
-          example:
-        </p>
-        <p><span class="math">axiom = <em>A</em></span>
+          <span class="math">axiom = <em>A</em></span>
         </p>
         <p>
-          The rules, on the other hand, describe how the system grows and changes over time.
-          Building on the plant analogy, you can imagine that the rules are like the plant's DNA.
-          Each rule dictates how a symbol changes over time. For example, this rule tells us that during each iteration
-          of
-          growth, the
-          symbol <em>A</em> turns into the string <em>AB</em>:
-          <span class="math">rule1: <em>A &#8614; AB</em></span>
-          And this rule tells us that a <em>B</em> turns into an <em>A</em>:
-          <span class="math">rule2: <em>B &#8614; A</em></span>
+          <span class="math">rule1 = <em>A &#8614; AB</em></span>
+          <span class="math">rule2 = <em>B &#8614; A</em></span>
         </p>
-        <p>Now that we have an axiom and rules, we can start to simulate the growth of the L-System. To do so, we follow
-          this simple procedure:
+        <p>
+          How do we interpret the rules? Well, <em>rule1</em> simply means find all occurrences of <em>A</em> and replace them with <em>AB</em>. <em>rule2</em> means find all occurrences of <em>B</em> and replace them with <em>A</em>.
+        </p>
+        <p>Using this information, this is how we "grow" the L-system using find-and-replace:
         </p>
         <div class="algo">
           Start by setting the current string equal to the axiom.<span class="math">currentString = <em>A</em></span>
-          For each symbol in the current string, check whether it occurs on the left side of a rule. In this case,
-          <em>A</em> occurs on the left side of <em>rule1</em>, which tells us to turn it into <em>AB</em>. In other
-          words,
-          we substitute or replace <em>A</em>
-          with <em>AB</em>. Doing so gives us a new string:
+          Now simultaneously apply all the find-and-replace rules. In this case,
+          <em>rule1</em> tells us to turn <em>A</em> into <em>AB</em>. <em>rule2</em> doesn't apply since our current string has no <em>B</em>s. So
+          we just substitute <em>A</em>
+          with <em>AB</em>, giving us a new string:
           <span class="math">currentString = <em>AB</em></span>
-          Now, we repeat! Look at each character in the current string and make substitutions as dictated by the rules.
+          Now, we just apply all the find-and-replace rules again! 
           In
-          this case, <em>A</em> changes into <em>AB</em> by <em>rule1</em>
-          and <em>B</em> changes into <em>A</em> by <em>rule2</em>. So we get:
+          this case, <em>A</em> is replaced with <em>AB</em> by <em>rule1</em>
+          and <em>B</em> is replaced with <em>A</em> by <em>rule2</em>. So we get:
           <span class="math">currentString = <em>ABA</em></span>
           Repeat again to get:
           <span class="math">currentString = <em>ABAAB</em></span>
@@ -111,13 +102,13 @@
           to
           do with
           generating elegant shapes like the fern. Let's answer this question via another example.
-          <span class="math">axiom = <em>F</em></span><span class="math">rule1: <em>F &#8614; F+G</em><br>rule2: <em>G
+          <span class="math">axiom = <em>F</em></span><span class="math">rule1 = <em>F &#8614; F+G</em><br>rule2 = <em>G
               &#8614; F&minus;G</em></span>
           Note that <em>F</em>, <em>G</em>, <em>+</em>, and <em>&minus;</em> are being used as symbols here, just the
           same
           as <em>A</em> and <em>B</em> from before. In particular,
           <em>+</em> and <em>&minus;</em> have no mathematical significance in this context.
-          If we repeatedly perform the substitutions dictated by the rules, we obtain the following strings:
+          When we follow the same procedure as above using this new axiom and set of rules, we obtain the following:
         </p>
         <div class="math-container">
           <div class="math">
@@ -131,7 +122,7 @@
         </div>
         <p>
           The string that we generated in the example
-          above doesn't appear particularly interesting or complex to the eye as it is &mdash; it just looks like a
+          above doesn't appear particularly interesting or complex to the eye as it is&mdash;it just looks like a
           mess.
         </p>
         <p>
