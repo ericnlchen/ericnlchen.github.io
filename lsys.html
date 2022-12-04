@@ -117,18 +117,18 @@
             Iteration 2: F+G+F&minus;G<br>
             Iteration 3: F+G+F&minus;G+F+G&minus;F&minus;G<br>
             Iteration 4: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G<br>
-            ...
+            ...<br>
+            Iteration 10: F+G+F&minus;G+F+G&minus;F&minus;G+F+G+F&minus;G&minus;F+G&minus;F&minus;G+F+G+F&minus;...[~2,000 symbols]...G&minus;F&minus;G&minus;F+G+F&minus;G&minus;F+G&minus;F&minus;G
           </div>
         </div>
         <p>
-          The string that we generated in the example
-          above doesn't appear particularly interesting or complex to the eye as it is&mdash;it just looks like a
+          The long string of symbols that we created through this process doesn't appear particularly interesting or complex to the eye&mdash;it just looks like a
           mess.
         </p>
         <p>
-          Luckily, there is a way to give this messy string a visual interpretation which reveals its complex structure.
+          But there is a way to give this messy string a visual interpretation which reveals an interesting and complex structure.
           In
-          fact, there are many ways of visualizing a string but here is one of them: we will imagine that our string is
+          fact, there are many ways of visualizing a string, but here is one of them: we will imagine that our string is
           a
           set
           of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to
@@ -144,22 +144,18 @@
           instructions one at a time. (Those who are familiar with the <a
             href="https://docs.python.org/3/library/turtle.html">turtle</a> module in Python might find this method of
           drawing familiar).
-          When we do this with the string we generated above at iteration 4, this picture emerges:
+          When we ask the robot illustrator to draw using the string we generated above at iteration 4, this picture emerges:
         </p>
-        <img src="images/dragon.jpeg">
+        <div class="img-holder">
+          <img src="images/dragon-iter10.png">
+        </div>
         <p>
-          If you don't believe me, try following the instructions yourself on a piece of paper! Be the robot illustrator
-          yourself!
-        </p>
-        <p>
-          Here is an interactive example where you can create your own L-System by inputting an axiom and a set of
-          rules.
-          The resulting image will automatically be drawn according to the visual interpretations of each symbol as
-          shown
-          in the table. You can click on the presets to autofill the inputs with some famous examples of L-Systems.
+          If you don't believe me, try being the robot illustrator yourself and following the instructions on a piece of paper!
         </p>
         <p>
-          If you're curious how I created this interactive example, click <a href="https://www.github.com">here</a>.
+          Now that you hopefully understand how L-systems grow, here is an interactive example where you can enter your own axiom and a set of
+          rules. The resulting image will automatically be drawn according to the visual interpretations of each symbol as shown
+          in the table. Play around and see what you can create! If you need inspiration, you can click on the presets to autofill the inputs with some famous examples of L-Systems.
         </p>
       </section>
 
@@ -168,21 +164,20 @@
         <script src="scripts/matrix.min.js"></script>
         <script src="scripts/lsys.js"></script>
       </section>
-
+      <br>
       <section class="text-content">
         <h3>Connections with Formal Proof Systems</h3>
         <p>
           At this point you hopefully know what an L-System is. You might agree that they're cool mathematical gadgets
           and
-          that they can generate some pretty complex
+          that they can generate complex
           structures. While all of this is true, I think there is something even more interesting to say about
-          L-Systems.
-          Specifically, the key idea behind the L-Systems:
-          performing substitution on strings of symbols, is the only mechanism required to create a system to prove
-          essentially all mathematical theorems. Abstractly,
-          we represent our most basic set of knowledge, our axioms, as some strings of symbols, and then we use
+          L-systems and the textual substitution scheme they use to grow.
+          It turns out that performing textual substitution on strings of symbols is the only mechanism required to create a system so powerful it can prove
+          all mathematical theorems. Essentially,
+          we can represent our basic set of knowledge, our axioms, as some strings of symbols, and then we use
           substitution
-          rules to "grow" the axioms
+          rules which represent logical implications to "grow" the axioms
           into new strings which we call theorems.
         </p>
         <p>
@@ -192,10 +187,7 @@
         </p>
         <h3>Formalizing Proofs</h3>
         <p>
-          In the world of mathematics, we look at various mathematical objects and formulate questions and often guesses
-          for
-          how we think those
-          objects behave. We might even convince ourself that our guess is true. But in order to really KNOW that it's
+          In the world of mathematics, we look at various mathematical objects and formulate hypotheses about their properties and behaviors. In order to know that 
           true,
           we need to somehow
           prove the result using prior knowledge and some kind of logic. In other words we need to provide some logical
