@@ -187,23 +187,12 @@
         </p>
         <h3>Formalizing Proofs</h3>
         <p>
-          In the world of mathematics, we look at various mathematical objects and formulate hypotheses about their properties and behaviors. In order to know that 
-          true,
-          we need to somehow
-          prove the result using prior knowledge and some kind of logic. In other words we need to provide some logical
-          line
-          or reasoning which
-          shows that our result must be true.
+          In the world of mathematics, we look at various mathematical objects and formulate hypotheses about their properties and behaviors. In order to know for certain 
+          that a hypothesis is true,
+          we need to form a logical bridge from something that we already know to be true to our hypothesis.
         </p>
         <p>
-          Traditionally, when we prove theorems in math, we write informal proofs using natural language. For example,
-          here
-          is a proof of the infinitude of prime
-          numbers in English:
-        </p>
-        <p>
-          INSERT PROOF HERE
-        </p>
+          Traditionally, when we prove theorems in math, we write informally in natural language.
         <p>
           This kind of proof is usually good enough for our purposes, since we can follow the logic and reason that it
           is
@@ -217,7 +206,7 @@
         </p>
         <h3>Language of Logic</h3>
         <p>
-          Well, first of all we need some language that allows us to formally talk about math and logic. Of course, we
+          First of all, we need some language that allows us to formally talk about math and logic. Of course, we
           already have symbols
           with well-defined meanings for mathematical objects like numbers and functions. But what about the logical
           connectives we use in-between?
@@ -229,7 +218,7 @@
           meaning. But it's still not
           clear when we can move from one formal statement using these symbols to another.
         </p>
-        <h3>All math is set theory</h3>
+        <h3>All Math is Set Theory</h3>
         <p>
           Another question that comes up when trying to design this mathematical proof system is: what do we use as our
           axioms? This is a powerful
@@ -260,19 +249,18 @@
           set of sets of sets of sets. And the characteristics and behaviors of the mathematical object are simulated by
           the
           simple behaviors
-          of the constituent sets. This is so cool!
+          of the constituent sets.
         </p>
         <p>
           For example, when we formalize math using Set Theory, the first 3 natural numbers are defined as follows:
-          0 := {}
-          1 := {{}}
-          2 := {{},{{}}}
-          Where the successor operation or "+1" operation is defined for a set X as X U {X}, in other words, take
-          everything in the previous set and then add the previous set itself. The same thing can be done with more
-          complex mathematical objects, reducing them to extremely complex groups of nested sets. One crazy thing to
-          note
-          is that at the lowest level, all of the sets are empty, they contain nothing. So ultimately all mathematical
-          objects can be reduced down to some extremely intricate, possibly infinite group of nested parentheses.
+          <span class="math">0 = {}</span>
+          <span class="math">1 = {{}}</span>
+          <span class="math">2 = {{},{{}}}</span>
+          To add one to a number represented as a set, we take the set which includes
+          everything in the previous set and the previous set itself. This same kind of simulation through sets can be done with more
+          complex mathematical objects, reducing them to extremely large groups of nested sets. One interesting thing to
+          note is that at the lowest level, all of the sets are empty, they contain nothing. So ultimately all mathematical
+          objects can be reduced down to some extremely intricate, possibly infinite group of nested parentheses. Crazy!
         </p>
         <h3>Formal Proof System</h3>
         <p>
@@ -282,21 +270,17 @@
           axioms to arrive at the theorem.
         </p>
         <p>
-          I know we seem to have strayed quite far from L-Systems, so let's bring it all back together. It turns out
+          I know we seem to have strayed quite far from L-systems, so let's bring it all back together. It turns out
           that
-          symbol manipulation is universal and powerful. The act of starting with some axiom string and manipulating it
-          with some subsitution rules is not just a mechanism we see in L-Systems. It is the same exact mechanism that
+          textual substitution is universal and powerful. The act of starting with some axiom string and manipulating it
+          with some subsitution rules is not just a mechanism we see in L-systems. It is the same exact mechanism that
           is
-          used in a system which can prove any mathematical theorem starting from the axioms of ZFC.
+          used in a system which can prove any mathematical theorem starting from the axioms of Set Theory.
         </p>
         <p>
-          This amazing fact never fails to give me a sense of wonder. I like to imagine that the axioms of ZFC are like
+          This amazing fact never fails to give me a sense of wonder. I like to imagine that the axioms of Set Theory are like
           a
-          seed out of which we can grow a massive tree of mathematics with towering branches. Something I am curious
-          about
-          is whether we could assign
-          graphical interpretations to the logical symbols in the language of set theory to visualize mathematical
-          theorems the same way we visualize L-Systems.
+          seed out of which we can grow a massive tree of mathematics with towering branches.
         </p>
       </section>
     </article>
