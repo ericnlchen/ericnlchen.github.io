@@ -29,7 +29,7 @@
     <main>
         <div id="main-title">
             <h1>Mathemusic</h1>
-            <h4>Updated 11/28/2022 &middot; Eric Chen</h4>
+            <h4>by Eric Chen</h4>
         </div>
         <article>
             <section class="intro">
@@ -45,14 +45,14 @@
                     Based on what you hear you might think that the frequency of the notes is increasing linearly. If we
                     were to plot the frequency of each note on a graph you might expect to see something like this:
                 </p>
-                <div class="image-holder">
+                <div class="img-holder">
                     <img src="images/piano-graph-linear.png" />
                 </div>
                 <p>
                     But that would be inaccurate. As it turns out, frequency increases <b>exponentially</b> as you climb
                     chromatically. So the true picture looks something like this:
                 </p>
-                <div class="image-holder">
+                <div class="img-holder">
                     <img src="images/piano-graph-exponential.png" />
                 </div>
                 <p>
@@ -60,12 +60,12 @@
                     <b>multiplying by a constant frequency ratio</b>, rather than adding a constant frequency
                     difference.
                 </p>
-                <aside>
+                <div class="algo">
                     As an aside, frequency ratios form the basis for the theory of harmony. For example, doubling the
                     frequency of a note preserves its "pitch class," leaving it as the same note, only higher.
                     Various other ratios besides the 2:1 ratio for the octave exist which create unique sounds. These
                     are called intervals and they are stacked together to create chords.
-                </aside>
+                </div>
                 <p>
                     When I realized that my initial intuition about frequency was wrong, I started to wonder what would
                     happen if the relationship between notes
@@ -86,8 +86,37 @@
                     <audio controls src="audio/chromatic-piano-climb-transformed-linear.wav"></audio>
                 </div>
                 <p>
-
+                    It sounds weird right? Just wait.
                 </p>
+                <p>
+                    Here is the regular version of the well-known song Fur Elise:
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/fur-elise.wav"></audio>
+                </div>
+                <p>
+                    And here is Fur Elise with a linear frequency function:
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/fur-elise-tranformed-linear.wav"></audio>
+                </div>
+                <p>
+                    When I heard this for the first time I literally cried with laughter because it sounded so ridiculous! It is really interesting to me how the mood of the song has totally changed from somber and beautiful to something weirdly spooky and alien and absurd.
+                </p>
+                <!--
+                <p>
+                    What if we mapped frequency to some other type of function like a parabola?
+                </p>
+                <div class="img-holder">
+                    <img src="images/piano-graph-parabolic.png" />
+                </div>
+                <p>
+                    We would expect both low and high notes to become high notes, while notes in the middle of the keyboard would become lower. This is what Fur Elise sounds like under this frequency mapping:
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/"></audio>
+                </div>
+                -->
             </section>
         </article>
     </main>
