@@ -10,36 +10,24 @@
 </head>
 
 <body>
-    <nav>
-        <ul id="nav-bar" class="no-bullet">
+    <nav id="nav-bar">
+        <ul class="no-bullet">
             <li><a href="./index.html">home</a></li>
             <li><a href="./about.html">about</a></li>
-            <li><a href="./lsys.html">explainers</a></li>
-            <li><a href="./TODO">art</a></li>
+            <li><a href="./lsys.html">lsystems</a></li>
+            <li><a href="./mathemusic.html">mathemusic</a></li>
         </ul>
     </nav>
     <main>
         <div class="typed-container" id="about-me">
             <span id="typed1" class="typed"></span>
         </div>
-        <div class="typed-container" id="about-page">
-            <span id="typed2" class="typed"></span>
-        </div>
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
         <script>
             var typed = new Typed("#typed1", {
-                strings: ["About Me:<br>&emsp;&emsp;I am a "],
-                typeSpeed: 40,
-                backSpeed: 40,
-                loop: false,
-                cursorChar: '&#10074;'
-            });
-        </script>
-        <script>
-            var typed = new Typed("#typed2", {
-                strings: ["About This Page:<br>&emsp;&emsp;This page"],
-                typeSpeed: 40,
-                backSpeed: 40,
+                strings: ["About Me:<br>Nice to meet you! My name is Eric Chen. I am a student interested in using mathematical and computational tools to inspire wonder and feeling.<br><br>About This Blog:<br>Undefined Behavior is a blog for sharing creative ideas with mathematical or computational origins. I will write about a wide range of topics in the hopes of bringing transparency, approachability, and relatability to dense and/or deep concepts."],
+                typeSpeed: 14,
                 loop: false,
                 cursorChar: '&#10074;'
             });

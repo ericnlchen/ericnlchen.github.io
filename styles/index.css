@@ -32,7 +32,13 @@ ul {
     font-size: 3vh;
 }
 
-.typed-container {
+#about-me {
+    margin: 5%;
+    margin-top: 12%;
+    width: 70%;
+}
+
+#class-human-code {
     position: absolute;
     top: 0;
     left: 0;
