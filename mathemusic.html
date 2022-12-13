@@ -79,17 +79,29 @@
                 </div>
                 <p>
                     With this tool in hand, I could dream up any function and then listen to how that choice affected a
-                    familiar piece of music. The first thing I experimented with was a linear function. Here is what
-                    chromatically ascending on a piano would sound like with a linear frequency function.
+                    familiar piece of music.
+                </p>
+            </section>
+            <section>
+                <h3>Linear Frequency Function</h3>
+                <p>
+                    The first thing I experimented with was a linear function. Here is what
+                    chromatically ascending on a piano sounds like with a linear frequency function.
                 </p>
                 <div class="audio-holder">
                     <audio controls src="audio/chromatic-piano-climb-transformed-linear.wav"></audio>
                 </div>
                 <p>
-                    It sounds weird right? Just wait.
+                    Weird, right? The notes sound like they increase by large jumps at the beginning and then smaller jumps as the pitch gets higher. Why might this be?
                 </p>
                 <p>
-                    Here is the regular version of the well-known song Fur Elise:
+                    Think back to our initial observation: our ears perceive an exponential frequency increase as a linear frequency increase. From this observation, we can infer that our ears hear in <b>log-frequency</b>. In other words, our perception of pitch is aligned with the logarithm of the frequency function, rather than the frequency function itself.
+                </p>
+                <p>
+                    Now our frequency function is linear, so our log-frequency function (what our ear perceives) is a logarithmic function. This explains why our chromatic ascent sounds like it makes large jumps at the beginning and smaller jumps as the pitch gets higher: that is exactly how a logarithmic function increases.
+                </p>
+                <p>
+                    Having heard the weird sounding chromatic ascent with the linear frequency function, I was eager to try it out on a complete song. Here is the regular version of the song Fur Elise, which you might recognize:
                 </p>
                 <div class="audio-holder">
                     <audio controls src="audio/fur-elise.wav"></audio>
@@ -103,20 +115,40 @@
                 <p>
                     When I heard this for the first time I literally cried with laughter because it sounded so ridiculous! It is really interesting to me how the mood of the song has totally changed from somber and beautiful to something weirdly spooky and alien and absurd.
                 </p>
-                <!--
+            </section>
+            <section>
+                <h3>Quadratic Frequency Function</h3>
                 <p>
-                    What if we mapped frequency to some other type of function like a parabola?
+                    Now what if we mapped frequency to some other function besides a linear one? For example, what if we used a parabola?
                 </p>
                 <div class="img-holder">
                     <img src="images/piano-graph-parabolic.png" />
                 </div>
                 <p>
-                    We would expect both low and high notes to become high notes, while notes in the middle of the keyboard would become lower. This is what Fur Elise sounds like under this frequency mapping:
+                    Let's start with the chromatic ascent again. Here is what it sounds like with the quadratic frequency relationship:
                 </p>
                 <div class="audio-holder">
-                    <audio controls src="audio/"></audio>
+                    <audio controls src="audio/chromatic-piano-climb-transformed-quadratic.wav"></audio>
                 </div>
-                -->
+                <p>
+                    It doesn't really sound like an "ascent" anymore since the quadratic function is not monotonically increasing. The pitch decreases and then increases again as we climb up the piano.
+                    This is what Fur Elise sounds like under this frequency mapping:
+                </p>
+                <div class="audio-holder">
+                    <audio controls src="audio/fur-elise-transformed-quadratic.wav"></audio>
+                </div>
+                <p>
+                    Once again the vibe of the song is totally unrecognizable! This one makes me think of some shady and suspenseful scene from a spy movie.
+                </p>
+            </section>
+            <section>
+                <h3>More Fun to be Had</h3>
+                <p>
+                    Obviously, there are an infinitude of other functions we could try. The functions don't even have to be continuous. (Since we only need to assign some frequency value to each of the 128 discrete MIDI note values.) There are so many possibilities to experiment with this further!
+                </p>
+                <p>
+                    Another really cool idea would be to allow a user to draw their own line over a piano diagram, and have that line define the frequency mapping. I hope to create this as an interactive example soon. Looking even further ahead, it would be amazing if this idea could be built into a real-time instrument which changes the frequency function according to the performer's hand-motions.
+                </p>
             </section>
         </article>
     </main>
