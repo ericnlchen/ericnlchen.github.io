@@ -160,8 +160,6 @@
 
       <section class="react-interactive-example">
         <div id="react-root"></div>
-        <script src="scripts/matrix.min.js"></script>
-        <script src="scripts/lsys.js"></script>
       </section>
       <br>
       <section class="text-content">
@@ -292,10 +290,12 @@
       </section>
     </article>
   </main>
+  <!-- Load matrix code. -->
+  <script src="scripts/matrix.min.js"></script>
   <!-- Load React. -->
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <!-- Load our React component. -->
   <script src="scripts/lsys_app.js"></script>
 </body>

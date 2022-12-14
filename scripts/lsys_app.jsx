@@ -1,5 +1,6 @@
 'use strict';
 
+// React Components:
 class LSystemApp extends React.Component {
     constructor(props) {
         super(props);
@@ -9,7 +10,8 @@ class LSystemApp extends React.Component {
                 { id: 0, inputVal: "F", outputVal: "F+G" },
                 { id: 1, inputVal: "G", outputVal: "F-G" }
             ],
-            iterations: "10"
+            iterations: "10",
+            maxStringLengthExceeded: false
         };
         this.handleAxiomChange = this.handleAxiomChange.bind(this);
         this.handleRulesChange = this.handleRulesChange.bind(this);
@@ -18,6 +20,7 @@ class LSystemApp extends React.Component {
         this.handleIterationsChange = this.handleIterationsChange.bind(this);
         this.handleDragonPreset = this.handleDragonPreset.bind(this);
         this.handleFernPreset = this.handleFernPreset.bind(this);
+        this.setMaxStringLengthExceeded = this.setMaxStringLengthExceeded.bind(this);
     }
 
     handleAxiomChange(axiomText) {
@@ -50,7 +53,6 @@ class LSystemApp extends React.Component {
                     newRules.push(newRule);
                 }
             }
-            // console.log(newRules);
             return {
                 rules: newRules
             };
@@ -92,6 +94,18 @@ class LSystemApp extends React.Component {
     }
 
     handleIterationsChange(iterationsText) {
+        // this.setState(function(state, props) {
+        //     if (state.maxStringLengthExceeded) {
+        //         return {
+        //             iterations: state.iterations
+        //         }
+        //     }
+        //     else {
+        //         return {
+        //             iterations: iterationsText
+        //         };
+        //     }
+        // });
         this.setState({
             iterations: iterationsText
         });
@@ -119,6 +133,12 @@ class LSystemApp extends React.Component {
         });
     }
 
+    setMaxStringLengthExceeded(boolVal) {
+        this.setState({
+            maxStringLengthExceeded: boolVal
+        });
+    }
+
     render() {
         return (
             <div className="lsystem-app">
@@ -133,8 +153,15 @@ class LSystemApp extends React.Component {
                     onRemoveRule={this.handleRemoveRule}
                     onDragonPreset={this.handleDragonPreset}
                     onFernPreset={this.handleFernPreset}
+                    maxStringLengthExceeded={this.state.maxStringLengthExceeded}
                 />
-                <DisplaySegment />
+                <DisplaySegment
+                    axiom={this.state.axiom}
+                    rules={this.state.rules}
+                    iterations={this.state.iterations}
+                    MAX_STRING_LENGTH={100000}
+                    setMaxStringLengthExceeded={this.setMaxStringLengthExceeded}
+                />
             </div>
         );
     }
@@ -143,12 +170,159 @@ class LSystemApp extends React.Component {
 class DisplaySegment extends React.Component {
     constructor(props) {
         super(props);
+        this.myRef = React.createRef();
     }
+
+    Sketch = (p) => {
+        p.setup = () => {
+            const CANVAS_WIDTH = 600;
+            const CANVAS_HEIGHT = 600;
+            const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+            // Ensure that the canvas display size and coordinate system size match
+            const p5canvas = document.querySelector('.p5Canvas');
+            p5canvas.setAttribute('width', CANVAS_WIDTH);
+            p5canvas.setAttribute('height', CANVAS_HEIGHT);
+            p.noLoop();
+        };
+
+        p.draw = () => {
+            console.log("draw");
+            p.background(255);
+            p.stroke(70,130,70);
+            p.strokeWeight(1)
+            p.strokeJoin(p.ROUND);
+            p.smooth();
+            let Lstring = p.Lsystem(this.props.axiom, this.props.rules, this.props.iterations);
+            p.showLsystem(Lstring);
+        };
+
+        p.Lsystem = (axiom, rules, iters) => {
+            let i = 0;
+            let underMaxStringLength = true;
+            while (i < iters) {
+                let old_axiom = axiom;
+                axiom = p.grow(axiom, rules);
+                // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
+                if (axiom.length > this.props.MAX_STRING_LENGTH) { 
+                    console.log(`Max string length exceeded at ${i} iterations!`);
+                    this.props.setMaxStringLengthExceeded(true);
+                    underMaxStringLength = false;
+                    axiom = old_axiom; // revert to previous axiom
+                    break;
+                }
+                i++;
+            }
+            if (underMaxStringLength) {
+                this.props.setMaxStringLengthExceeded(false);
+            }
+            return axiom;
+        };
+
+        p.grow = (axiom, rules) => {
+            let new_axiom = "";
+            for (let j = 0; j < axiom.length; j++) {
+                const index = rules.findIndex(x => x.inputVal === axiom[j]);
+                if (index === -1) {
+                    new_axiom += axiom[j];
+                }
+                else {
+                    new_axiom += rules[index].outputVal;
+                }
+            }
+            return new_axiom;
+        };
+
+        p.showLsystem = (Lstring) => {
+            // This function draws the Lsystem, rescales and recenters coordinates, and then redraws
+            const [min_x, max_x, min_y, max_y] = p.drawLsystem(Lstring, 1, 0, 0); // draw once
+            p.clear();
+            const canvasWidth = p.width;
+            const canvasHeight = p.height;
+            let drawingWidth = Math.abs(max_x - min_x);
+            let drawingHeight = Math.abs(max_y - min_y);
+        
+            const x_scale = canvasWidth / drawingWidth;
+            const y_scale = canvasHeight / drawingHeight;
+            const scale = Math.min(x_scale, y_scale);
+        
+            const x_offset = Math.abs(min_x);
+            const y_offset = Math.abs(min_y);
+            p.drawLsystem(Lstring, scale, x_offset, y_offset); // draw again
+        };
+
+        p.drawLsystem = (Lstring, scale, x_offset, y_offset) => {
+            const canvas = document.querySelector('.p5Canvas');
+            const ctx = canvas.getContext('2d');
+            let matrix = new Matrix(ctx);
+            matrix.scale(scale, scale);
+            matrix.translate(x_offset, y_offset);
+            let stack = [];
+            let min_x = matrix.e,
+                max_x = matrix.e,
+                min_y = matrix.f,
+                max_y = matrix.f;
+            let l = 5;
+            for (let i = 0; i < Lstring.length; i++) {
+                if (Lstring[i] == "F" || Lstring[i] == "G") { // Draw forward
+                    p.line(0, 0, 0, -l);
+                    matrix.translate(0, -l);
+                } else if (Lstring[i] == "f" || Lstring[i] == "g") { // Move forward
+                    matrix.translate(0, -l);
+                } else if (Lstring[i] == "L" || Lstring[i] == "+") {  // Left 90 deg
+                    matrix.rotate(-p.radians(90));
+                } else if (Lstring[i] == "R" || Lstring[i] == "-" || Lstring[i] == '\u2212') { // Right 90 deg (Note there are multiple - characters)
+                    matrix.rotate(p.radians(90));
+                } else if (Lstring[i] == "l") { // Left 25 deg
+                    matrix.rotate(-p.radians(25));
+                } else if (Lstring[i] == "r") { // Right 25 deg
+                    matrix.rotate(p.radians(25))
+                } else if (Lstring[i] == "[") { // push
+                    stack.push({a: matrix.a, b: matrix.b, c: matrix.c, d: matrix.d, e: matrix.e, f: matrix.f});
+                } else if (Lstring[i] == "]") { // pop
+                    if (stack.length !== 0) {
+                        const transf = stack.pop();
+                        matrix.a = transf.a;
+                        matrix.b = transf.b;
+                        matrix.c = transf.c;
+                        matrix.d = transf.d;
+                        matrix.e = transf.e;
+                        matrix.f = transf.f;
+                        matrix._setCtx();
+                    }
+                }
+                // Update x, y bounds:
+                if (matrix.e < min_x) {
+                    min_x = matrix.e;
+                }
+                if (matrix.e > max_x) {
+                    max_x = matrix.e;
+                }
+                if (matrix.f < min_y) {
+                    min_y = matrix.f;
+                }
+                if (matrix.f > max_y) {
+                    max_y = matrix.f;
+                }
+            }
+            return [min_x, max_x, min_y, max_y];
+        };
+    }
+
+    componentDidMount() {
+        this.myP5 = new p5(this.Sketch, this.myRef.current);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.axiom !== this.props.axiom || 
+            prevProps.rules !== this.props.rules ||
+            prevProps.iterations !== this.props.iterations) {
+            this.myP5.redraw();
+        }
+    }
+
     render() {
         return (
-            <div className="display-segment">
-                <div id="sketch-holder"></div>
-            </div>
+            <div className="display-segment" ref={this.myRef}></div>
         );
     }
 }
@@ -162,7 +336,7 @@ class InputSegment extends React.Component {
             <div className="input-segment">
                 <AxiomPanel value={this.props.axiom} onAxiomChange={this.props.onAxiomChange}/>
                 <RulesPanel rules={this.props.rules} onRulesChange={this.props.onRulesChange} onAddNewRule={this.props.onAddNewRule} onRemoveRule={this.props.onRemoveRule}/>
-                <IterationsPanel value={this.props.iterations} onIterationsChange={this.props.onIterationsChange}/>
+                <IterationsPanel value={this.props.iterations} onIterationsChange={this.props.onIterationsChange} maxStringLengthExceeded={this.props.maxStringLengthExceeded}/>
                 <AlphabetPanel />
                 <PresetsPanel onDragonPreset={this.props.onDragonPreset} onFernPreset={this.props.onFernPreset}/>
             </div>
@@ -232,7 +406,7 @@ class RulesList extends React.Component {
         });
 
         return (
-            <ul id="rules-list" className="rules-list no-bullet">
+            <ul className="rules-list no-bullet">
                 {rulesList}
             </ul>
         );
@@ -271,13 +445,11 @@ class AxiomPanel extends React.Component {
     handleAxiomChange(e) {
         this.props.onAxiomChange(e.target.value);
     }
-    // TODO: ideally we don't want to rely on id="axiom", we want p5 integrated better
     render() {
         return (
             <div className="axiom-panel">
                 <h2>Axiom:</h2>
                 <input
-                    id="axiom"
                     type="text"
                     maxLength="1"
                     className="short"
@@ -306,7 +478,6 @@ class IterationsPanel extends React.Component {
             <div className="iterations-panel">
                 <h2>Iterations:</h2>
                 <input
-                    id="iters-input"
                     type="number"
                     className="number"
                     name="iters-input"
@@ -314,7 +485,11 @@ class IterationsPanel extends React.Component {
                     value={this.props.value}
                     onChange={this.handleIterationsChange}
                 />
-                <div id="iter-warning"></div>
+                {this.props.maxStringLengthExceeded && 
+                    <div className="warning-message">
+                        Max string length exceeded
+                    </div>
+                }
             </div>
         );
     }
@@ -390,13 +565,12 @@ class PresetsPanel extends React.Component {
         return (
             <div className="presets-panel">
                 <h2>Presets:</h2>
-                <button className="round" id="dragon-button" onClick={this.props.onDragonPreset}>Dragon</button>
-                <button className="round" id="fern-button" onClick={this.props.onFernPreset}>Fern</button>
+                <button className="round" onClick={this.props.onDragonPreset}>Dragon</button>
+                <button className="round" onClick={this.props.onFernPreset}>Fern</button>
             </div>
         );
     }
 }
-
 
 const domContainer = document.getElementById('react-root');
 const root = ReactDOM.createRoot(domContainer);

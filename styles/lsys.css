@@ -145,7 +145,7 @@ button.minus {
 }
 
 input.number {
-    width: 30px;
+    width: 50px;
 }
 
 input.short {
@@ -185,31 +185,21 @@ table.alphabet th {
     margin: 0 auto;
 }
 
-#sketch-holder {
+.display-segment {
     border: 5px solid rgb(200,200,200);
-    padding: 20px;
+    padding: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
 }
 
-/* TODO, REMOVE THIS: */
-#axiom-input { 
-    display: flex;
-}
-/* IN FAVOR OF THIS */
 .axiom-panel {
     display: flex;
 }
-/* For all widget things */
 
-#iterations-input {
-    display: flex;
-}
-
-#iter-warning {
-    font-size: 10px;
+.warning-message {
+    font-size: 12px;
+    color:red;
 }
 
 /* || CONTENT */
