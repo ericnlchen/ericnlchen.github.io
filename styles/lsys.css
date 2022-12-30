@@ -221,6 +221,12 @@ span.math {
     margin: 1% auto;
 }
 
+div.jump-to {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 div.math-container {
     display: flex;
 }
