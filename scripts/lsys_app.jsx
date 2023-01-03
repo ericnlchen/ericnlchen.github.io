@@ -371,7 +371,7 @@ class Rule extends React.Component {
                     value={this.props.inputVal}
                     onChange={(e) => this.handleRulesChange(e, this.props.id, true)}
                 />
-                &#8614;
+                &rarr;
                 <input
                     type="text"
                     className="medium"
@@ -382,7 +382,9 @@ class Rule extends React.Component {
                 <button
                     className="minus round"
                     onClick={() => this.handleRemoveRule(this.props.id)}
-                >&minus;</button>
+                >
+                    &minus;
+                </button>
             </li>
         );
     }
@@ -406,7 +408,7 @@ class RulesList extends React.Component {
         });
 
         return (
-            <ul className="rules-list no-bullet">
+            <ul className="rules-list center-items no-bullet">
                 {rulesList}
             </ul>
         );
@@ -424,7 +426,7 @@ class RulesPanel extends React.Component {
             <div className="rules-panel">
                 <h2>Rules:</h2>
                 <RulesList rules={this.props.rules} onRulesChange={this.props.onRulesChange} onRemoveRule={this.props.onRemoveRule}/>
-                <div className="button-holder">
+                <div className="center">
                     <button
                         className="round plus"
                         onClick={this.props.onAddNewRule}
@@ -487,7 +489,7 @@ class IterationsPanel extends React.Component {
                 />
                 {this.props.maxStringLengthExceeded && 
                     <div className="warning-message">
-                        Max string length exceeded
+                        Max length exceeded
                     </div>
                 }
             </div>
@@ -503,7 +505,7 @@ class AlphabetPanel extends React.Component {
     render() {
         return (
             <div className="alphabet-panel">
-                <h2>Alphabet:</h2>
+                <h2>Symbols:</h2>
                 <table className="alphabet">
                     <tbody>
                         <tr>
@@ -511,44 +513,44 @@ class AlphabetPanel extends React.Component {
                             <th>Visual Meaning</th>
                         </tr>
                         <tr>
-                            <td>F</td>
-                            <td>draw forward</td>
+                            <td><em className="darkgreen">F</em></td>
+                            <td><span className="bubble">draw forward</span></td>
                         </tr>
                         <tr>
-                            <td>G</td>
-                            <td>draw forward</td>
+                            <td><em className="darkgreen">G</em></td>
+                            <td><span className="bubble">draw forward</span></td>
                         </tr>
                         <tr>
-                            <td>f</td>
-                            <td>move forward</td>
+                            <td><em className="darkgreen">f</em></td>
+                            <td><span className="bubble">move forward</span></td>
                         </tr>
                         <tr>
-                            <td>g</td>
-                            <td>move forward</td>
+                            <td><em className="darkgreen">g</em></td>
+                            <td><span className="bubble">move forward</span></td>
                         </tr>
                         <tr>
-                            <td>L</td>
-                            <td>turn left 90&#176;</td>
+                            <td><em className="darkgreen">+</em></td>
+                            <td><span className="bubble">turn left 90&#176;</span></td>
                         </tr>
                         <tr>
-                            <td>R</td>
-                            <td>turn right 90&#176;</td>
+                            <td><em className="darkgreen">&minus;</em></td>
+                            <td><span className="bubble">turn right 90&#176;</span></td>
                         </tr>
                         <tr>
-                            <td>l</td>
-                            <td>turn left 25&#176;</td>
+                            <td><em className="darkgreen">l</em></td>
+                            <td><span className="bubble">turn left 25&#176;</span></td>
                         </tr>
                         <tr>
-                            <td>r</td>
-                            <td>turn right 25&#176;</td>
+                            <td><em className="darkgreen">r</em></td>
+                            <td><span className="bubble">turn right 25&#176;</span></td>
                         </tr>
                         <tr>
-                            <td>[</td>
-                            <td>save position (push)</td>
+                            <td><em className="darkgreen">[</em></td>
+                            <td><span className="bubble">push</span></td>
                         </tr>
                         <tr>
-                            <td>]</td>
-                            <td>restore position (pop)</td>
+                            <td><em className="darkgreen">]</em></td>
+                            <td><span className="bubble">pop</span></td>
                         </tr>
                     </tbody>
                 </table>

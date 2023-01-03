@@ -383,7 +383,7 @@ class Rule extends React.Component {
       name: "rule-input",
       value: this.props.inputVal,
       onChange: e => this.handleRulesChange(e, this.props.id, true)
-    }), "\u21A6", /*#__PURE__*/React.createElement("input", {
+    }), "\u2192", /*#__PURE__*/React.createElement("input", {
       type: "text",
       className: "medium",
       name: "rule-output",
@@ -413,7 +413,7 @@ class RulesList extends React.Component {
       });
     });
     return /*#__PURE__*/React.createElement("ul", {
-      className: "rules-list no-bullet"
+      className: "rules-list center-items no-bullet"
     }, rulesList);
   }
 }
@@ -431,7 +431,7 @@ class RulesPanel extends React.Component {
       onRulesChange: this.props.onRulesChange,
       onRemoveRule: this.props.onRemoveRule
     }), /*#__PURE__*/React.createElement("div", {
-      className: "button-holder"
+      className: "center"
     }, /*#__PURE__*/React.createElement("button", {
       className: "round plus",
       onClick: this.props.onAddNewRule
@@ -483,7 +483,7 @@ class IterationsPanel extends React.Component {
       onChange: this.handleIterationsChange
     }), this.props.maxStringLengthExceeded && /*#__PURE__*/React.createElement("div", {
       className: "warning-message"
-    }, "Max string length exceeded"));
+    }, "Max length exceeded"));
   }
 }
 
@@ -495,9 +495,49 @@ class AlphabetPanel extends React.Component {
   render() {
     return /*#__PURE__*/React.createElement("div", {
       className: "alphabet-panel"
-    }, /*#__PURE__*/React.createElement("h2", null, "Alphabet:"), /*#__PURE__*/React.createElement("table", {
+    }, /*#__PURE__*/React.createElement("h2", null, "Symbols:"), /*#__PURE__*/React.createElement("table", {
       className: "alphabet"
-    }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Symbol"), /*#__PURE__*/React.createElement("th", null, "Visual Meaning")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "F"), /*#__PURE__*/React.createElement("td", null, "draw forward")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "G"), /*#__PURE__*/React.createElement("td", null, "draw forward")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "f"), /*#__PURE__*/React.createElement("td", null, "move forward")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "g"), /*#__PURE__*/React.createElement("td", null, "move forward")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "L"), /*#__PURE__*/React.createElement("td", null, "turn left 90\xB0")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "R"), /*#__PURE__*/React.createElement("td", null, "turn right 90\xB0")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "l"), /*#__PURE__*/React.createElement("td", null, "turn left 25\xB0")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "r"), /*#__PURE__*/React.createElement("td", null, "turn right 25\xB0")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "["), /*#__PURE__*/React.createElement("td", null, "save position (push)")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, "]"), /*#__PURE__*/React.createElement("td", null, "restore position (pop)")))));
+    }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Symbol"), /*#__PURE__*/React.createElement("th", null, "Visual Meaning")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "F")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "draw forward"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "G")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "draw forward"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "f")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "move forward"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "g")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "move forward"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "+")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "turn left 90\xB0"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "\u2212")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "turn right 90\xB0"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "l")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "turn left 25\xB0"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "r")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "turn right 25\xB0"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "[")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "push"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+      className: "darkgreen"
+    }, "]")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
+      className: "bubble"
+    }, "pop"))))));
   }
 }
 class PresetsPanel extends React.Component {

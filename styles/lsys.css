@@ -28,7 +28,7 @@ h1 {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 300;
     line-height: 32px;
     margin: 0;
@@ -75,7 +75,7 @@ img {
 }
 
 input {
-    margin: 5px;
+    margin: 5px 10px;
     border-radius: 6px;
 }
 
@@ -126,21 +126,13 @@ header {
 }
 
 /* || LSYS WIDGET */
-ul.no-bullet {
-    list-style-type: none;
-    padding: 0;
-}
 
-ul.center-items{
-    text-align: center;
-}
 
-ol.bold-numbers > li::marker {
-    font-weight: bold;
-}
-
-.italic {
-    font-style: italic;
+@media (min-width: 1080px) {
+    div.lsystem-app {
+        display: flex;
+        justify-content: space-around;
+    }
 }
 
 button.round {
@@ -150,7 +142,6 @@ button.round {
 
 button.plus {
     background-color:rgb(173, 226, 171);
-    margin: 0px 0px 0px 40px;
 }
 
 button.minus {
@@ -173,7 +164,7 @@ table.alphabet {
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
     letter-spacing: 1px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   
 table.alphabet td, th {
@@ -186,19 +177,7 @@ table.alphabet th {
     background-color: rgb(235,235,235);
 }
 
-@media (min-width: 1080px) {
-    .lsystem-app {
-        display: flex;
-        justify-content: space-around;
-    }
-}
-
-.user-inputs {
-    padding: 20px;
-    margin: 0 auto;
-}
-
-.display-segment {
+div.display-segment {
     border: 5px solid rgb(200,200,200);
     padding: 14px;
     display: flex;
@@ -206,27 +185,54 @@ table.alphabet th {
     align-items: center;
 }
 
-.axiom-panel {
+div.input-segment > div {
+    margin: 4% 0;
+}
+
+div.axiom-panel {
+    display: flex;
+}
+
+div.iterations-panel {
     display: flex;
 }
 
 .warning-message {
-    font-size: 12px;
+    font-size: 10px;
+    width: 20%;
     color:red;
 }
 
 /* || CONTENT */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 aside {
     background-color: rgb(178, 178, 178);
     border-radius: 8px;
     padding: 2% 4%;
 }
 
-div.jump-to {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+ul.no-bullet {
+    list-style-type: none;
+    padding: 0;
 }
+
+ul.center-items{
+    text-align: center;
+}
+
+ol.bold-numbers > li::marker {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
 
 .math-container {
     font-family: 'Computer Modern', sans-serif;
@@ -240,10 +246,10 @@ div.jump-to {
 }
 
 span.bubble {
-    border-radius: 8px;
+    border-radius: 5em;
     font-style: italic;
     background-color: rgb(255, 227, 188);
-    padding: 0.1em 0.3em;
+    padding: 0.2em 0.4em;
 }
 
 
