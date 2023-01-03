@@ -127,6 +127,10 @@ header {
 
 /* || LSYS WIDGET */
 
+div.lsystem-app {
+    border: 5px solid rgb(143, 143, 143);
+    padding: 2%;
+}
 
 @media (min-width: 1080px) {
     div.lsystem-app {
