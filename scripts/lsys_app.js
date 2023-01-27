@@ -179,13 +179,13 @@ class DisplaySegment extends React.Component {
     super(props);
     _defineProperty(this, "Sketch", p => {
       p.setup = () => {
-        const CANVAS_WIDTH = 600;
-        const CANVAS_HEIGHT = 600;
+        const CANVAS_WIDTH = p.windowWidth / 3;
+        const CANVAS_HEIGHT = p.windowWidth / 3;
         const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
         // Ensure that the canvas display size and coordinate system size match
-        const p5canvas = document.querySelector('.p5Canvas');
-        p5canvas.setAttribute('width', CANVAS_WIDTH);
-        p5canvas.setAttribute('height', CANVAS_HEIGHT);
+        const p5Canvas = document.querySelector('.p5Canvas');
+        p5Canvas.setAttribute('width', CANVAS_WIDTH);
+        p5Canvas.setAttribute('height', CANVAS_HEIGHT);
         p.noLoop();
       };
       p.draw = () => {
@@ -321,6 +321,9 @@ class DisplaySegment extends React.Component {
     });
     this.myRef = React.createRef();
   }
+  handleResize(newWidth, newHeight) {
+    this.myP5.resizeCanvas(newWidth, newHeight);
+  }
   componentDidMount() {
     this.myP5 = new p5(this.Sketch, this.myRef.current);
   }
@@ -379,18 +382,18 @@ class Rule extends React.Component {
     return /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("input", {
       type: "text",
       maxLength: "1",
-      className: "short",
+      className: "width-20",
       name: "rule-input",
       value: this.props.inputVal,
       onChange: e => this.handleRulesChange(e, this.props.id, true)
     }), "\u2192", /*#__PURE__*/React.createElement("input", {
       type: "text",
-      className: "medium",
+      className: "width-90",
       name: "rule-output",
       value: this.props.outputVal,
       onChange: e => this.handleRulesChange(e, this.props.id, false)
     }), /*#__PURE__*/React.createElement("button", {
-      className: "minus round",
+      className: "red round",
       onClick: () => this.handleRemoveRule(this.props.id)
     }, "\u2212"));
   }
@@ -433,7 +436,7 @@ class RulesPanel extends React.Component {
     }), /*#__PURE__*/React.createElement("div", {
       className: "center"
     }, /*#__PURE__*/React.createElement("button", {
-      className: "round plus",
+      className: "green round",
       onClick: this.props.onAddNewRule
     }, "+")));
   }
@@ -454,7 +457,7 @@ class AxiomPanel extends React.Component {
     }, /*#__PURE__*/React.createElement("h2", null, "Axiom:"), /*#__PURE__*/React.createElement("input", {
       type: "text",
       maxLength: "1",
-      className: "short",
+      className: "width-20",
       name: "axiom",
       value: this.props.value,
       onChange: this.handleAxiomChange
@@ -476,7 +479,7 @@ class IterationsPanel extends React.Component {
       className: "iterations-panel"
     }, /*#__PURE__*/React.createElement("h2", null, "Iterations:"), /*#__PURE__*/React.createElement("input", {
       type: "number",
-      className: "number",
+      className: "width-50",
       name: "iters-input",
       min: "0",
       value: this.props.value,
@@ -495,9 +498,7 @@ class AlphabetPanel extends React.Component {
   render() {
     return /*#__PURE__*/React.createElement("div", {
       className: "alphabet-panel"
-    }, /*#__PURE__*/React.createElement("h2", null, "Symbols:"), /*#__PURE__*/React.createElement("table", {
-      className: "alphabet"
-    }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Symbol"), /*#__PURE__*/React.createElement("th", null, "Visual Meaning")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
+    }, /*#__PURE__*/React.createElement("h2", null, "Symbols:"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Symbol"), /*#__PURE__*/React.createElement("th", null, "Visual Meaning")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("em", {
       className: "darkgreen"
     }, "F")), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
       className: "bubble"

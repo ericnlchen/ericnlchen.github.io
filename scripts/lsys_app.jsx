@@ -175,13 +175,13 @@ class DisplaySegment extends React.Component {
 
     Sketch = (p) => {
         p.setup = () => {
-            const CANVAS_WIDTH = 600;
-            const CANVAS_HEIGHT = 600;
+            const CANVAS_WIDTH = p.windowWidth/3;
+            const CANVAS_HEIGHT = p.windowWidth/3;
             const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
             // Ensure that the canvas display size and coordinate system size match
-            const p5canvas = document.querySelector('.p5Canvas');
-            p5canvas.setAttribute('width', CANVAS_WIDTH);
-            p5canvas.setAttribute('height', CANVAS_HEIGHT);
+            const p5Canvas = document.querySelector('.p5Canvas');
+            p5Canvas.setAttribute('width', CANVAS_WIDTH);
+            p5Canvas.setAttribute('height', CANVAS_HEIGHT);
             p.noLoop();
         };
 
@@ -308,6 +308,10 @@ class DisplaySegment extends React.Component {
         };
     }
 
+    handleResize(newWidth, newHeight) {
+        this.myP5.resizeCanvas(newWidth, newHeight);
+    }
+
     componentDidMount() {
         this.myP5 = new p5(this.Sketch, this.myRef.current);
     }
@@ -366,7 +370,7 @@ class Rule extends React.Component {
                 <input
                     type="text"
                     maxLength="1"
-                    className="short"
+                    className="width-20"
                     name="rule-input"
                     value={this.props.inputVal}
                     onChange={(e) => this.handleRulesChange(e, this.props.id, true)}
@@ -374,13 +378,13 @@ class Rule extends React.Component {
                 &rarr;
                 <input
                     type="text"
-                    className="medium"
+                    className="width-90"
                     name="rule-output"
                     value={this.props.outputVal}
                     onChange={(e) => this.handleRulesChange(e, this.props.id, false)}
                 />
                 <button
-                    className="minus round"
+                    className="red round"
                     onClick={() => this.handleRemoveRule(this.props.id)}
                 >
                     &minus;
@@ -428,7 +432,7 @@ class RulesPanel extends React.Component {
                 <RulesList rules={this.props.rules} onRulesChange={this.props.onRulesChange} onRemoveRule={this.props.onRemoveRule}/>
                 <div className="center">
                     <button
-                        className="round plus"
+                        className="green round"
                         onClick={this.props.onAddNewRule}
                     >+</button>
                 </div>
@@ -454,7 +458,7 @@ class AxiomPanel extends React.Component {
                 <input
                     type="text"
                     maxLength="1"
-                    className="short"
+                    className="width-20"
                     name="axiom"
                     value={this.props.value}
                     onChange={this.handleAxiomChange}
@@ -481,7 +485,7 @@ class IterationsPanel extends React.Component {
                 <h2>Iterations:</h2>
                 <input
                     type="number"
-                    className="number"
+                    className="width-50"
                     name="iters-input"
                     min="0"
                     value={this.props.value}
@@ -506,7 +510,7 @@ class AlphabetPanel extends React.Component {
         return (
             <div className="alphabet-panel">
                 <h2>Symbols:</h2>
-                <table className="alphabet">
+                <table>
                     <tbody>
                         <tr>
                             <th>Symbol</th>
