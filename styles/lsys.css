@@ -152,7 +152,7 @@ div.article-header > h2 {
 
 @media (max-width: 1000px) {
     div.article-header > h1 {
-        font-size: 7.5vw;
+        font-size: 7vw;
         margin: 1% 0;
     }
     div.article-header > h2 {
