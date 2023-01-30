@@ -4,23 +4,6 @@ html {
     background-color: antiquewhite;
 }
 
-/*
-body {
-
-}
-
-h1,
-h2,
-h3,
-h4 {
-
-}
-
-ul {
-
-}
-*/
-
 /* || UTILITIES */
 
 .no-bullet{
@@ -29,13 +12,43 @@ ul {
 
 .typed {
     font-family: 'Courier', 'Courier New', serif;
-    font-size: 3vh;
+    font-size: 1.7vw;
+}
+
+.typed-cursor {
+    font-size: 1.7vw;
+}
+
+@media (max-width: 1000px) {
+    .typed {
+        font-size: 4.5vw;
+    }
+    .typed-cursor {
+        font-size: 4.5vw;
+    }
 }
 
 #about-me {
     margin: 5%;
     margin-top: 12%;
     width: 70%;
+}
+
+
+@media (min-width: 701px) and (max-width: 1000px) {
+    #about-me {
+        margin: 3%;
+        margin-top: 20%;
+        width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+    #about-me {
+        margin: 3%;
+        margin-top: 40%;
+        width: 60%;
+    }
 }
 
 #class-human-code {
@@ -45,8 +58,13 @@ ul {
     margin: 5%;
 }
 
-.typed-cursor {
-    font-size: 3vh;
+@media (max-width: 1000px) {
+    #class-human-code {
+        position: absolute;
+        top: 20vh;
+        left: 0;
+        margin: 5%;
+    }
 }
 
 .keyword {
@@ -63,7 +81,7 @@ ul {
     position: absolute;
     right: 0;
     top: 0;
-    margin: 5%;
+    margin: 2%;
 }
 
 #nav-bar a {
@@ -72,6 +90,12 @@ ul {
     text-align: center;
     text-decoration: none;
     font-size: 17px;
+}
+
+@media (max-width: 1000px) {
+    #nav-bar a {
+        font-size: 3.8vw;
+    }
 }
 
 /* || HOMEPAGE */
@@ -87,7 +111,6 @@ ul {
 
 #main-title {
     background-color:#ffff73;
-    /* font-size: 110px; */
     font-size: 7vw;
     font-weight: 300;
     margin: 0;
@@ -99,4 +122,13 @@ ul {
     font-size: 2vw;
     font-weight: 300;
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    #main-title {
+        font-size: 10vw;
+    }
+    #sub-title {
+        font-size: 4vw;
+    }
 }
