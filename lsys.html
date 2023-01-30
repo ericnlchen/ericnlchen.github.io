@@ -142,7 +142,16 @@
           </ul>
         </div>
         <p>
-          The long string of symbols that we created through this process doesn't appear particularly interesting or to the eye&mdash;it just looks like a mess. But there is a way to give this messy string a visual interpretation which reveals its complex structure.
+          Here is an animation to help illustrate what's going on here:
+        </p>
+        <div class="center">
+          <video width="500" autoplay loop muted>
+            <source src="videos/dragon-text-growth.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p>
+          The long string of symbols that we create through this process doesn't appear particularly appealing to the eye&mdash;it just looks like a mess. But there is a way to give this messy string a visual interpretation which reveals its complex structure.
         </p>
         <p>
           Let's imagine that our string is a set of instructions for a robot illustrator. We will associate each symbol in the string with an instruction to our robot. For example, let's say that <em class="darkgreen">F</em> and <em class="darkgreen">G</em> both mean <span class="bubble">draw forward</span>. And let's say that <em class="darkgreen">+</em> means <span class="bubble">turn left 90&deg;</span>, while <em class="darkgreen">&minus;</em> means <span class="bubble">turn right 90&deg;</span>. Now to transform our string into a picture, we give it to the robot who reads it symbol by symbol, following the instructions one at a time. When we ask the robot illustrator to draw using the string we generated above at iteration 10, this picture emerges:
