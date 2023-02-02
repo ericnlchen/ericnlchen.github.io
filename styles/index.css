@@ -28,6 +28,15 @@ html {
     }
 }
 
+@media (max-height: 450px) {
+    .typed {
+        font-size: 2vw;
+    }
+    .typed-cursor {
+        font-size: 2vw;
+    }
+}
+
 #about-me {
     margin: 5%;
     margin-top: 12%;
@@ -51,6 +60,12 @@ html {
     }
 }
 
+@media (max-height: 450px) {
+    #about-me {
+        margin-top: 15%;
+    }
+}
+
 #class-human-code {
     position: absolute;
     top: 0;
@@ -62,6 +77,15 @@ html {
     #class-human-code {
         position: absolute;
         top: 20vh;
+        left: 0;
+        margin: 5%;
+    }
+}
+
+@media (max-height: 450px) {
+    #class-human-code {
+        position: absolute;
+        top: 0;
         left: 0;
         margin: 5%;
     }
@@ -98,6 +122,12 @@ html {
     }
 }
 
+@media (max-height: 450px) {
+    #nav-bar a {
+        font-size: 2vw;
+    }
+}
+
 /* || HOMEPAGE */
 
 #titles {
@@ -130,5 +160,14 @@ html {
     }
     #sub-title {
         font-size: 4vw;
+    }
+}
+
+@media (max-height: 450px) {
+    #main-title {
+        font-size: 6vw;
+    }
+    #sub-title {
+        font-size: 2.7vw;
     }
 }

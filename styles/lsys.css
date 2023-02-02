@@ -1,9 +1,12 @@
 /* || GENERAL STYLES */
+html {
+    font-size: 16px;
+}
+
 body {
     color: rgb(20, 20, 20);
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 16px;
-    line-height: 26px;
 }
 
 article {
@@ -17,35 +20,29 @@ article {
 }
 
 section {
-    margin-bottom: 4%;
+    margin-bottom: 6%;
+}
+
+p {
+    line-height: 26px;
 }
 
 h1 {
-    font-size: 3.5vw;
+    font-size: 3rem;
     font-weight: 300;
 }
 
 h2 {
-    font-size: 2vw;
+    font-size: 2rem;
     font-weight: 300;
 }
 
 h3 {
-    font-size: 1vw;
+    font-size: 1.5rem;
 }
 
 h4 {
-    font-size: 0.5vw;
-}
-
-@media (max-width: 1000px) {
-    h1 {
-        font-size: 8vw;
-    }
-    
-    h2 {
-        font-size: 7vw;
-    }
+    font-size: 1.2rem;
 }
 
 input {
@@ -88,22 +85,22 @@ header {
 }
 
 header h1 {
-    font-size: 7vw;
-    line-height: 2vw;
+    font-size: 6.5rem;
+    line-height: 2rem;
     font-weight: 310;
     margin: 1vw 0;
 }
 
 header h2 {
-    font-size: 2vw;
-    line-height: 4vw;
+    font-size: 2rem;
+    line-height: 4rem;
     font-weight: 310;
     margin: 0;
 }
 
 @media (max-width: 1000px) {
     header h1 {
-        font-size: 10vw;
+        font-size: 9vw;
         line-height: 5vw;
         font-weight: 310;
     }
@@ -137,26 +134,29 @@ nav a {
 @media (max-width: 1000px) {
     nav {
         font-size: 3vw;
+        margin: 0 4% 4% 4%;
     }
 }
 
 /* || ARTICLE HEADER */
 div.article-header > h1 {
     margin: 2% 0;
+    line-height: 26px;
 }
 
 div.article-header > h2 {
     font-size: 1.5vw;
     margin: 2% 0;
+    line-height: 26px;
 }
 
 @media (max-width: 1000px) {
     div.article-header > h1 {
-        font-size: 7vw;
-        margin: 1% 0;
+        font-size: 6vw;
+        line-height: 3vw;
     }
     div.article-header > h2 {
-        font-size: 4vw;
+        font-size: 3.5vw;
         margin-bottom: 3%;
     }
 }
