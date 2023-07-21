@@ -1,7 +1,6 @@
 'use strict';
 
 // React Components:
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 class LSystemApp extends React.Component {
   constructor(props) {
     super(props);
@@ -177,150 +176,148 @@ class LSystemApp extends React.Component {
 class DisplaySegment extends React.Component {
   constructor(props) {
     super(props);
-    _defineProperty(this, "Sketch", p => {
-      p.setup = () => {
-        const CANVAS_WIDTH = p.windowWidth / 3;
-        const CANVAS_HEIGHT = p.windowWidth / 3;
-        const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-        // Ensure that the canvas display size and coordinate system size match
-        const p5Canvas = document.querySelector('.p5Canvas');
-        p5Canvas.setAttribute('width', CANVAS_WIDTH);
-        p5Canvas.setAttribute('height', CANVAS_HEIGHT);
-        p.noLoop();
-      };
-      p.draw = () => {
-        console.log("draw");
-        p.background(255);
-        p.stroke(70, 130, 70);
-        p.strokeWeight(1);
-        p.strokeJoin(p.ROUND);
-        p.smooth();
-        let Lstring = p.Lsystem(this.props.axiom, this.props.rules, this.props.iterations);
-        p.showLsystem(Lstring);
-      };
-      p.Lsystem = (axiom, rules, iters) => {
-        let i = 0;
-        let underMaxStringLength = true;
-        while (i < iters) {
-          let old_axiom = axiom;
-          axiom = p.grow(axiom, rules);
-          // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
-          if (axiom.length > this.props.MAX_STRING_LENGTH) {
-            console.log(`Max string length exceeded at ${i} iterations!`);
-            this.props.setMaxStringLengthExceeded(true);
-            underMaxStringLength = false;
-            axiom = old_axiom; // revert to previous axiom
-            break;
-          }
-          i++;
-        }
-        if (underMaxStringLength) {
-          this.props.setMaxStringLengthExceeded(false);
-        }
-        return axiom;
-      };
-      p.grow = (axiom, rules) => {
-        let new_axiom = "";
-        for (let j = 0; j < axiom.length; j++) {
-          const index = rules.findIndex(x => x.inputVal === axiom[j]);
-          if (index === -1) {
-            new_axiom += axiom[j];
-          } else {
-            new_axiom += rules[index].outputVal;
-          }
-        }
-        return new_axiom;
-      };
-      p.showLsystem = Lstring => {
-        // This function draws the Lsystem, rescales and recenters coordinates, and then redraws
-        const [min_x, max_x, min_y, max_y] = p.drawLsystem(Lstring, 1, 0, 0); // draw once
-        p.clear();
-        const canvasWidth = p.width;
-        const canvasHeight = p.height;
-        let drawingWidth = Math.abs(max_x - min_x);
-        let drawingHeight = Math.abs(max_y - min_y);
-        const x_scale = canvasWidth / drawingWidth;
-        const y_scale = canvasHeight / drawingHeight;
-        const scale = Math.min(x_scale, y_scale);
-        const x_offset = Math.abs(min_x);
-        const y_offset = Math.abs(min_y);
-        p.drawLsystem(Lstring, scale, x_offset, y_offset); // draw again
-      };
-
-      p.drawLsystem = (Lstring, scale, x_offset, y_offset) => {
-        const canvas = document.querySelector('.p5Canvas');
-        const ctx = canvas.getContext('2d');
-        let matrix = new Matrix(ctx);
-        matrix.scale(scale, scale);
-        matrix.translate(x_offset, y_offset);
-        let stack = [];
-        let min_x = matrix.e,
-          max_x = matrix.e,
-          min_y = matrix.f,
-          max_y = matrix.f;
-        let l = 5;
-        for (let i = 0; i < Lstring.length; i++) {
-          if (Lstring[i] == "F" || Lstring[i] == "G") {
-            // Draw forward
-            p.line(0, 0, 0, -l);
-            matrix.translate(0, -l);
-          } else if (Lstring[i] == "f" || Lstring[i] == "g") {
-            // Move forward
-            matrix.translate(0, -l);
-          } else if (Lstring[i] == "L" || Lstring[i] == "+") {
-            // Left 90 deg
-            matrix.rotate(-p.radians(90));
-          } else if (Lstring[i] == "R" || Lstring[i] == "-" || Lstring[i] == '\u2212') {
-            // Right 90 deg (Note there are multiple - characters)
-            matrix.rotate(p.radians(90));
-          } else if (Lstring[i] == "l") {
-            // Left 25 deg
-            matrix.rotate(-p.radians(25));
-          } else if (Lstring[i] == "r") {
-            // Right 25 deg
-            matrix.rotate(p.radians(25));
-          } else if (Lstring[i] == "[") {
-            // push
-            stack.push({
-              a: matrix.a,
-              b: matrix.b,
-              c: matrix.c,
-              d: matrix.d,
-              e: matrix.e,
-              f: matrix.f
-            });
-          } else if (Lstring[i] == "]") {
-            // pop
-            if (stack.length !== 0) {
-              const transf = stack.pop();
-              matrix.a = transf.a;
-              matrix.b = transf.b;
-              matrix.c = transf.c;
-              matrix.d = transf.d;
-              matrix.e = transf.e;
-              matrix.f = transf.f;
-              matrix._setCtx();
-            }
-          }
-          // Update x, y bounds:
-          if (matrix.e < min_x) {
-            min_x = matrix.e;
-          }
-          if (matrix.e > max_x) {
-            max_x = matrix.e;
-          }
-          if (matrix.f < min_y) {
-            min_y = matrix.f;
-          }
-          if (matrix.f > max_y) {
-            max_y = matrix.f;
-          }
-        }
-        return [min_x, max_x, min_y, max_y];
-      };
-    });
     this.myRef = React.createRef();
   }
+  Sketch = p => {
+    p.setup = () => {
+      const CANVAS_WIDTH = p.windowWidth / 3;
+      const CANVAS_HEIGHT = p.windowWidth / 3;
+      const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+      // Ensure that the canvas display size and coordinate system size match
+      const p5Canvas = document.querySelector('.p5Canvas');
+      p5Canvas.setAttribute('width', CANVAS_WIDTH);
+      p5Canvas.setAttribute('height', CANVAS_HEIGHT);
+      p.noLoop();
+    };
+    p.draw = () => {
+      console.log("draw");
+      p.background(255);
+      p.stroke(70, 130, 70);
+      p.strokeWeight(1);
+      let Lstring = p.Lsystem(this.props.axiom, this.props.rules, this.props.iterations);
+      p.showLsystem(Lstring);
+    };
+    p.Lsystem = (axiom, rules, iters) => {
+      let i = 0;
+      let underMaxStringLength = true;
+      while (i < iters) {
+        let old_axiom = axiom;
+        axiom = p.grow(axiom, rules);
+        // If we exceed the maximum length, we want to discard that iteration entirely and use only the previous axiom
+        if (axiom.length > this.props.MAX_STRING_LENGTH) {
+          console.log(`Max string length exceeded at ${i} iterations!`);
+          this.props.setMaxStringLengthExceeded(true);
+          underMaxStringLength = false;
+          axiom = old_axiom; // revert to previous axiom
+          break;
+        }
+        i++;
+      }
+      if (underMaxStringLength) {
+        this.props.setMaxStringLengthExceeded(false);
+      }
+      return axiom;
+    };
+    p.grow = (axiom, rules) => {
+      let new_axiom = "";
+      for (let j = 0; j < axiom.length; j++) {
+        const index = rules.findIndex(x => x.inputVal === axiom[j]);
+        if (index === -1) {
+          new_axiom += axiom[j];
+        } else {
+          new_axiom += rules[index].outputVal;
+        }
+      }
+      return new_axiom;
+    };
+    p.showLsystem = Lstring => {
+      // This function draws the Lsystem, rescales and recenters coordinates, and then redraws
+      const [min_x, max_x, min_y, max_y] = p.drawLsystem(Lstring, 1, 0, 0); // draw once
+      p.clear();
+      const canvasWidth = p.width;
+      const canvasHeight = p.height;
+      let drawingWidth = Math.abs(max_x - min_x);
+      let drawingHeight = Math.abs(max_y - min_y);
+      const x_scale = canvasWidth / drawingWidth;
+      const y_scale = canvasHeight / drawingHeight;
+      const scale = Math.min(x_scale, y_scale);
+      const x_offset = Math.abs(min_x);
+      const y_offset = Math.abs(min_y);
+      p.drawLsystem(Lstring, scale, x_offset, y_offset); // draw again
+    };
+
+    p.drawLsystem = (Lstring, scale, x_offset, y_offset) => {
+      const canvas = document.querySelector('.p5Canvas');
+      const ctx = canvas.getContext('2d');
+      let matrix = new Matrix(ctx);
+      matrix.scale(scale, scale);
+      matrix.translate(x_offset, y_offset);
+      let stack = [];
+      let min_x = matrix.e,
+        max_x = matrix.e,
+        min_y = matrix.f,
+        max_y = matrix.f;
+      const l = 5;
+      for (let i = 0; i < Lstring.length; i++) {
+        if (Lstring[i] == "F" || Lstring[i] == "G") {
+          // Draw forward
+          p.line(0, 0, 0, -l);
+          matrix.translate(0, -l);
+        } else if (Lstring[i] == "f" || Lstring[i] == "g") {
+          // Move forward
+          matrix.translate(0, -l);
+        } else if (Lstring[i] == "L" || Lstring[i] == "+") {
+          // Left 90 deg
+          matrix.rotate(-p.radians(90));
+        } else if (Lstring[i] == "R" || Lstring[i] == "-" || Lstring[i] == '\u2212') {
+          // Right 90 deg (Note there are multiple - characters)
+          matrix.rotate(p.radians(90));
+        } else if (Lstring[i] == "l") {
+          // Left 25 deg
+          matrix.rotate(-p.radians(25));
+        } else if (Lstring[i] == "r") {
+          // Right 25 deg
+          matrix.rotate(p.radians(25));
+        } else if (Lstring[i] == "[") {
+          // push
+          stack.push({
+            a: matrix.a,
+            b: matrix.b,
+            c: matrix.c,
+            d: matrix.d,
+            e: matrix.e,
+            f: matrix.f
+          });
+        } else if (Lstring[i] == "]") {
+          // pop
+          if (stack.length !== 0) {
+            const transf = stack.pop();
+            matrix.a = transf.a;
+            matrix.b = transf.b;
+            matrix.c = transf.c;
+            matrix.d = transf.d;
+            matrix.e = transf.e;
+            matrix.f = transf.f;
+            matrix._setCtx();
+          }
+        }
+        // Update x, y bounds:
+        if (matrix.e < min_x) {
+          min_x = matrix.e;
+        }
+        if (matrix.e > max_x) {
+          max_x = matrix.e;
+        }
+        if (matrix.f < min_y) {
+          min_y = matrix.f;
+        }
+        if (matrix.f > max_y) {
+          max_y = matrix.f;
+        }
+      }
+      return [min_x, max_x, min_y, max_y];
+    };
+  };
   handleResize(newWidth, newHeight) {
     this.myP5.resizeCanvas(newWidth, newHeight);
   }

@@ -190,8 +190,6 @@ class DisplaySegment extends React.Component {
             p.background(255);
             p.stroke(70,130,70);
             p.strokeWeight(1)
-            p.strokeJoin(p.ROUND);
-            p.smooth();
             let Lstring = p.Lsystem(this.props.axiom, this.props.rules, this.props.iterations);
             p.showLsystem(Lstring);
         };
@@ -261,7 +259,7 @@ class DisplaySegment extends React.Component {
                 max_x = matrix.e,
                 min_y = matrix.f,
                 max_y = matrix.f;
-            let l = 5;
+            const l = 5;
             for (let i = 0; i < Lstring.length; i++) {
                 if (Lstring[i] == "F" || Lstring[i] == "G") { // Draw forward
                     p.line(0, 0, 0, -l);
