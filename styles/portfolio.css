@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-RegularIt.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    overflow-y: auto;
+}
+
+.slide-container {
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    width: 1920px; /* Fixed width 1920px*/
+    height: 1080px; /* Fixed height 1080px*/
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 20px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+}
+
+div.project-title-box {
+    position: absolute;
+    top: 720px;
+    left: 100px;
+    z-index: 10;
+}
+
+#l-ink-splash-box {
+    position: absolute;
+    top: 48px;
+    left: 460px;
+}
+
+#pull-splash-box {
+    position: absolute;
+    top: 10px;
+    left: 400px;
+}
+
+#video-analogies-splash-box {
+    opacity: 0.5;
+    z-index: 5;
+}
+
+#hyacinth-labyrinth-splash-box {
+    opacity: 0.4;
+    z-index: 5;
+}
+
+section#pull {
+    background-color: black;
+}
+
+.pull {
+    color: white;
+}
+
+.project-title-overbar.pull {
+    background-color: white;
+}
+
+div.project-title-overbar {
+    background-color: black;
+    height: 8px;
+    width: 1700px;
+    margin-bottom: 10px;
+}
+
+h1.project-title {
+    text-transform: uppercase;
+    font-size: 98px;
+    font-weight: 700;
+    display: inline;
+}
+
+h2.project-subtitle {
+    font-size: 36px;
+    display: inline;
+    font-style: italic;
+}
+
+h3.project-org, h3.project-dates, h3.project-blurb {
+    font-size: 30px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+h3.project-blurb {
+    margin-top: 28px;
+}
