@@ -41,8 +41,10 @@ body {
 
 .slide-container {
     overflow-y: auto;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+    width: 1920px;
 }
 
 section {
