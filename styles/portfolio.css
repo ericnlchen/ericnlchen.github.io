@@ -85,7 +85,7 @@ div.project-title-box {
     z-index: 5;
 }
 
-section#pull {
+section.pull {
     background-color: black;
 }
 
@@ -99,7 +99,7 @@ section#pull {
 
 div.project-title-overbar {
     background-color: black;
-    height: 14px;
+    height: 18px;
     width: 1700px;
     margin-bottom: 10px;
 }
@@ -125,4 +125,55 @@ h3.project-org, h3.project-dates, h3.project-blurb {
 
 h3.project-blurb {
     margin-top: 28px;
+}
+
+div.slide-title-top-left-box {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+}
+
+div.slide-title-top-left {
+    text-transform: uppercase;
+    font-size: 80px;
+    font-weight: 700;
+    display: inline;
+}
+
+div.slide-subtitle-top-left {
+    display: inline;
+    font-size: 36px;
+    font-style: italic;
+}
+
+div.vert-bar-left {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    height: 980px;
+    width: 14px;
+    background-color: black;
+}
+
+div.horiz-bar-bottom {
+    position: absolute;
+    top: 1030px;
+    left: 40px;
+    height: 14px;
+    width: 1840px;
+    background-color: black;
+}
+
+div.textbox {
+    font-size: 26px;
+    color: grey;
+    line-height: 35px;
+}
+
+.textbox.center {
+    text-align: center;
+}
+
+.textbox > p {
+    margin: 0;
 }
