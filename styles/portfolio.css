@@ -87,13 +87,10 @@ div.project-title-box {
 
 section.pull {
     background-color: black;
-}
-
-.pull {
     color: white;
 }
 
-.project-title-overbar.pull {
+section.pull .project-title-overbar {
     background-color: white;
 }
 
