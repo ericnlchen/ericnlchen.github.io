@@ -96,6 +96,14 @@ section.pull .project-title-overbar {
     background-color: white;
 }
 
+section.pull .textbox {
+    color: white;
+}
+
+section.pull .textbox a {
+    color: #94abf1;
+}
+
 div.project-title-overbar {
     background-color: black;
     height: 18px;

@@ -14,6 +14,9 @@
 
 <body>
     <div class="slide-container">
+        <section class="title-slide">
+            <div>ERIC CHEN</div>
+        </section>
         <section class="l-ink proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
@@ -81,11 +84,6 @@
                     <p>
                         With live visual feedback, users can make incremental adjustments toward their desired ink style.
                     </p>
-                    <br>
-                    <br>
-                    <p>
-                        Other keywords for the curious: <a href="https://dl.acm.org/doi/10.5555/920650">parametric L-systems</a>
-                    </p>
                 </div>
                 <div class="slide-subtitle-top-left">visual ink-editor with live preview</div>
                 <div style="position: absolute; top: 90px; left: 400px;">
@@ -100,7 +98,43 @@
 
         <section class="l-ink">
             <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Outcomes</div>
+                <div class="slide-title-top-left">Outcomes/Future</div>
+                <!-- <div class="textbox" style="position: absolute; top: 180px; left: 900px; z-index: 10; width: 540px; font-size: 34px;">
+                    mini gallery
+                </div> -->
+                <div class="textbox" style="position: absolute; top: 130px; left: 40px; z-index: 10; width: 1400px;">
+                    <p>
+                        L.ink places the artist and their procedural ink in a continuous feedback loop.
+                    </p>
+                </div>
+                <div class="textbox" style="position: absolute; top: 260px; left: 240px; z-index: 10; width: 400px; text-align: center;">
+                    <p>
+                        Unpredictable ink growth affects the artist's hand movement
+                    </p>
+                </div>
+                <div class="textbox" style="position: absolute; top: 260px; left: 1200px; z-index: 10; width: 400px; text-align: center;">
+                    <p>
+                        Artist's hand movement determines ink growth
+                    </p>
+                </div>
+                <div class="textbox" style="position: absolute; top: 490px; left: 40px; z-index: 10; width: 1700px;">
+                    <p>
+                        Through L.ink, I'm studying how digital illustrators' experience is impacted by the dynamics of this feedback loop.
+                    </p>
+                    <br>
+                    <p>
+                        I designed a formal user-study to run with Rhode Island School of Design students next February.
+                    </p>
+                    <br>
+                    <p>
+                        I'm preparing an extended abstract in progress for CHI 2025 Late-Breaking Work and a first-author paper for UIST 2025
+                    </p>
+                </div>
+                <div class="textbox" style="position: absolute; top: 880px; left: 600px; z-index: 10; width: 540px; font-size: 34px;">
+                    <p>
+                        Try out the full version of L.ink <a href="https://filtered.ink/#/l-ink">here</a>!
+                    </p>
+                </div>
                 <div class="slide-subtitle-top-left"></div>
             </div>
             <div class="vert-bar-left"></div>
@@ -130,24 +164,85 @@
             </div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
-            <div class="textbox" style="position: absolute; top: 190px; left: 140px;">
-                I joined the Brown HCI Lab with an idea inspired by my interest in the generative grammars known as <a href="https://en.wikipedia.org/wiki/L-system">L-systems</a>...
-            </div>
-            <div class="textbox center" style="position: absolute; top: 240px; left: 280px;">
-                <img src="portfolio-assets/lsys.gif" style="width: 450px;"/>
-                <p style="width: 600px;">
-                    In an L-system, the user has no control beyond specifying the initial state. As a result, they're detached from the growth process
+            <div class="textbox" style="position: absolute; top: 190px; left: 140px; width: 1700px; z-index: 10;">
+                <p>
+                    This project started with the observation that <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrices</a> provide a natural connection from images to graphs. Can the data of an image be encoded within the tensions of a network?
                 </p>
             </div>
-            <div class="textbox center" style="position: absolute; top: 240px; left: 1100px;">
-                <img src="portfolio-assets/l-ink.gif" style="width: 450px;"/>
-                <p style="width: 600px;">
-                    I wanted to make the entire growth process an interactive experience by making L-systems into a procedural illustration tool
+            <div style="position: absolute; top: 190px; left: 650px;">
+                <img src="portfolio-assets/pull-idea.jpg" style="width: 500px;"/>
+            </div>
+            <div class="textbox" style="position: absolute; top: 580px; left: 140px; width: 1700px; z-index: 10;">
+                <p>
+                    If so, could we create an interactive system where <em>pulling</em> on the network of nodes deforms and contorts the image?
                 </p>
             </div>
-            <div class="textbox" style="position: absolute; top: 900px; left: 680px;">
-                <p><strong>What new stories can be told with living, growing ink?</strong></p>
+            <div style="position: absolute; top: 570px; left: 650px;">
+                <img src="portfolio-assets/pull-animation.gif" style="width: 500px;"/>
             </div>
+            <div class="textbox" style="position: absolute; top: 980px; left: 140px;">
+                <p>I imagined this as an almost grotesque experience of forcefully pulling apart the meaning of something.</p>
+            </div>
+        </section>
+        <section class="pull">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+                <div class="slide-subtitle-top-left">pulling on latent graph</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 230px; left: 100px; width: 1700px;">
+                <p>
+                    After some experimentation I found that encoding raw pixel values didn't create the effect I had in mind&mdash;distortions were local and rectilinear.
+                </p>
+                <br>
+                <p>
+                    I wondered if embedding in the latent space of a neural network would create a more interesting "semantic" distortion, so I trained an autoencoder on the (tiny) ImageNet dataset and wrote a Python backend to live decode the link lengths of a D3.js graph simulation.
+                </p>
+                <br>
+                <p>
+                    I also decided to try using the webcam feed as input rather than a still image, to create a mirror-like experience. Here are the results using two different autoencoders that I trained:
+                </p>
+                <div class="textbox" style="position: absolute; top: 300px; left: 0px;">
+                    <video width="800" autoplay loop muted>
+                        <source src="portfolio-assets/pull-bw-demo-trim.mov" />
+                    </video>
+                    <p style="text-align: center;">
+                        <em>SSIM Loss</em>
+                    </p>
+                </div>
+                <div class="textbox" style="position: absolute; top: 300px; left: 840px;">
+                    <video width="800" autoplay loop muted>
+                        <source src="portfolio-assets/pull-color-demo-trim.mov" />
+                    </video>
+                    <p style="text-align: center;">
+                        <em>MSE Loss</em>
+                    </p>
+                </div>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+        <section class="pull">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+                <div class="slide-subtitle-top-left">faces</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; left: 100px; width: 700px;">
+                <p>
+                    I still wanted to create a version where pulling on nodes distorted the image in a more meaningful way. Learning a latent space over a hugely diverse range of natural images was proving tough, so I decide to focus on a dataset containing only faces (CelebA).
+                </p>
+                <br>
+                <p>
+                    I experimented with training my prior autoencoder but ended up finding more success with a pre-trained variational autoencoder, which was able to learn a smoother latent space.
+                </p>
+                <br>
+                <p>
+                    For this version, I wanted to visualize the latent variables as a set of audio bars instead of encoding them in graph. Tuning the green bars up or down scales latent variables, allowing the user to morph their face freely.
+                </p>
+                <br>
+
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
         </section>
 
         <section class="visual-code-studio proj-title">
