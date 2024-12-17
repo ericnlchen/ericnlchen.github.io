@@ -15,7 +15,9 @@
 <body>
     <div class="slide-container">
         <section class="title-slide">
-            <div>ERIC CHEN</div>
+            <div class="main-title">Eric Chen</div>
+            <div class="main-subtitle">HCI &middot; Creativity Support</div>
+            <div class="main-subsubtitle">Portfoio of Work</div>
         </section>
         <section class="l-ink proj-title">
             <div class="project-title-box">
@@ -70,7 +72,7 @@
         <section class="l-ink">
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
-                <div class="textbox" style="position: absolute; top: 180px; left: 40px; z-index: 10; width: 440px;">
+                <div class="textbox" style="position: absolute; top: 180px; left: 40px; z-index: 10; width: 440px; text-align: right;">
                     <p>
                         L-systems are notoriously difficult to author due to their unpredictable nature. There's a theoretical reason for this--it's an <a href="https://en.wikipedia.org/wiki/Smallest_grammar_problem">NP-complete problem</a>. 
                     </p>
@@ -172,7 +174,7 @@
             <div style="position: absolute; top: 190px; left: 650px;">
                 <img src="portfolio-assets/pull-idea.jpg" style="width: 500px;"/>
             </div>
-            <div class="textbox" style="position: absolute; top: 580px; left: 140px; width: 1700px; z-index: 10;">
+            <div class="textbox" style="position: absolute; top: 580px; left: 140px; width: 1700px; z-index: 10; text-align: center;">
                 <p>
                     If so, could we create an interactive system where <em>pulling</em> on the network of nodes deforms and contorts the image?
                 </p>
@@ -180,7 +182,7 @@
             <div style="position: absolute; top: 570px; left: 650px;">
                 <img src="portfolio-assets/pull-animation.gif" style="width: 500px;"/>
             </div>
-            <div class="textbox" style="position: absolute; top: 980px; left: 140px;">
+            <div class="textbox" style="position: absolute; top: 960px; left: 140px; width: 1700px; text-align: center;">
                 <p>I imagined this as an almost grotesque experience of forcefully pulling apart the meaning of something.</p>
             </div>
         </section>
@@ -255,54 +257,130 @@
                 <h3 class="project-blurb">Re-interpreting source code as drawing instructions</h3>
             </div>
             <div class="project-splash-box">
-                <div>PLACEHOLDER</div>
             </div>
         </section>
 
-    </section>
-    <section class="visual-code-studio">
-        <div class="slide-title-top-left-box">
-            <div class="slide-title-top-left">Idea</div>
-        </div>
-        <div class="textbox" style="position: absolute; top: 250px; left: 100px; width: 700px;">
-            <p>
-                A variety of existing systems empower us to transform code into drawings. P5.js, Processing, and openFrameworks are intended to enable visual creation. But rich complexity exists within code, regardless of intention. What if we could build a system to map arbitrary works of code to visual representations? My goal was to reinterpret utility as wonder.
-            </p>
-            <br>
-            <p>
-                I experimented with training my prior autoencoder but ended up finding more success with a pre-trained variational autoencoder, which was able to learn a smoother latent space
-            </p>
-            <br>
-            <p>
-                For this version, I wanted to visualize the latent variables as a set of audio bars instead of encoding them in graph. Tuning the green bars up or down scales latent variables, allowing the user to morph their face freely.
-            </p>
-            <br>
+        <section class="visual-code-studio">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Idea</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; left: 100px; width: 700px;">
+                <p>
+                    A variety of existing systems empower us to transform code into drawings. P5.js, Processing, and openFrameworks are intended to enable visual creation. <strong>But visual complexity is hidden within code, regardless of intention</strong>. What if we could build a system to map arbitrary source code to visual representations?
+                </p>
+                <br>
+                <p>
+                    My goal was to reinterpret utility as wonder.
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
 
-        </div>
-        <div class="vert-bar-left"></div>
-        <div class="horiz-bar-bottom"></div>
-    </section>
+        <section class="visual-code-studio">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    I conducted a variety of experiments around the theme of misinterpreting source code as drawing instructions.
+                </p>
+                <br>
+                <p>
+                    My first idea was to create a kind of concrete poetry that procedurally generates itself&mdash;in other words, the source code text is used both as procedural instructions for where to place content AND it also is the content.
+                </p>
+                <br>
+                <p>
+                    I decided to pivot because I wanted to establish a direct connection between a single instruction and source code and a single drawing instruction, like: draw a stroke from A to B.
+                </p>
+                <br>
+                <p>
+                    To this end, I wrote a program to extract Python bytecode from any .py file, allowing me to map each bytecode instruction to a visual operation. I settled on using pixel-wise operations&mdash;LOAD_CONST moves vertically and places a pixel, CALL_FUNCTION changes the current drawing color, etc. The parameters of the bytecode instructions become parameters governing how much to change color or how far to move.
+                </p>
+
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <section class="visual-code-studio">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Outcomes</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
 
         <section class="splatbrush proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
                 <h1 class="project-title">SplatBrush</h1>
                 <h2 class="project-subtitle">VR painting with gaussians learned from the environment</h2>
-                <h3 class="project-org">CV for Graphics and Interaction</h3>
+                <h3 class="project-org">CV for Graphics and Interaction | Team: Eric Chen, Josh Yang, Serena Pulopot, Zihan Zhu</h3>
                 <h3 class="project-dates">11.2024&mdash;12.2024</h3>
                 <h3 class="project-blurb">Enhancing the materiality of VR drawing applications</h3>
             </div>
             <div class="project-splash-box">
-                <div>PLACEHOLDER</div>
             </div>
         </section>
+
+        <section class="splatbrush">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Idea</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    In class, we surveyed recent state-of-the-art papers on 3D Gaussian Splatting. Inspired by the analogy between 2D pixels and 3D Gaussians, I proposed a project to create a 3D Gaussian VR painting tool. I saw massive room for improvement over existing VR painting tools, where strokes are awkward-looking "ribbons" and "tubes."
+                </p>
+                <br>
+                <p>
+                    My proposal was accepted by the class and my team and I got to work.
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+        <section class="splatbrush">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    From building a VR user interface, to creating a custom data-capture ring, to training a generalizable Gaussian splatting architecture, this project involved a lot of moving pieces. Here is a broad overview of our pipeline:
+                </p>
+                <br>
+                <p>
+                    
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+        <section class="splatbrush">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Outcomes</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    Check out our final demo here!
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
 
         <section class="video-analogies proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
                 <h1 class="project-title">Video Analogies</h1>
                 <h2 class="project-subtitle">patch-based style transfer</h2>
-                <h3 class="project-org">Computational Photography</h3>
+                <h3 class="project-org">Computational Photography | Team: Eric Chen, Seik Oh, Ziyan Liu</h3>
                 <h3 class="project-dates">11.2023&mdash;12.2023</h3>
                 <h3 class="project-blurb">Dynamically mapping novel aesthetics onto real-world scenes</h3>
             </div>
@@ -313,12 +391,25 @@
             </div>
         </section>
 
+        <section class="video-analogies">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Video Analogies</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    Check out our final demo here!
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
         <section class="hyacinth-labyrinth proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
                 <h1 class="project-title">Hyacinth Labyrinth</h1>
                 <h2 class="project-subtitle">procedural hedge maze game</h2>
-                <h3 class="project-org">Computer Graphics</h3>
+                <h3 class="project-org">Computer Graphics | Team: Eric Chen, Faisal Zaghloul, Zach Weacher, Dominic Chui</h3>
                 <h3 class="project-dates">11.2023&mdash;12.2023</h3>
                 <h3 class="project-blurb">Get lost in a winding maze of hedges</h3>
             </div>
@@ -329,7 +420,20 @@
             </div>
         </section>
 
-        <section class="mathemusic proj-title">
+        <section class="video-analogies">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Hyacinth Labyrinth</div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    Check out our final demo here!
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <!-- <section class="mathemusic proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
                 <h1 class="project-title">Mathemusic</h1>
@@ -339,9 +443,8 @@
                 <h3 class="project-blurb">Generating strange sounds by drawing new frequency curves</h3>
             </div>
             <div class="project-splash-box">
-                <div>PLACEHOLDER</div>
             </div>
-        </section>
+        </section> -->
 
         <section class="pen-plotting proj-title">
             <div class="project-title-box">
@@ -353,7 +456,19 @@
                 <h3 class="project-blurb">Bringing computational work back to the physical realm</h3>
             </div>
             <div class="project-splash-box">
-                <div>PLACEHOLDER</div>
+            </div>
+        </section>
+
+        <section class="pen-plotting proj-title">
+            <div class="project-title-box">
+                <div class="project-title-overbar"></div>
+                <h1 class="project-title">ActionBrush</h1>
+                <h2 class="project-subtitle">upcoming research project</h2>
+                <h3 class="project-org">Adobe Research | Advisors: Li-Yi Wei, Rubaiat Habib Kazi</h3>
+                <h3 class="project-dates">6.2025&mdash;9.2025</h3>
+                <h3 class="project-blurb">Mapping from text to dynamic vector brush styles</h3>
+            </div>
+            <div class="project-splash-box">
             </div>
         </section>
     </div>

@@ -58,6 +58,28 @@ section {
     position: relative;
 }
 
+.main-title {
+    text-transform: uppercase;
+    font-size: 180px;
+    position: absolute;
+    top: 700px;
+    left: 80px;
+}
+
+.main-subtitle {
+    font-size: 80px;
+    position: absolute;
+    top: 880px;
+    left: 120px;
+}
+
+.main-subsubtitle {
+    font-size: 50px;
+    position: absolute;
+    top: 900px;
+    left: 1400px;
+}
+
 div.project-title-box {
     position: absolute;
     top: 720px;
@@ -78,12 +100,12 @@ div.project-title-box {
 }
 
 #video-analogies-splash-box {
-    opacity: 0.5;
+    opacity: 0.4;
     z-index: 5;
 }
 
 #hyacinth-labyrinth-splash-box {
-    opacity: 0.4;
+    opacity: 0.35;
     z-index: 5;
 }
 
@@ -103,6 +125,33 @@ section.pull .textbox {
 section.pull .textbox a {
     color: #94abf1;
 }
+
+section.pull .vert-bar-left {
+    background-color: white;
+
+}
+
+section.pull .horiz-bar-bottom {
+    background-color: white;
+    z-index: 10;
+}
+
+/* section.l-ink {
+    color: rgb(1, 87, 1);
+}
+
+section.l-ink .project-title-overbar {
+    background-color: rgb(1, 87, 1);
+}
+
+section.l-ink .vert-bar-left {
+    background-color: rgb(1, 87, 1);
+
+}
+
+section.l-ink .horiz-bar-bottom {
+    background-color: rgb(1, 87, 1);
+} */
 
 div.project-title-overbar {
     background-color: black;
@@ -173,7 +222,7 @@ div.horiz-bar-bottom {
 
 div.textbox {
     font-size: 26px;
-    color: grey;
+    color: rgb(86, 86, 86);
     line-height: 35px;
 }
 
