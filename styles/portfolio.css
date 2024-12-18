@@ -81,13 +81,6 @@ section {
     left: 1300px;
 }
 
-div.project-title-box {
-    position: absolute;
-    top: 700px;
-    left: 100px;
-    z-index: 10;
-}
-
 #l-ink-splash-box {
     position: absolute;
     top: 48px;
@@ -116,6 +109,7 @@ section.pull {
 }
 
 section.pull .project-title-overbar {
+    display: none;
     background-color: white;
 }
 
@@ -129,7 +123,6 @@ section.pull .textbox a {
 
 section.pull .vert-bar-left {
     background-color: white;
-
 }
 
 section.pull .horiz-bar-bottom {
@@ -137,36 +130,32 @@ section.pull .horiz-bar-bottom {
     z-index: 10;
 }
 
-section.l-ink .project-title-overbar {
-    background-color: rgb(9, 78, 22);
+section.l-ink .project-title-overbar, section.l-ink .vert-bar-left {
+    background-color: rgb(3, 109, 23);
 }
 
-section.l-ink .vert-bar-left {
-    background-color: rgb(9, 78, 22);
-}
-
-section.adobe .project-title-overbar {
+section.adobe .project-title-overbar, section.adobe .vert-bar-left {
     background-color: rgb(139, 42, 38);
 }
 
-section.adobe .vert-bar-left {
-    background-color: rgb(152, 52, 48);
-}
-
-section.visual-code-studio .project-title-overbar {
+section.visual-code-studio .project-title-overbar, section.visual-code-studio .vert-bar-left {
     background-color: rgb(34, 44, 122);
 }
 
-section.visual-code-studio .vert-bar-left {
-    background-color: rgb(34, 44, 122);
-}
-
-section.splatbrush .project-title-overbar {
+section.splatbrush .project-title-overbar, section.splatbrush .vert-bar-left {
     background-color: rgb(170, 23, 101);
 }
 
-section.splatbrush .vert-bar-left {
-    background-color: rgb(170, 23, 101);
+section.video-analogies .project-title-overbar, section.video-analogies .vert-bar-left {
+    background-color: rgb(117, 69, 28);
+}
+
+section.hyacinth-labyrinth .project-title-overbar, section.hyacinth-labyrinth .vert-bar-left {
+    background-color: rgb(89, 103, 6);
+}
+
+section.pen-plotting .project-title-overbar, section.pen-plotting .vert-bar-left {
+    background-color: rgb(82, 0, 129);
 }
 
 .page-num {
@@ -200,12 +189,23 @@ section.l-ink .horiz-bar-bottom {
 div.project-title-overbar {
     background-color: black;
     height: 30px;
-    width: 1700px;
-    margin-bottom: 20px;
+    width: 2000px;
+    /* margin-bottom: 20px; */
+    position: absolute;
+    top: 720px;
+    left: 0px;
+    z-index: 10;
+}
+
+div.project-title-box {
+    position: absolute;
+    top: 778px;
+    left: 54px;
+    z-index: 10;
 }
 
 h1.project-title {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 120px;
     font-weight: 700;
     display: inline;
@@ -235,9 +235,17 @@ section.video-analogies .project-subtitle {
     font-size: 40px;
 }
 
+section.pen-plotting .project-title {
+    font-size: 100px;
+}
+
+section.pen-plotting .project-subtitle {
+    font-size: 40px;
+}
+
 
 h2.project-subtitle {
-    font-size: 44px;
+    font-size: 42px;
     display: inline;
     font-style: italic;
 }
@@ -260,7 +268,7 @@ div.slide-title-top-left-box {
 }
 
 div.curr-proj-top-right {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     position: absolute;
     top: 30px;
     right: 40px;
@@ -311,7 +319,7 @@ div.horiz-bar-bottom {
 }
 
 div.textbox {
-    font-size: 32px;
+    font-size: 30px;
     color: rgb(86, 86, 86);
     line-height: 35px;
 }
