@@ -7,18 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/portfolio.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Eric Chen</title>
+    <title>Eric Chen Portfolio</title>
 </head>
 
 <!--EVERY SLIDE SHOULD BE A WOW-->
 
 <body>
     <div class="slide-container">
+
         <section class="title-slide">
             <div class="main-title">Eric Chen</div>
-            <div class="main-subtitle">HCI &middot; Creativity Support</div>
-            <div class="main-subsubtitle">Portfoio of Work</div>
+            <div class="main-subtitle">HCI &middot; Creativity Support &middot; Computational Meditations</div>
+            <div class="main-subsubtitle">Portfolio Slides</div>
         </section>
+
         <section class="l-ink proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
@@ -37,6 +39,7 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Idea</div>
             </div>
+            <div class="curr-proj-top-right">L.ink</div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
             <div class="textbox" style="position: absolute; top: 190px; left: 140px;">
@@ -63,8 +66,9 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
                 <div class="slide-subtitle-top-left">interactive growing ink</div>
-                <img src="portfolio-assets/l-ink-diagram.png" style="position: absolute; top: 80px; left: 0px; width: 1550px;"/>
             </div>
+            <div class="curr-proj-top-right">L.ink</div>
+            <img src="portfolio-assets/l-ink-diagram.png" style="position: absolute; top: 60px; left: 0px; width: 1900px;"/>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -72,7 +76,8 @@
         <section class="l-ink">
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
-                <div class="textbox" style="position: absolute; top: 180px; left: 40px; z-index: 10; width: 440px; text-align: right;">
+                <div class="slide-subtitle-top-left">visual ink-editor with live preview</div>
+                <div class="textbox" style="position: absolute; top: 200px; left: 40px; z-index: 10; width: 470px; text-align: right;">
                     <p>
                         L-systems are notoriously difficult to author due to their unpredictable nature. There's a theoretical reason for this--it's an <a href="https://en.wikipedia.org/wiki/Smallest_grammar_problem">NP-complete problem</a>. 
                     </p>
@@ -87,13 +92,16 @@
                         With live visual feedback, users can make incremental adjustments toward their desired ink style.
                     </p>
                 </div>
-                <div class="slide-subtitle-top-left">visual ink-editor with live preview</div>
-                <div style="position: absolute; top: 90px; left: 400px;">
-                    <video width="1540" autoplay loop muted>
+
+                <!-- <div style="width: 2px; height: 700px; position: absolute; left: 540px; top: 180px; background-color: rgb(139, 139, 139); z-index: 10;"></div> -->
+
+                <div style="position: absolute; top: 100px; left: 380px;">
+                    <video width="1580" autoplay loop muted>
                         <source src="portfolio-assets/l-ink-editor-diagram.mov" />
                     </video>
                 </div>
             </div>
+            <div class="curr-proj-top-right">L.ink</div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -132,12 +140,52 @@
                         I'm preparing an extended abstract in progress for CHI 2025 Late-Breaking Work and a first-author paper for UIST 2025
                     </p>
                 </div>
-                <div class="textbox" style="position: absolute; top: 880px; left: 600px; z-index: 10; width: 540px; font-size: 34px;">
+                <div class="textbox" style="position: absolute; top: 880px; left: 600px; z-index: 10; width: 580px; font-size: 34px;">
                     <p>
-                        Try out the full version of L.ink <a href="https://filtered.ink/#/l-ink">here</a>!
+                        <strong>Try out the full version of L.ink <a href="https://filtered.ink/#/l-ink">here</a></strong>!
                     </p>
                 </div>
                 <div class="slide-subtitle-top-left"></div>
+            </div>
+            <div class="curr-proj-top-right">L.ink</div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <section class="adobe proj-title">
+            <div class="project-title-box">
+                <div class="project-title-overbar"></div>
+                <h1 class="project-title">ActionBrush</h1>
+                <h2 class="project-subtitle">upcoming project at Adobe Research</h2>
+                <h3 class="project-org">Adobe Research | Advisors: Li-Yi Wei, Rubaiat Habib Kazi</h3>
+                <h3 class="project-dates">6.2025&mdash;9.2025</h3>
+                <h3 class="project-blurb">Mapping from text to dynamic vector brush styles</h3>
+            </div>
+            <div class="project-splash-box">
+            </div>
+        </section>
+
+        <section class="adobe">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Idea</div>
+            </div>
+            <div class="curr-proj-top-right">ActionBrush</div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    Excited to continue building novel creative tools, I applied to an Adobe Research internship for summer 2025.
+                </p>
+                <br>
+                <p>
+                    I interviewed with research scientists <a href="">Li-Yi Wei</a> and <a href="">Rubaiat Habib Kazi</a> (experts in HCI, computer graphics, and sketch-based interfaces), and they asked me to propose a project idea. I proposed ActionBrush, a text-to-brush tool for creating animated vector brush styles representing real-life materials like fire, lightning, a swarm of insects, or anything else you can imagine.
+                </p>
+                <br>
+                <p>
+                    This work would support a paradigm shift from generative art to generative tools, placing  creative freedom back in the hands of the artist.
+                </p>
+                <br>
+                <p>
+                    Watch my full proposal video <a href="">here</a>!
+                </p>
             </div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -164,6 +212,7 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Idea</div>
             </div>
+            <div class="curr-proj-top-right">Pull</div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
             <div class="textbox" style="position: absolute; top: 190px; left: 140px; width: 1700px; z-index: 10;">
@@ -186,12 +235,14 @@
                 <p>I imagined this as an almost grotesque experience of forcefully pulling apart the meaning of something.</p>
             </div>
         </section>
+        
         <section class="pull">
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
                 <div class="slide-subtitle-top-left">pulling on latent graph</div>
             </div>
-            <div class="textbox" style="position: absolute; top: 230px; left: 100px; width: 1700px;">
+            <div class="curr-proj-top-right">Pull</div>
+            <div class="textbox" style="position: absolute; top: 210px; left: 100px; width: 1700px;">
                 <p>
                     After some experimentation I found that encoding raw pixel values didn't create the effect I had in mind&mdash;distortions were local and rectilinear.
                 </p>
@@ -203,7 +254,7 @@
                 <p>
                     I also decided to try using the webcam feed as input rather than a still image, to create a mirror-like experience. Here are the results using two different autoencoders that I trained:
                 </p>
-                <div class="textbox" style="position: absolute; top: 300px; left: 0px;">
+                <div class="textbox" style="position: absolute; top: 340px; left: 0px;">
                     <video width="800" autoplay loop muted>
                         <source src="portfolio-assets/pull-bw-demo-trim.mov" />
                     </video>
@@ -223,11 +274,13 @@
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
+
         <section class="pull">
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
                 <div class="slide-subtitle-top-left">faces</div>
             </div>
+            <div class="curr-proj-top-right">Pull</div>
             <div class="textbox" style="position: absolute; top: 250px; left: 100px; width: 700px;">
                 <p>
                     I still wanted to create a version where pulling on nodes distorted the image in a more meaningful way. Learning a latent space over a hugely diverse range of natural images was proving tough, so I decide to focus on a dataset containing only faces (CelebA).
@@ -247,6 +300,55 @@
             <div class="horiz-bar-bottom"></div>
         </section>
 
+        <section class="splatbrush proj-title">
+            <div class="project-title-box">
+                <div class="project-title-overbar"></div>
+                <h1 class="project-title">SplatBrush</h1>
+                <h2 class="project-subtitle">VR painting with learned Gaussians</h2>
+                <h3 class="project-org">CV for Graphics and Interaction | Team: Eric Chen, Josh Yang, Serena Pulopot, Zihan Zhu</h3>
+                <h3 class="project-dates">11.2024&mdash;12.2024</h3>
+                <h3 class="project-blurb">Enhancing the materiality of VR drawing applications</h3>
+            </div>
+            <div class="project-splash-box">
+            </div>
+        </section>
+
+        <section class="splatbrush">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Idea</div>
+            </div>
+            <div class="curr-proj-top-right">SplatBrush</div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    In class, we surveyed recent state-of-the-art papers on 3D Gaussian Splatting. Inspired by the analogy between 2D pixels and 3D Gaussians, I proposed a project to create a 3D Gaussian VR painting tool. I saw massive room for improvement over existing VR painting tools, where strokes are awkward-looking "ribbons" and "tubes."
+                </p>
+                <br>
+                <p>
+                    My proposal was accepted by the class and my team and I got to work.
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <section class="splatbrush">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+            </div>
+            <div class="curr-proj-top-right">SplatBrush</div>
+            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
+                <p>
+                    From building a VR user interface, to creating a custom data-capture ring, to training a generalizable Gaussian splatting architecture, this project involved a lot of moving pieces. Here is a broad overview of our pipeline:
+                </p>
+                <br>
+                <p>
+                    
+                </p>
+            </div>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
         <section class="visual-code-studio proj-title">
             <div class="project-title-box">
                 <div class="project-title-overbar"></div>
@@ -254,7 +356,7 @@
                 <h2 class="project-subtitle">knockoff gallery of bona-fide art</h2>
                 <h3 class="project-org">Rhode Island School of Design: Drawing with Computers + Personal Project</h3>
                 <h3 class="project-dates">10.2024&mdash;12.2024</h3>
-                <h3 class="project-blurb">Re-interpreting source code as drawing instructions</h3>
+                <h3 class="project-blurb">Misinterpreting source code as drawing instructions</h3>
             </div>
             <div class="project-splash-box">
             </div>
@@ -264,6 +366,7 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Idea</div>
             </div>
+            <div class="curr-proj-top-right">VCS</div>
             <div class="textbox" style="position: absolute; top: 250px; left: 100px; width: 700px;">
                 <p>
                     A variety of existing systems empower us to transform code into drawings. P5.js, Processing, and openFrameworks are intended to enable visual creation. <strong>But visual complexity is hidden within code, regardless of intention</strong>. What if we could build a system to map arbitrary source code to visual representations?
@@ -281,6 +384,7 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
             </div>
+            <div class="curr-proj-top-right">VCS</div>
             <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
                 <p>
                     I conducted a variety of experiments around the theme of misinterpreting source code as drawing instructions.
@@ -307,6 +411,7 @@
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Outcomes</div>
             </div>
+            <div class="curr-proj-top-right">VCS</div>
             <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
                 <p>
                     
@@ -315,65 +420,6 @@
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
-
-        <section class="splatbrush proj-title">
-            <div class="project-title-box">
-                <div class="project-title-overbar"></div>
-                <h1 class="project-title">SplatBrush</h1>
-                <h2 class="project-subtitle">VR painting with gaussians learned from the environment</h2>
-                <h3 class="project-org">CV for Graphics and Interaction | Team: Eric Chen, Josh Yang, Serena Pulopot, Zihan Zhu</h3>
-                <h3 class="project-dates">11.2024&mdash;12.2024</h3>
-                <h3 class="project-blurb">Enhancing the materiality of VR drawing applications</h3>
-            </div>
-            <div class="project-splash-box">
-            </div>
-        </section>
-
-        <section class="splatbrush">
-            <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Idea</div>
-            </div>
-            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
-                <p>
-                    In class, we surveyed recent state-of-the-art papers on 3D Gaussian Splatting. Inspired by the analogy between 2D pixels and 3D Gaussians, I proposed a project to create a 3D Gaussian VR painting tool. I saw massive room for improvement over existing VR painting tools, where strokes are awkward-looking "ribbons" and "tubes."
-                </p>
-                <br>
-                <p>
-                    My proposal was accepted by the class and my team and I got to work.
-                </p>
-            </div>
-            <div class="vert-bar-left"></div>
-            <div class="horiz-bar-bottom"></div>
-        </section>
-        <section class="splatbrush">
-            <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Implementation</div>
-            </div>
-            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
-                <p>
-                    From building a VR user interface, to creating a custom data-capture ring, to training a generalizable Gaussian splatting architecture, this project involved a lot of moving pieces. Here is a broad overview of our pipeline:
-                </p>
-                <br>
-                <p>
-                    
-                </p>
-            </div>
-            <div class="vert-bar-left"></div>
-            <div class="horiz-bar-bottom"></div>
-        </section>
-        <section class="splatbrush">
-            <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Outcomes</div>
-            </div>
-            <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
-                <p>
-                    Check out our final demo here!
-                </p>
-            </div>
-            <div class="vert-bar-left"></div>
-            <div class="horiz-bar-bottom"></div>
-        </section>
-
 
         <section class="video-analogies proj-title">
             <div class="project-title-box">
@@ -393,8 +439,9 @@
 
         <section class="video-analogies">
             <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Video Analogies</div>
+                <div class="slide-title-top-left">Implementation</div>
             </div>
+            <div class="curr-proj-top-right">Video Analogies</div>
             <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
                 <p>
                     Check out our final demo here!
@@ -422,8 +469,9 @@
 
         <section class="video-analogies">
             <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Hyacinth Labyrinth</div>
+                <div class="slide-title-top-left">Implementation</div>
             </div>
+            <div class="curr-proj-top-right">HL</div>
             <div class="textbox" style="position: absolute; top: 250px; right: 100px; width: 800px;">
                 <p>
                     Check out our final demo here!
@@ -454,19 +502,6 @@
                 <h3 class="project-org">Rhode Island School of Design: Drawing with Computers</h3>
                 <h3 class="project-dates">10.2023&mdash;12.2023</h3>
                 <h3 class="project-blurb">Bringing computational work back to the physical realm</h3>
-            </div>
-            <div class="project-splash-box">
-            </div>
-        </section>
-
-        <section class="pen-plotting proj-title">
-            <div class="project-title-box">
-                <div class="project-title-overbar"></div>
-                <h1 class="project-title">ActionBrush</h1>
-                <h2 class="project-subtitle">upcoming research project</h2>
-                <h3 class="project-org">Adobe Research | Advisors: Li-Yi Wei, Rubaiat Habib Kazi</h3>
-                <h3 class="project-dates">6.2025&mdash;9.2025</h3>
-                <h3 class="project-blurb">Mapping from text to dynamic vector brush styles</h3>
             </div>
             <div class="project-splash-box">
             </div>
