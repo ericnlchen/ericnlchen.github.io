@@ -130,6 +130,30 @@ section.pull .horiz-bar-bottom {
     z-index: 10;
 }
 
+section.visual-code-studio {
+    background-color: rgb(31, 31, 31);
+}
+
+section.visual-code-studio .textbox a {
+    color: #94abf1;
+}
+
+section.visual-code-studio .project-title-box {
+    color: rgb(178, 178, 178);
+}
+
+section.visual-code-studio .textbox {
+    color: rgb(178, 178, 178);
+}
+
+section.visual-code-studio .slide-title-top-left-box {
+    color: rgb(178, 178, 178);
+}
+
+section.visual-code-studio .curr-proj-top-right {
+    color: rgb(178, 178, 178);
+}
+
 section.l-ink .project-title-overbar, section.l-ink .vert-bar-left {
     background-color: rgb(3, 109, 23);
 }

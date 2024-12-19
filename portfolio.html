@@ -379,21 +379,26 @@
                 <div class="slide-title-top-left">Outcomes</div>
             </div>
             <div class="curr-proj-top-right">SplatBrush</div>
-            <div class="textbox" style="position: absolute; top: 180px; left: 200px; width: 1500px; z-index: 10;">
+            <div class="textbox" style="position: absolute; top: 160px; left: 200px; width: 1500px; z-index: 10;">
                 <p>
-                    Here are some examples of splat textures we were able to draw with:
+                    After running inference on the <a href="https://mvsgaussian.github.io/">MVSGaussian</a> model, removing excessively large or small splats, and removing artifacts from our capture ring, we were able to paint with these textures:
                 </p>
             </div>
-            <image src="portfolio-assets/splats.gif" style="position: absolute; top: 220px; left: 480px; width: 1000px; outline: 6px solid white;
+            <image src="portfolio-assets/splats.gif" style="position: absolute; top: 160px; left: 480px; width: 1000px; outline: 6px solid white;
                 outline-offset: -6px;"></image>
-            <div class="textbox" style="position: absolute; top: 540px; left: 200px; width: 1500px; z-index: 10;">
+            <div class="textbox" style="position: absolute; top: 470px; left: 200px; width: 1500px; z-index: 10;">
                 <p>
-                    And here is a scene we created in VR to demo our system:
+                    To put our system to the test (and just for fun), we created a large-scale scene in the lobby of Brown's CS building!
                 </p>
             </div>
-            <video width="800px" style="position: absolute; top: 610px; left: 560px;" autoplay loop muted>
+            <video width="700px" style="position: absolute; top: 540px; left: 560px;" autoplay loop muted>
                 <source src="portfolio-assets/mascot.mp4" type="video/mp4"/>
             </video>
+            <div class="textbox" style="position: absolute; top: 950px; left: 200px; width: 1500px; z-index: 10;">
+                <p>
+                    We were limited by the time-constraints of our class project, but in the future I'd like to implement view-dependent Gaussians by adding spherical harmonics and a real-time inference pipeline so users can capture textures from their environment and begin painting with them immediately.
+                </p>
+            </div>
             <!-- <image src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></image> -->
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -415,18 +420,28 @@
 
         <section class="visual-code-studio">
             <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Idea</div>
+                <div class="slide-title-top-left">Idea/Experiments</div>
             </div>
             <div class="curr-proj-top-right">VCS</div>
-            <div class="textbox" style="position: absolute; top: 290px; left: 200px; width: 1500px;">
+            <div class="textbox" style="position: absolute; top: 160px; left: 130px; width: 1500px;">
                 <p>
-                    A variety of existing systems empower us to transform code into drawings. P5.js, Processing, and openFrameworks are intended to enable visual creation. <strong>But visual complexity is hidden within code, regardless of intention</strong>. What if we could build a system to map arbitrary source code to visual representations?
+                    Systems like P5.js, Processing, and openFrameworks empower us to transform code into drawings. But complexity is hidden within code, regardless of intention. What if we could build a system to reveal the inherent complexity in source code by mapping it to a visual representation?
+                </p>
+                <p>
+                    <strong>I wanted to repurpose utility for wonder.</strong>
+                </p>
+            </div>
+            <div class="textbox" style="position: absolute; top: 340px; left: 130px; width: 1000px;">
+                <p>
+                    My first idea was to create a kind of concrete poetry that procedurally generates itself&mdash;the source code is both the procedural instructions for where to place content AND the content itself. I created some small demos by blurring and thresholding source code text in the color palette of VSCode, and arranging it according to the structure of the original source. One surprising result was the amount of cartoonish faces that appeared from this process.
                 </p>
                 <br>
                 <p>
-                    My goal was to reinterpret utility as wonder.
+                    I wasn't satisfied because the results seemed chaotic rather than structured as I wanted.
                 </p>
             </div>
+            <image src="portfolio-assets/vcs-text.png" style="width: 500px; position: absolute; top: 380px; left: 1290px;"></image>
+            <image src="portfolio-assets/vcs-faces.png" style="width: 900px; position: absolute; top: 700px; left: 200px;"></image>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -436,24 +451,22 @@
                 <div class="slide-title-top-left">Implementation</div>
             </div>
             <div class="curr-proj-top-right">VCS</div>
-            <div class="textbox" style="position: absolute; top: 290px; left: 200px; width: 1500px;">
+            <div class="textbox" style="position: absolute; top: 180px; left: 130px; width: 1600px; z-index: 10;">
                 <p>
-                    I conducted a variety of experiments around the theme of misinterpreting source code as drawing instructions.
+                    I wanted to establish a direct connection between a single source code instruction, and a single drawing instruction. This led me to ponder lower-level instructions in assembly or bytecode.
                 </p>
                 <br>
                 <p>
-                    My first idea was to create a kind of concrete poetry that procedurally generates itself&mdash;in other words, the source code text is used both as procedural instructions for where to place content AND it also is the content.
+                    I wrote a program to extract bytecode from any Python file, allowing me to map each bytecode instruction to a pixel operation&mdash;for example, <span style="font-family: 'Courier New', Courier, monospace;">LOAD_CONST</span> moves the current position and places a pixel, <span style="font-family: 'Courier New', Courier, monospace;">CALL_FUNCTION</span> changes the current drawing color, etc. The parameters of the bytecode instructions become parameters governing how much to change color or how far to move.
                 </p>
                 <br>
                 <p>
-                    I decided to pivot because I wanted to establish a direct connection between a single instruction and source code and a single drawing instruction, like: draw a stroke from A to B.
+                    The result on the left is the output of my visual interpreter running a puzzle solver program. The result on the right is the famous <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)">Breakout game</a>.
                 </p>
-                <br>
-                <p>
-                    To this end, I wrote a program to extract Python bytecode from any .py file, allowing me to map each bytecode instruction to a visual operation. I settled on using pixel-wise operations&mdash;LOAD_CONST moves vertically and places a pixel, CALL_FUNCTION changes the current drawing color, etc. The parameters of the bytecode instructions become parameters governing how much to change color or how far to move.
-                </p>
-
             </div>
+            <image src="portfolio-assets/vcs-puzzle.png" style="width: 800px; position: absolute; top: 490px; left: 140px;"></image>
+            <image src="portfolio-assets/vcs-brick.png" style="width: 800px; position: absolute; top: 500px; left: 1000px;"></image>
+
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
