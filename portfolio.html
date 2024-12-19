@@ -489,29 +489,65 @@
 
         <section class="video-analogies">
             <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Overview</div>
+                <div class="slide-title-top-left">Background</div>
             </div>
             <div class="curr-proj-top-right">VA</div>
-            <div class="textbox" style="position: absolute; top: 290px; left: 200px; width: 1500px;">
+            <div class="textbox" style="position: absolute; top: 150px; left: 130px; width: 1600px;">
                 <p>
-                    Our team extended the work of <a href="https://mrl.cs.nyu.edu/publications/image-analogies/analogies-72dpi.pdf">Hertzmann et al.</a> to enable style-transfer from a still image to a dynamic video.
+                    Our team extended the work of <a href="https://mrl.cs.nyu.edu/publications/image-analogies/analogies-72dpi.pdf">Hertzmann et al.</a> writing a program to transfer the style of a still reference image onto a dynamic video.
                 </p>
                 <br>
                 <p>
-                    We implemented this by extracting per-pixel features (edge response, neighboring pixels) from each frame. For each pixel, we search for a patch in the input image that closely matches those features, using its color as the final pixel color in the output frame.
+                    This work was the culmination of a semester learning all manner of image-wrangling techniques&mdash;we essentially re-implemented Photoshop in Python. See below from left to right: constructing HDR images from an exposure bracket, Poisson image-blending, patch-based texture transfer, and... creating Abe Lincoln as a piece of bread.
                 </p>
                 <br>
+                <image src="portfolio-assets/RIPTA.jpg" height="290px"></image>
+                <image src="portfolio-assets/image-compositing.png" height="290px"></image>
+                <image src="portfolio-assets/piano.png" height="290px"></image>
+                <image src="portfolio-assets/abe.png" height="290px"></image>
+                <br>
+                <br>
+            </div>
+            <div class="textbox" style="position: absolute; top: 790px; left: 320px; width: 830px;">
                 <p>
-                    See below a simpler texture transfer technique 
+                    My favorite concept of class was the discrete fourier transform of an image. I am fascinated by the idea that every image has a dual-form that encodes exactly the same information in frequency space. Here is my face in frequency space:
+                </p>
+            </div>
+            <image src="portfolio-assets/fourier-face.png" height="290px" style="position: absolute; top: 740px; left: 1200px;"></image>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <section class="video-analogies">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Outcomes</div>
+            </div>
+            <div class="curr-proj-top-right">VA</div>
+            <div class="textbox" style="position: absolute; top: 200px; left: 100px; width: 1600px;">
+                <p>
+                    Check out the final results of the video analogies project below!
                 </p>
                 <br>
+            </div>
+            <div style="position: absolute; top: 300px; left: 50px;">
+                <video width="900px" autoplay loop muted>
+                    <source src="portfolio-assets/video-analogy-falls.mov">
+                </video>
+                <video width="900px" autoplay loop muted>
+                    <source src="portfolio-assets/video-analogy-mountain.mov">
+                </video>
+            </div>
+            <div class="textbox" style="position: absolute; top: 840px; left: 300px; width: 1600px;">
                 <p>
-                    Here is a flowing waterfall in watercolor style.
+                    Waterfall in watercolor style
                 </p>
                 <br>
+            </div>
+            <div class="textbox" style="position: absolute; top: 840px; left: 1100px; width: 1600px;">
                 <p>
-                    Here is a timelapse of a mountain range in an oil-painting style.
+                    Mountain range timelapse in oil painting style
                 </p>
+                <br>
             </div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -596,18 +632,18 @@
 
             </div>
             <div class="curr-proj-top-right">PP</div>
-            <div class="textbox" style="position: absolute; top: 160px; left: 200px; width: 1500px;">
+            <div class="textbox" style="position: absolute; top: 170px; left: 130px; width: 1650px;">
                 <p>
                     Working with a pen plotter challenged (and delighted) me in a new way.
                 </p>
                 <br>
                 <p>
-                    There was something magical about seeing a computational work rendered on pen and paper. It becomes an artifact that could have been drawn by a human hand&mdash;except for its sometimes uncanny precision.
+                    There's something fascinating about seeing a computational work rendered with pen and paper. I was curious about the emotional impact of encountering an artifact that could have been drawn by a human hand, except for its uncanny precision.
                 </p>
             </div>
-            <image src="portfolio-assets/pp-0.png" style="height: 900px; position: absolute; top: 350px; left: 140px;"></image>
-            <image src="portfolio-assets/pp-1.png" style="width: 460px; position: absolute; top: 350px; left: 800px;"></image>
-            <image src="portfolio-assets/pp-2.png" style="width: 460px; position: absolute; top: 700px; left: 800px;"></image>
+            <image src="portfolio-assets/pp-0.png" style="height: 900px; position: absolute; top: 350px; left: 130px;"></image>
+            <image src="portfolio-assets/pp-1.png" style="width: 460px; position: absolute; top: 350px; left: 790px;"></image>
+            <image src="portfolio-assets/pp-2.png" style="width: 460px; position: absolute; top: 700px; left: 790px;"></image>
             <image src="portfolio-assets/pp-3.png" style="width: 550px; position: absolute; top: 350px; left: 1250px;"></image>
 
 
