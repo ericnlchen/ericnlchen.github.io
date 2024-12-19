@@ -182,7 +182,7 @@
                 </p>
                 <br>
                 <p>
-                    This work would support a paradigm shift from generative art to generative tools, placing  creative freedom back in the hands of the artist.
+                    This work would support a paradigm shift from <strong>generative art to generative tools</strong>, placing  creative freedom back in the hands of the artist.
                 </p>
                 <br>
                 <p>
@@ -285,26 +285,46 @@
         <section class="pull">
             <div class="slide-title-top-left-box">
                 <div class="slide-title-top-left">Implementation</div>
-                <div class="slide-subtitle-top-left">reconstructing latent faces</div>
+                <div class="slide-subtitle-top-left">latent identity</div>
             </div>
             <div class="curr-proj-top-right">PULL</div>
             <div class="textbox" style="position: absolute; top: 150px; left: 100px; width: 1700px;">
                 <p>
-                    I still wanted to enable a more semantically meaningful distortion of the image&mdash;I imagined watching the face in the webcam morph into a different face, changing identity.
+                    I still wanted to enable a more semantically meaningful distortion of the image&mdash;I imagined watching my face morph into a different face, changing its identity.
                 </p>
                 <br>
                 <p>
-                    To accomplish this, I retrained on a dataset containing only faces (CelebA). I experimented with training my prior autoencoder but ended up finding more success with a pre-trained variational autoencoder, which was able to learn a smoother latent space.
+                    I retrained on a dataset containing only faces (CelebA). I initially experimented with my prior autoencoder but ended up finding more success with a pre-trained variational autoencoder, which was able to learn a smoother latent space.
                 </p>
                 <br>
                 <p>
-                    I wanted to visualize the latent variables as a set of audio bars instead of encoding them in graph. Tuning the green bars up or down scales latent variables, allowing the user to freely try on new identities.
+                    I also created a new interface to allow the user to morph their identity freely:
                 </p>
                 <br>
             </div>
-            <video width="1000px" style="position: absolute; left: 440px; top: 480px;" autoplay loop muted>
-                <source src="portfolio-assets/pull-splash.mov" type="video/mp4"/>
+            <video width="1000px" style="position: absolute; left: 460px; top: 440px;" autoplay loop muted>
+                <source src="portfolio-assets/pull-face-vid.mov" type="video/mp4"/>
             </video>
+            <div class="textbox" style="position: absolute; top: 825px; left: 215px; width: 1700px;">
+                <p>
+                    latent variables &RightArrow;
+                </p>
+            </div>
+            <div class="textbox" style="position: absolute; top: 985px; left: 1450px; width: 1700px;">
+                <p>
+                    &LeftArrow; tunable scale
+                </p>
+            </div>
+            <div class="textbox" style="position: absolute; top: 600px; left: 390px; width: 1700px;">
+                <p>
+                    webcam feed &RightArrow;
+                </p>
+            </div>
+            <div class="textbox" style="position: absolute; top: 600px; left: 1310px; width: 1700px;">
+                <p>
+                    &LeftArrow; live decoded image
+                </p>
+            </div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -358,18 +378,14 @@
                 <div class="slide-title-top-left">Implementation</div>
             </div>
             <div class="curr-proj-top-right">SplatBrush</div>
-            <div class="textbox" style="position: absolute; top: 180px; left: 200px; width: 1500px;">
+            <div class="textbox" style="position: absolute; top: 150px; left: 130px; width: 1500px;">
                 <p>
-                    This project involved a lot of moving pieces: building a VR user interface, creating a custom data-capture ring, and training a generalizable Gaussian splatting architecture.
-                </p>
-                <br>
-                <p>
-                    Here is a broad overview of our training pipeline:
+                    This project involved a lot of moving pieces. Here's a broad overview:
                 </p>
             </div>
             <!-- <image src="portfolio-assets/splats.gif" style="position: absolute; top: 500px; left:100px; width: 800px; outline: 6px solid white;
                 outline-offset: -6px;"></image> -->
-            <image src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></image>
+            <image src="portfolio-assets/splatbrush-diagram-good.png" style="width: 1540px; position: absolute; top: 200px; left: 200px;"></image>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -379,26 +395,26 @@
                 <div class="slide-title-top-left">Outcomes</div>
             </div>
             <div class="curr-proj-top-right">SplatBrush</div>
-            <div class="textbox" style="position: absolute; top: 160px; left: 200px; width: 1500px; z-index: 10;">
+            <div class="textbox" style="position: absolute; top: 160px; left: 130px; width: 1600px; z-index: 10;">
                 <p>
-                    After running inference on the <a href="https://mvsgaussian.github.io/">MVSGaussian</a> model, removing excessively large or small splats, and removing artifacts from our capture ring, we were able to paint with these textures:
+                    After running inference on the <a href="https://mvsgaussian.github.io/">MVSGaussian</a> model and automatically removing excessively large splats and capture ring artifacts, we were able to paint with these textures:
                 </p>
             </div>
             <image src="portfolio-assets/splats.gif" style="position: absolute; top: 160px; left: 480px; width: 1000px; outline: 6px solid white;
                 outline-offset: -6px;"></image>
-            <div class="textbox" style="position: absolute; top: 470px; left: 200px; width: 1500px; z-index: 10;">
+            <div class="textbox" style="position: absolute; top: 470px; left: 130px; width: 1600px; z-index: 10;">
                 <p>
                     To put our system to the test (and just for fun), we created a large-scale scene in the lobby of Brown's CS building!
                 </p>
             </div>
-            <video width="700px" style="position: absolute; top: 540px; left: 560px;" autoplay loop muted>
+            <video width="900px" style="position: absolute; top: 540px; left: 560px; opacity: 0.8;" autoplay loop muted>
                 <source src="portfolio-assets/mascot.mp4" type="video/mp4"/>
             </video>
-            <div class="textbox" style="position: absolute; top: 950px; left: 200px; width: 1500px; z-index: 10;">
+            <!-- <div class="textbox" style="position: absolute; top: 950px; left: 130px; width: 1600px; z-index: 10;">
                 <p>
                     We were limited by the time-constraints of our class project, but in the future I'd like to implement view-dependent Gaussians by adding spherical harmonics and a real-time inference pipeline so users can capture textures from their environment and begin painting with them immediately.
                 </p>
-            </div>
+            </div> -->
             <!-- <image src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></image> -->
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -589,7 +605,7 @@
                 </p>
             </div>
             <div style="position: absolute; top: 440px; left: 420px;">
-                <video width="1200" autoplay loop muted>
+                <video width="1000" autoplay loop muted>
                     <source src="portfolio-assets/hyacinth-plants.mp4" type="video/mp4"/>
                 </video>
             </div>
