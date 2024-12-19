@@ -329,6 +329,73 @@
             <div class="horiz-bar-bottom"></div>
         </section>
 
+        <section class="visual-code-studio proj-title">
+            <div class="project-title-box">
+                <h1 class="project-title">Visual Code Studio</h1>
+                <h2 class="project-subtitle">knockoff gallery of bona-fide art</h2>
+                <h3 class="project-org">Rhode Island School of Design: Drawing with Computers + Personal Project</h3>
+                <h3 class="project-dates">10.2024&mdash;12.2024</h3>
+                <h3 class="project-blurb">Misinterpreting source code as drawing instructions</h3>
+            </div>
+            <div class="project-title-overbar"></div>
+            <div class="project-splash-box">
+                <img src="portfolio-assets/blackjack.png" style="width: 1920px; opacity: 0.3;"/>
+            </div>
+        </section>
+
+        <section class="visual-code-studio">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Idea/Experiments</div>
+            </div>
+            <div class="curr-proj-top-right">VCS</div>
+            <div class="textbox" style="position: absolute; top: 160px; left: 130px; width: 1500px;">
+                <p>
+                    Systems like P5.js, Processing, and openFrameworks empower us to transform code into drawings. But complexity is hidden within code, regardless of intention. What if we could build a system to reveal the inherent complexity in source code by mapping it to a visual representation?
+                </p>
+                <p>
+                    <strong>I wanted to repurpose utility for wonder.</strong>
+                </p>
+            </div>
+            <div class="textbox" style="position: absolute; top: 340px; left: 130px; width: 1000px;">
+                <p>
+                    My first idea was to create a kind of concrete poetry that procedurally generates itself&mdash;the source code is both the procedural instructions for where to place content AND the content itself. I created some small demos by blurring and thresholding source code text in the color palette of VSCode, and arranging it according to the structure of the original source. One surprising result was the amount of cartoonish faces that appeared from this process.
+                </p>
+                <br>
+                <p>
+                    I wasn't satisfied because the results seemed chaotic rather than structured as I wanted.
+                </p>
+            </div>
+            <image src="portfolio-assets/vcs-text.png" style="width: 500px; position: absolute; top: 380px; left: 1290px;"></image>
+            <image src="portfolio-assets/vcs-faces.png" style="width: 900px; position: absolute; top: 700px; left: 200px;"></image>
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
+        <section class="visual-code-studio">
+            <div class="slide-title-top-left-box">
+                <div class="slide-title-top-left">Implementation</div>
+            </div>
+            <div class="curr-proj-top-right">VCS</div>
+            <div class="textbox" style="position: absolute; top: 180px; left: 130px; width: 1600px; z-index: 10;">
+                <p>
+                    I wanted to establish a direct connection between a single source code instruction, and a single drawing instruction. This led me to ponder lower-level instructions in assembly or bytecode.
+                </p>
+                <br>
+                <p>
+                    I wrote a program to extract bytecode from any Python file, allowing me to map each bytecode instruction to a pixel operation&mdash;for example, <span style="font-family: 'Courier New', Courier, monospace;">LOAD_CONST</span> moves the current position and places a pixel, <span style="font-family: 'Courier New', Courier, monospace;">CALL_FUNCTION</span> changes the current drawing color, etc. The parameters of the bytecode instructions become parameters governing how much to change color or how far to move.
+                </p>
+                <br>
+                <p>
+                    The result on the left is the output of my visual interpreter running a puzzle solver program. The result on the right is the famous <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)">Breakout game</a>.
+                </p>
+            </div>
+            <image src="portfolio-assets/vcs-puzzle.png" style="width: 800px; position: absolute; top: 490px; left: 140px;"></image>
+            <image src="portfolio-assets/vcs-brick.png" style="width: 800px; position: absolute; top: 500px; left: 1000px;"></image>
+
+            <div class="vert-bar-left"></div>
+            <div class="horiz-bar-bottom"></div>
+        </section>
+
         <section class="splatbrush proj-title">
             <div class="project-title-box">
                 <h1 class="project-title">SplatBrush</h1>
@@ -416,73 +483,6 @@
                 </p>
             </div> -->
             <!-- <image src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></image> -->
-            <div class="vert-bar-left"></div>
-            <div class="horiz-bar-bottom"></div>
-        </section>
-
-        <section class="visual-code-studio proj-title">
-            <div class="project-title-box">
-                <h1 class="project-title">Visual Code Studio</h1>
-                <h2 class="project-subtitle">knockoff gallery of bona-fide art</h2>
-                <h3 class="project-org">Rhode Island School of Design: Drawing with Computers + Personal Project</h3>
-                <h3 class="project-dates">10.2024&mdash;12.2024</h3>
-                <h3 class="project-blurb">Misinterpreting source code as drawing instructions</h3>
-            </div>
-            <div class="project-title-overbar"></div>
-            <div class="project-splash-box">
-                <img src="portfolio-assets/blackjack.png" style="width: 1920px; opacity: 0.3;"/>
-            </div>
-        </section>
-
-        <section class="visual-code-studio">
-            <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Idea/Experiments</div>
-            </div>
-            <div class="curr-proj-top-right">VCS</div>
-            <div class="textbox" style="position: absolute; top: 160px; left: 130px; width: 1500px;">
-                <p>
-                    Systems like P5.js, Processing, and openFrameworks empower us to transform code into drawings. But complexity is hidden within code, regardless of intention. What if we could build a system to reveal the inherent complexity in source code by mapping it to a visual representation?
-                </p>
-                <p>
-                    <strong>I wanted to repurpose utility for wonder.</strong>
-                </p>
-            </div>
-            <div class="textbox" style="position: absolute; top: 340px; left: 130px; width: 1000px;">
-                <p>
-                    My first idea was to create a kind of concrete poetry that procedurally generates itself&mdash;the source code is both the procedural instructions for where to place content AND the content itself. I created some small demos by blurring and thresholding source code text in the color palette of VSCode, and arranging it according to the structure of the original source. One surprising result was the amount of cartoonish faces that appeared from this process.
-                </p>
-                <br>
-                <p>
-                    I wasn't satisfied because the results seemed chaotic rather than structured as I wanted.
-                </p>
-            </div>
-            <image src="portfolio-assets/vcs-text.png" style="width: 500px; position: absolute; top: 380px; left: 1290px;"></image>
-            <image src="portfolio-assets/vcs-faces.png" style="width: 900px; position: absolute; top: 700px; left: 200px;"></image>
-            <div class="vert-bar-left"></div>
-            <div class="horiz-bar-bottom"></div>
-        </section>
-
-        <section class="visual-code-studio">
-            <div class="slide-title-top-left-box">
-                <div class="slide-title-top-left">Implementation</div>
-            </div>
-            <div class="curr-proj-top-right">VCS</div>
-            <div class="textbox" style="position: absolute; top: 180px; left: 130px; width: 1600px; z-index: 10;">
-                <p>
-                    I wanted to establish a direct connection between a single source code instruction, and a single drawing instruction. This led me to ponder lower-level instructions in assembly or bytecode.
-                </p>
-                <br>
-                <p>
-                    I wrote a program to extract bytecode from any Python file, allowing me to map each bytecode instruction to a pixel operation&mdash;for example, <span style="font-family: 'Courier New', Courier, monospace;">LOAD_CONST</span> moves the current position and places a pixel, <span style="font-family: 'Courier New', Courier, monospace;">CALL_FUNCTION</span> changes the current drawing color, etc. The parameters of the bytecode instructions become parameters governing how much to change color or how far to move.
-                </p>
-                <br>
-                <p>
-                    The result on the left is the output of my visual interpreter running a puzzle solver program. The result on the right is the famous <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)">Breakout game</a>.
-                </p>
-            </div>
-            <image src="portfolio-assets/vcs-puzzle.png" style="width: 800px; position: absolute; top: 490px; left: 140px;"></image>
-            <image src="portfolio-assets/vcs-brick.png" style="width: 800px; position: absolute; top: 500px; left: 1000px;"></image>
-
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
