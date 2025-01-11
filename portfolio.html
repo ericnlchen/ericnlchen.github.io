@@ -31,7 +31,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" id="l-ink-splash-box" style="opacity: 0.4;">
-                <video width="1920" autoplay loop muted>
+                <video width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/l-ink-rec-shorter.mp4" type="video/mp4" />
                 </video>
             </div>
@@ -98,7 +98,7 @@
                 <!-- <div style="width: 2px; height: 700px; position: absolute; left: 540px; top: 180px; background-color: rgb(139, 139, 139); z-index: 10;"></div> -->
 
                 <div style="position: absolute; top: 100px; left: 380px;">
-                    <video width="1580" autoplay loop muted>
+                    <video width="1580" autoplay loop muted playsinline>
                         <source src="portfolio-assets/l-ink-editor-diagram.mp4" type="video/mp4"/>
                     </video>
                 </div>
@@ -124,7 +124,7 @@
                         Unpredictable ink growth affects the artist's hand movement
                     </p>
                 </div>
-                <image src="portfolio-assets/cycle.png" style="position: absolute; width: 1000px; top: 220px; left: 420px;"></image>
+                <img src="portfolio-assets/cycle.png" style="position: absolute; width: 1000px; top: 220px; left: 420px;"></img>
                 <div class="textbox" style="position: absolute; top: 360px; left: 1180px; z-index: 10; width: 400px; text-align: center;">
                     <p>
                         Artist's hand movement determines ink growth
@@ -161,7 +161,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" id="pull-splash-box">
-                <video width="600" autoplay loop muted>
+                <video width="600" autoplay loop muted playsinline>
                     <source src="portfolio-assets/face-morph.mp4" type="video/mp4"/>
                 </video>
             </div>
@@ -213,22 +213,11 @@
                 <p>
                     I also decided to try using the webcam feed as input rather than a still image, to create a mirror-like experience. Here are the results using two different autoencoders that I trained:
                 </p>
-                <div class="textbox" style="position: absolute; top: 340px; left: 0px;">
-                    <video width="800" autoplay loop muted>
-                        <source src="portfolio-assets/pull-bw-demo-trim.mp4" type="video/mp4"/>
-                    </video>
-                    <p style="text-align: center;">
-                        <em>SSIM Loss</em>
-                    </p>
-                </div>
-                <div class="textbox" style="position: absolute; top: 340px; left: 840px;">
-                    <video width="800" autoplay loop muted>
-                        <source src="portfolio-assets/pull-color-demo-trim.mp4" type="video/mp4"/>
-                    </video>
-                    <p style="text-align: center;">
-                        <em>MSE Loss</em>
-                    </p>
-                </div>
+            </div>
+            <div class="textbox" style="position: absolute; top: 600px; left: 160px;">   
+                <video width="1600px" autoplay loop muted playsinline>
+                    <source src="portfolio-assets/pull-demo-double.mp4" type="video/mp4"/>
+                </video>
             </div>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -254,7 +243,7 @@
                 </p>
                 <br>
             </div>
-            <video width="1000px" style="position: absolute; left: 460px; top: 440px;" autoplay loop muted>
+            <video width="1000px" style="position: absolute; left: 460px; top: 440px;" autoplay loop muted playsinline>
                 <source src="portfolio-assets/pull-face-vid.mp4" type="video/mp4"/>
             </video>
             <div class="textbox" style="position: absolute; top: 825px; left: 215px; width: 1700px;">
@@ -291,7 +280,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" style="position: absolute; top: 80px; left: 280px;">
-                <video width="1400" autoplay loop muted>
+                <video preload="metadata" width="1400" autoplay loop muted playsinline>
                     <source src="portfolio-assets/actionbrush.mov" />
                 </video>
             </div>
@@ -338,7 +327,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box">
-                <img src="portfolio-assets/blackjack.png" style="width: 1920px; opacity: 0.3;"/>
+                <img loading="lazy" src="portfolio-assets/blackjack.png" style="width: 1920px; opacity: 0.3;"/>
             </div>
         </section>
 
@@ -364,8 +353,8 @@
                     I wasn't satisfied because the results seemed chaotic rather than structured as I wanted.
                 </p>
             </div>
-            <image src="portfolio-assets/vcs-text.png" style="width: 500px; position: absolute; top: 380px; left: 1290px;"></image>
-            <image src="portfolio-assets/vcs-faces.png" style="width: 900px; position: absolute; top: 700px; left: 200px;"></image>
+            <img loading="lazy" src="portfolio-assets/vcs-text.png" style="width: 500px; position: absolute; top: 380px; left: 1290px;"></img>
+            <img loading="lazy" src="portfolio-assets/vcs-faces.png" style="width: 900px; position: absolute; top: 700px; left: 200px;"></img>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -388,8 +377,8 @@
                     The result on the left is the output of my visual interpreter running a puzzle solver program. The result on the right is the famous <a href="https://en.wikipedia.org/wiki/Breakout_(video_game)">Breakout game</a>.
                 </p>
             </div>
-            <image src="portfolio-assets/vcs-puzzle.png" style="width: 800px; position: absolute; top: 490px; left: 140px;"></image>
-            <image src="portfolio-assets/vcs-brick.png" style="width: 800px; position: absolute; top: 500px; left: 1000px;"></image>
+            <img loading="lazy" src="portfolio-assets/vcs-puzzle.png" style="width: 800px; position: absolute; top: 490px; left: 140px;"></img>
+            <img loading="lazy" src="portfolio-assets/vcs-brick.png" style="width: 800px; position: absolute; top: 500px; left: 1000px;"></img>
 
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
@@ -405,7 +394,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" style="opacity: 0.3;">
-                <video width="1920" autoplay loop muted>
+                <video preload="metadata" width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/splatbrush.mp4" type="video/mp4"/>
                 </video>
             </div>
@@ -422,13 +411,13 @@
                 </p>
             </div>
             <div class="textbox" style="width: 720px; position: absolute; top: 350px; left: 160px; z-index: 6;">
-                <image src="portfolio-assets/bad-vr.png" height="450px"></image>
+                <img loading="lazy" src="portfolio-assets/bad-vr.png" height="450px"></img>
                 <p style="margin-top: 20px;">I saw massive room for improvement over existing VR painting tools, where paint strokes are approximated by triangle-meshes that look like awkward tubes and ribbons.</p>
             </div>
-            <image src="portfolio-assets/red-x-2.png" width="500px" style="position: absolute; top: 320px; left: 270px; z-index: 10; opacity: 0.7;"></image>
-            <image src="portfolio-assets/arrow.png" width="300px" style="position: absolute; top: 515px; left: 770px; z-index: 5;"></image>
+            <img loading="lazy" src="portfolio-assets/red-x-2.png" width="500px" style="position: absolute; top: 320px; left: 270px; z-index: 10; opacity: 0.7;"></img>
+            <img loading="lazy" src="portfolio-assets/arrow.png" width="300px" style="position: absolute; top: 515px; left: 770px; z-index: 5;"></img>
             <div class="textbox" style="width: 790px; position: absolute; top: 350px; left: 1040px; z-index: 1;">
-                <video height="450px" autoplay loop muted>
+                <video preload="metadata" height="450px" autoplay loop muted playsinline>
                     <source src="portfolio-assets/3dgs.mp4" type="video/mp4"/>
                 </video>
                 <p style="margin-top: 20px;">
@@ -449,9 +438,9 @@
                     This project involved a lot of moving pieces. Here's a broad overview:
                 </p>
             </div>
-            <!-- <image src="portfolio-assets/splats.gif" style="position: absolute; top: 500px; left:100px; width: 800px; outline: 6px solid white;
-                outline-offset: -6px;"></image> -->
-            <image src="portfolio-assets/splatbrush-diagram-good.png" style="width: 1540px; position: absolute; top: 200px; left: 200px;"></image>
+            <!-- <img src="portfolio-assets/splats.gif" style="position: absolute; top: 500px; left:100px; width: 800px; outline: 6px solid white;
+                outline-offset: -6px;"></img> -->
+            <img loading="lazy" src="portfolio-assets/splatbrush-diagram-good.png" style="width: 1540px; position: absolute; top: 200px; left: 200px;"></img>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -466,14 +455,14 @@
                     After running inference on the <a href="https://mvsgaussian.github.io/">MVSGaussian</a> model and automatically removing excessively large splats and capture ring artifacts, we were able to paint with these textures:
                 </p>
             </div>
-            <image src="portfolio-assets/splats.gif" style="position: absolute; top: 160px; left: 480px; width: 1000px; outline: 6px solid white;
-                outline-offset: -6px;"></image>
+            <img loading="lazy" src="portfolio-assets/splats.gif" style="position: absolute; top: 160px; left: 480px; width: 1000px; outline: 6px solid white;
+                outline-offset: -6px;"></img>
             <div class="textbox" style="position: absolute; top: 470px; left: 130px; width: 1600px; z-index: 10;">
                 <p>
                     To put our system to the test (and just for fun), we created a large-scale scene in the lobby of Brown's CS building!
                 </p>
             </div>
-            <video width="900px" style="position: absolute; top: 540px; left: 560px; opacity: 0.8;" autoplay loop muted>
+            <video preload="metadata" width="900px" style="position: absolute; top: 540px; left: 560px; opacity: 0.8;" autoplay loop muted playsinline>
                 <source src="portfolio-assets/mascot.mp4" type="video/mp4"/>
             </video>
             <!-- <div class="textbox" style="position: absolute; top: 950px; left: 130px; width: 1600px; z-index: 10;">
@@ -481,7 +470,7 @@
                     We were limited by the time-constraints of our class project, but in the future I'd like to implement view-dependent Gaussians by adding spherical harmonics and a real-time inference pipeline so users can capture textures from their environment and begin painting with them immediately.
                 </p>
             </div> -->
-            <!-- <image src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></image> -->
+            <!-- <img src="portfolio-assets/splatbrush-diagram.png" style="width: 1300px; position: absolute; top: 380px; left: 320px;"></img> -->
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -496,7 +485,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" id="video-analogies-splash-box">
-                <video width="1920" autoplay loop muted>
+                <video preload="metadata" width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/video-analogy-falls.mov" type="video/mp4"/>
                 </video>
             </div>
@@ -516,10 +505,12 @@
                     This work was the culmination of a semester learning all manner of image-wrangling techniques&mdash;we essentially re-implemented Photoshop in Python. See below from left to right: constructing HDR images from an exposure bracket, Poisson image-blending, patch-based texture transfer, and... creating Abe Lincoln as a piece of bread.
                 </p>
                 <br>
-                <image src="portfolio-assets/RIPTA.jpg" height="290px"></image>
-                <image src="portfolio-assets/image-compositing.png" height="290px"></image>
-                <image src="portfolio-assets/piano.png" height="290px"></image>
-                <image src="portfolio-assets/abe.png" height="290px"></image>
+                <div style="display: flex;">
+                    <img loading="lazy" src="portfolio-assets/RIPTA.jpg" height="290px"></img>
+                    <img loading="lazy" src="portfolio-assets/image-compositing.png" height="290px"></img>
+                    <img loading="lazy" src="portfolio-assets/piano.png" height="290px"></img>
+                    <img loading="lazy" src="portfolio-assets/abe.png" height="290px"></img>
+                </div>
                 <br>
                 <br>
             </div>
@@ -528,7 +519,7 @@
                     My favorite concept of class was the discrete fourier transform of an image. I am fascinated by the idea that every image has a dual-form that encodes exactly the same information in frequency space. Here is my face in frequency space:
                 </p>
             </div>
-            <image src="portfolio-assets/fourier-face.png" height="290px" style="position: absolute; top: 740px; left: 1200px;"></image>
+            <img loading="lazy" src="portfolio-assets/fourier-face.png" height="290px" style="position: absolute; top: 740px; left: 1200px;"></img>
             <div class="vert-bar-left"></div>
             <div class="horiz-bar-bottom"></div>
         </section>
@@ -544,11 +535,11 @@
                 </p>
                 <br>
             </div>
-            <div style="position: absolute; top: 300px; left: 50px;">
-                <video width="900px" autoplay loop muted>
+            <div style="position: absolute; top: 300px; left: 50px; display: flex; justify-content: space-around;">
+                <video preload="metadata" height="500px" autoplay loop muted playsinline>
                     <source src="portfolio-assets/video-analogy-falls.mov">
                 </video>
-                <video width="900px" autoplay loop muted>
+                <video preload="metadata" height="500px" autoplay loop muted playsinline>
                     <source src="portfolio-assets/video-analogy-mountain.mov">
                 </video>
             </div>
@@ -578,7 +569,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" id="hyacinth-labyrinth-splash-box">
-                <video width="1920" autoplay loop muted>
+                <video preload="metadata" width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/hyacinth-labyrinth-splash.mov" type="video/mp4"/>
                 </video>
             </div>
@@ -604,7 +595,7 @@
                 </p>
             </div>
             <div style="position: absolute; top: 440px; left: 420px;">
-                <video width="1000" autoplay loop muted>
+                <video preload="metadata" width="1000" autoplay loop muted playsinline>
                     <source src="portfolio-assets/hyacinth-plants.mp4" type="video/mp4"/>
                 </video>
             </div>
@@ -635,7 +626,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" style="position: absolute; top: 0; left: 0; opacity: 0.4">
-                <video width="1920" autoplay loop muted>
+                <video preload="metadata" width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/pp-vid.mp4" type="video/mp4"/>
                 </video>
             </div>
@@ -656,10 +647,10 @@
                     There's something fascinating about seeing a computational work rendered with pen and paper. I was curious about the emotional impact of encountering an artifact that could have been drawn by a human hand, except for its uncanny precision.
                 </p>
             </div>
-            <image src="portfolio-assets/pp-0.png" style="height: 900px; position: absolute; top: 350px; left: 130px;"></image>
-            <image src="portfolio-assets/pp-1.png" style="width: 460px; position: absolute; top: 350px; left: 790px;"></image>
-            <image src="portfolio-assets/pp-2.png" style="width: 460px; position: absolute; top: 700px; left: 790px;"></image>
-            <image src="portfolio-assets/pp-3.png" style="width: 550px; position: absolute; top: 350px; left: 1250px;"></image>
+            <img loading="lazy" src="portfolio-assets/pp-0.png" style="height: 900px; position: absolute; top: 350px; left: 130px;"></img>
+            <img loading="lazy" src="portfolio-assets/pp-1.png" style="width: 460px; position: absolute; top: 350px; left: 790px;"></img>
+            <img loading="lazy" src="portfolio-assets/pp-2.png" style="width: 460px; position: absolute; top: 700px; left: 790px;"></img>
+            <img loading="lazy" src="portfolio-assets/pp-3.png" style="width: 550px; position: absolute; top: 350px; left: 1250px;"></img>
 
 
             <div class="vert-bar-left"></div>
@@ -676,7 +667,7 @@
             </div>
             <div class="project-title-overbar"></div>
             <div class="project-splash-box" style="position: absolute; top: 0; left: 0; opacity: 0.5">
-                <video width="1920" autoplay loop muted>
+                <video preload="metadata" width="1920" autoplay loop muted playsinline>
                     <source src="portfolio-assets/flash-kick.mp4" type="video/mp4"/>
                 </video>
             </div>
@@ -701,8 +692,8 @@
                     In undergrad, I was elected president of UCLA's Club Taekwondo team with over 100 members.
                 </p>
             </div>
-            <image src="portfolio-assets/ucla-tkd.png" style="height: 500px; position: absolute; top: 450px; left: 130px;"></image>
-            <image src="portfolio-assets/espn.png" style="height: 500px; position: absolute; top: 450px; left: 910px;"></image>
+            <img loading="lazy" src="portfolio-assets/ucla-tkd.png" style="height: 500px; position: absolute; top: 450px; left: 130px;"></img>
+            <img loading="lazy" src="portfolio-assets/espn.png" style="height: 500px; position: absolute; top: 450px; left: 910px;"></img>
             <div class="textbox" style="position: absolute; top: 845px; left: 1330px; color: chartreuse">
                 <p>
                     me!
