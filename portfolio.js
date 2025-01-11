@@ -1,7 +1,5 @@
 // Ensure that L-ink video loads first
 
-
-
 // Resize slides
 const sectionContainer = document.getElementsByClassName('slide-container')[0];
 const viewportWidth = window.innerWidth;
