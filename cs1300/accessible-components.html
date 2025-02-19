@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/accessible-components.css" rel="stylesheet">
+    <title>Accessible Components</title>
+</head>
+<body>
+    <h1>Designing Accessible Accordions</h1>
+    <h2>by Eric Chen</h2>
+    <section>
+        <h3>What's an Accordion?</h3>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Accordion_(GUI)">Accordions</a> are vertically expandable UI components. They provide the user a list of items, where each item can be expanded for more detailed information. Try out the interactive example below:
+        </p>
+        <div class="accordion">
+            <input type="checkbox" id="section1">
+            <label for="section1"><span>Item 1</span><span>&#x25BC;</span></label>
+            <div class="content">
+                <p>Details about item 1 &#128512;</p>
+            </div>
+
+            <input type="checkbox" id="section2">
+            <label for="section2"><span>Item 2</span><span>&#x25BC;</span></label>
+            <div class="content">
+                <p>Cool facts about item 2 &#128526;</p>
+            </div>
+
+            <input type="checkbox" id="section3">
+            <label for="section3"><span>Item 3</span><span>&#x25BC;</span></label>
+            <div class="content">
+                <p>Secrets about item 3 &#129323;</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h3>Accordion Examples</h3>
+        <p>
+            In Photoshop, accordions are used to manage layers. An accordion component allows users to expand the contents of a layer&mdash;revealing all of the objects it contains&mdash;or collapse it&mdash;abstracting away the inner contents.
+        </p>
+        <div>
+            <img src="./assets/accessible-components/ps-accordion.png" width="800px">
+        </div>
+        <p>
+            In these screenshots from RISD's website, an accordion is used to display admissions deadlines. Headers show the different types of deadlines while the expanded inner contents contain additional notes. This accordion uses a small box around the arrow button when focused using the keyboard.
+        </p>
+    
+        <div>
+            <img src="./assets/accessible-components/risd-accordion.png"width="950px">
+        </div>
+        
+        <p>
+            On Brown's website, a slightly different kind of accordion is used. Rather than the typical down arrow icon, it uses a three dots icon. Collapsing the accordion is done by pressing an X button.
+        </p>
+    
+        <div>
+            <img src="./assets/accessible-components/brown-accordion.png"width="950px">
+        </div>
+    </section>
+
+    <section>
+        <h3>Comparing Inputs</h3>
+
+        <p>
+            Different users might interact with an accordion via different input modalities. Here is a brief comparison with notes about keyboard-based, mouse-based, and touch-based (mobile) interactions for each example.
+        </p>
+    
+        <table>
+            <tbody>
+                <tr>
+                    <td></td> <td class="bold">Photoshop</td> <td class="bold">RISD</td> <td class="bold">Brown</td>
+                </tr>
+                <tr>
+                    <td class="bold">Mouse</td> <td>Only responds to clicks on the little arrow button itself</td> <td>Responds to clicks on the arrow button or the surrounding element</td> <td>Responds to mouse hover on button and click directly on the button</td>
+                </tr>
+                <tr>
+                <td class="bold">Keyboard</td> <td>Is it even possible?</td> <td>Tab changes focus, space bar expands and contracts accordion section</td> <td>Tab changes focus, space bar expands and contracts accordion section</td>
+                </tr>
+                <tr>
+                    <td class="bold">Touch</td> <td>N/A</td> <td>Enables tapping on arrow button or surrounding element</td> <td>Mobile version completely removes the accordion element</td>
+                </tr>
+                <tr>
+                    <td class="bold">Overall Input Accessibility</td>  <td>Should provide keyboard controls like the others for non-mouse users</td> <td>Poor learnability due to no hover capability</td> <td>Responging to hover input improves learnability</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section>
+        <h3>Comparing Outputs</h3>
+
+        <p>
+            Different accordion designs respond to inputs by changing their visual state in different ways. Here is a brief comparison of outputs for each of the input modalities.
+        </p>
+    
+        <table>
+            <tbody>
+                <tr>
+                    <td></td> <td class="bold">Photoshop</td> <td class="bold">RISD</td> <td class="bold">Brown</td>
+                </tr>
+                <tr>
+                    <td class="bold">Mouse</td> <td>Simple, but no hover or focus state</td> <td>Animated arrow flip on click, opening accordion autoscrolls page</td> <td>Animated expand, animated hover effect</td>
+                </tr>
+                <tr>
+                <td class="bold">Keyboard</td> <td>None</td> <td>Animated arrow flip, small blue rectangle used to indicate focus state</td> <td>Expanded section blocks other sections, autoscroll goes to very bottom of page, focus order includes other buttons in-between accordion buttons</td>
+                </tr>
+                <tr>
+                    <td class="bold">Touch</td> <td>N/A</td> <td>Animated arrow flip on tap</td> <td>Mobile version completely removes the accordion element</td>
+                </tr>
+                <tr>
+                    <td class="bold">Overall Output Accessibility</td>  <td>Should provide visual indications of focus and hover to improve learnability</td> <td>Should provide visual indication of hover to improve learnability</td> <td>Expanded sections shouldn't cover content for keyboard users (reduces efficiency), focus order should only contain list elements</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>State Diagrams</h3>
+
+        <p>
+            Based on studying these few examples, here are state diagrams for keyboard users and mouse users (I'm including the maximal set of states based on what I observed):
+        </p>
+    
+        <div>
+            <img src="./assets/accessible-components/state-mouse.png" width="500px">
+            <img src="./assets/accessible-components/state-keyboard.png" width="500px">
+        </div>
+    </section>
+
+    <section>
+        <h3>Towards a More Accessible Accordion</h3>
+
+        <p>
+            So far, I've noticed that the learnability of accordions is relatively low. For a first-time user, the downward pointing arrow button could mean any number of things&mdash;scroll down to the next item in the list, move this list item down (reorder), etc. Furthermore, if the arrow is not surrounded by a circle, it's not even clear that it's a button at all. Especially for mouse-users who don't have a structured focus order, it isn't clear that you should click on it. Changing color on hover helps this, but it's still not ideal since the user would have to hover over the button to know.
+        </p>
+        <p>
+            I propose changing the location of the accordion's arrow button to the bottom center of the expandable element, overlapping the next element. Furthermore, hovering over the button should partially expand the section beneath, revvealing three dots to indicate that there is more content that can be expanded. This design reduces efficiency somewhat, but increases learnability and memorability by visually indicating the function of the accordion on hover. The state diagram has some small changes:
+        </p>
+        <div>
+            <img src="./assets/accessible-components/new-state-mouse.png" width="560px">
+            <img src="./assets/accessible-components/new-state-keyboard.png" width="560px">
+        </div>
+    
+        <p>
+            Here is a prototype showing what this new type of accordion component would look like. The first image shows the accordion in its default state, and the second image shows the accordion as a user hovers over the first arrow button.
+        </p>
+    
+        <div>
+            <img src="./assets/accessible-components/Accordion-Default-A.png" width="600px">
+        </div>
+        <div>
+            <img src="./assets/accessible-components/Accordion-Hover-A.png" width="600px">
+        </div>
+    </section>
+    <section>
+        <h3>Reflection</h3>
+        <p>
+            In reflecting on the components that I experimented with, each one had its strengths and weaknesses in addressing accessibility and reducing mismatches. Photoshop's accordion was simple and promoted efficiency, but lacked keyboard controls for people who aren't able to use the mouse. RISD's accordion had adequate mouse and keyboard controls, but failed to provide a hover animation to mouse-users, potentially excluding older people who might not know to click on the down arrow to expand the accordion. Brown's accordion had a good hover effect, but it had a major flaw for keyboard users&mdash;the expanded accordion sections covered up the sections underneath, making it impossible to tell which element was focused when pressing tab.
+        </p>
+        <p>
+            In my design, I aimed to take the best elements of all three of the examples I studied, and add a new feature that would aid in learnability (partial expansion of the accordion on hover/focus). This new feature addresses the cognitive mismatch between an elderly person's mental model and the typical accordion arrow design. In a typical accordion, elderly or inexperienced computer users may not know what pressing the down arrow button would do, leading to decreased confidence and a chance of not pressing the button&mdash;never getting access to the information contained inside. In my design, the accordion partially expands on hover, giving inexperienced users a stronger visual cue to boost confidence in the expected outcome of clicking and thereby allowing them to access this information.
+        </p>
+        <p>
+            Reflecting more broadly, I can imagine that mouse-users are commonly the target audience when designing UI components. Keyboard, touch, and screen-reader experiences might not be as optimized. Furthermore, <em>inexperienced</em> mouse users might suffer just as much&mdash;even if they technically have the capability to complete a desired task, they might not understand icons and abstractions that experienced users take for granted.
+        </p>
+    </section>
+</body>
+</html>
