@@ -22,7 +22,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    color: rgb(8, 29, 132);
+    color: rgb(106, 25, 102);
     font-size: 3em;
     text-align: center;
     margin-bottom: 0px;
@@ -32,7 +32,7 @@ h2 {
     font-size: 1.6em;
     text-align: center;
     font-weight: normal;
-    color: #6b6b6b;
+    color: #333;
     margin-top: 0px;
     margin-bottom: 35px;
 }
@@ -41,8 +41,8 @@ h3 {
     font-size: 1.5em;
     margin-top: 0px;
     /* border-bottom: 2px solid #ddd; */
-    border-top: 10px solid rgba(8, 29, 132, 0.297);
-    color: rgb(8, 29, 132);
+    border-top: 10px solid rgba(106, 25, 102, 0.4);
+    color: rgb(106, 25, 102);
     padding-bottom: 0px;
     padding-top: 15px;
     margin-bottom: 0px;
@@ -75,36 +75,11 @@ div:has(img) {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 60px 0;
+    margin: 20px 0;
 }
 
-.accordion {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
-.accordion input {
-    display: none;
-}
-
-.accordion label {
-    display: flex;
-    background: rgb(8, 29, 132);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    justify-content: space-between;
-}
-.accordion .content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    transition: max-height 0.2s;
-}
-.accordion input:checked + label + .content {
-    max-height: 100px;
+img#interface-sketch {
+    margin-right: 10px;
 }
 
 li {

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/personas.css" rel="stylesheet">
+    <title>Personas</title>
+</head>
+<body>
+    <h1>Personas & Storyboards</h1>
+    <h2>by Eric Chen</h2>
+    <section>
+        <h3>What's a Persona?</h3>
+        <p>
+            In order to design effectively for users, we first need to understand their needs. In reality, we may observe and interact with tens or hundreds of users to better understand and empathize with them, so it can be difficult to keep track of every individual's unique viewpoints at the same time. Therefore, one effective strategy is to crystalize the knowledge gained from many users into a <b>persona&mdash;a fictional user that represents the thoughts, feelings, and needs of real users.</b> To practice this skill, I  interviewed and observed users of a public touch-free water dispensing system, then crafted personas based on what I learned.
+
+        </p>
+    </section>
+    <section>
+        <h3>Interview Questions</h3>
+        <p>
+            Asking the right questions is important during a user interview. Questions should aim to be:
+        </p>
+        <ul>
+            <li><b>Unbiased</b> &mdash; minimize assumptions</li>
+            <li><b>Clear</b> &mdash; user is likely to interpret it correctly</li>
+            <li><b>Answerable</b> &mdash; user is willing, capable, and motivated to answer accurately</li>
+            <li><b>Simple</b> &mdash; as short as possible while including enough information</li>
+        </ul>
+        <p>
+            Following these guidelines, here are the questions I came up with to gain more information about users of the touch-free water dispenser:
+        </p>
+        <ol>
+            <li><b>What is the best and worst thing about using this dispenser?</b></li>
+            <li><b>How important is the touch-free feature to you?</b></li>
+            <li><b>How important is the temperature-control feature for you?</b></li>
+            <li><b>What features might make this dispenser better?</b></li>
+            <li><b>Would you pay $1 to replace another public dispenser with this one?</b></li>
+        </ol>
+        <p>
+            My hope was that the first question would prompt users to pinpoint one specific pro and one speicific pain-point, bringing the conversation away from general comments like "it's nice" which can come up all too frequently if questions aren't carefully crafted. Questions 2 and 3 aim to probe more into the specific features offered by this particular system, to better understand if users actually care about them or not. Question 4 gives users a chance to propose changes they might already have wanted, which could give valubale insight. Finally, question 5 evaluates how much users like this water-dispensing system by directly asking if they would be willing to pay to use it in other settings.
+        </p>
+    </section>
+
+    <section>
+        <h3>Interface Sketch</h3>
+
+        <p>
+            Here is a sketch of the water dispenser interface, providing a sense of what interaction modes are available.
+        </p>
+
+        <div>
+            <img id="interface-sketch" src="assets/personas/water-dispenser-drawing.jpg" width="600px"/>
+            <p>
+                The water dispenser provides two touch-free sensors to make the process more sanitary and (maybe) more convenient.
+                <br><br>
+                The <b>left sensor</b> allows the user to switch between 4 different water types: cold, sparkling, ambient, and hot. Hovering over the sensor will continue switching to the next type after 1 second. 
+                <br><br>
+                The <b>right sensor</b> allows the user to dispense the currently selected water type.
+            </p>
+        </div>
+    
+    </section>
+    
+    <section>
+        <h3>Observations</h3>
+
+        <p>
+            In addition to interviews, I observed users passively. This practice can often generate insights that are impossible to get from directed questions, since it allows a chance to learn users naturalistic behaviors. Here are my overall notes after passive observation:
+        </p>
+        <ul>
+            <li>
+                <b>Many people tried to hover with only one finger.</b> Sometimes this worked, but sometimes the finger was too thin and didn't trigger the sensor, resulting in sporadic dispensing.
+            </li>
+            <li>
+                <b>Many users ended up touching the sensor with their finger directly</b>
+            </li>
+            <li>
+                <b>Some users with thin-necked bottles overflowed a little bit when filling.</b>
+            </li>
+            <li>
+                <b>Users dispensed a variety of water types</b>, showing diverse preferences for cold, ambient, sparkling, and hot.
+            </li>
+            <li>
+                <b>In general, people were able to refill their bottles within 5-7 seconds.</b>
+            </li>
+            <li>
+                <b>Hot water dispensed slower than the rest</b>, taking closer to 10-15 seconds.
+            </li>
+            <li>
+                <b>Every user opted to repeatedly cover and uncover the button to switch water types more quickly</b>, rather than continuously hovering and waiting for the water types to change.
+            </li>
+        </ul>
+        <p>
+            These observations provided a starting point from which to learn more. Interviews were the next step!
+        </p>
+    </section>
+
+    <section>
+        <h3>Interviews</h3>
+
+        <p>
+            To gain more targeted insights, I also interviewed 3 users using the questions I formulated before. I interviewed them right after they used the water-dispenser system to refill a cup or bottle. Here are aggregated summaries of the users' responses&mdash;each bullet summarizes something that was said by a user:
+        </p>
+        <ol>
+            <li><b>What is the best and worst thing about using this dispenser?</b></li>
+            <ul>
+                <li><em>Bests</em>: 
+                    Cool, fancy, able to get water fast, sparkling water (+1)
+                </li>
+                <li>
+                    <em>Worsts</em>: 
+                    Not easy to get hot water because you need to hover over left sensor 4 times, hot water dispenses too slow, water types take too long to switch on hover, likes old dispenser better
+                </li>
+            </ul>
+
+            <li><b>How important is the touch-free feature to you?</b></li>
+            <ul>
+                <li>
+                    Cool, but not that convenient
+                </li>
+                <li>
+                    Important for sanitary reasons
+                </li>
+                <li>
+                    Hard to figure out how to use it, don't know how the sensor works
+                </li>
+                <li>
+                    Ends up touching it anyway
+                </li>
+                <li>
+                    Took a bit to get used to, likes it now
+                </li>
+            </ul>
+            <li><b>How important is the temperature-control feature for you?</b></li>
+            <ul>
+                <li>
+                    Good feature, since it has 3 options
+                </li>
+                <li>
+                    Good design
+                </li>
+                <li>
+                    Mediocre, helps them know if it's cold or hot
+                </li>
+                <li>
+                    It's important for when it's cold outside
+                </li>
+            </ul>
+
+            <li><b>What features might make this dispenser better?</b></li>
+            <ul>
+                <li>
+                    Change left button to 4 hover buttons for each water type, dispenses directly when hovering over them
+                </li>
+                <li>
+                    Make the hot water come out faster
+                </li>
+                <li>
+                    Give the left button an indicator light so you know when the water type is going to change
+                </li>
+            </ul>
+            <li><b>Would you pay $1 to replace another public dispenser with this one?</b></li>
+            <ul>
+                <li>
+                    Yes, would switch out the CIT dispensers for this type of dispenser
+                </li>
+                <li>
+                    Tentative yes
+                </li>
+                <li>
+                    Yes
+                </li>
+            </ul>
+        </ol>
+        <p>
+            All in all, users appreciated the system's novelty and fanciness, including the rare feature to dispense sparkling water. Users reported particular trouble with the hot water feature, which was both hard to select and slow to dispense. The difficulty of navigating between water-types was a general problem as well, as the left-hover sensor required multiple unnecessary hand motions. The core, touch-free feature of the dispenser was important to some users for sanitary reasons, but many users ended up touching the sensors directly due to trouble getting them to detect their hand. Despite these issues, every user still said they would pay $1 to replace another public dispenser with one of these dispensers, indicating that this system still offers value over other water dispensers.
+        </p>
+    
+    </section>
+
+    <section>
+        <h3>Personas</h3>
+
+        <p>
+            Based off of the information I've gained through observation and interviews, I constructed 2 personas. First, introducing <b>Chilly Billy</b>:
+        </p>
+        <div>
+            <img src="assets/personas/chilly-billy.jpg" width="600px">
+        </div>
+        <p>
+            Billy just came in from the freezing cold and is in dire need of a comforting mug of tea. Unfortunately, he isn't able to dispense hot water into his mug as quickly as he'd like, due to the difficulty and uncertainty of switching the water type to hot, and the slow stream of hot water when he finally gets it to come out. Billy represents users by highlighting the individual preferences for specific water types that I observed (in this case, hot), and showcasing the issues that people faced with the speed of dispensing hot water, and difficulty of toggling to hot water.
+        </p>
+        <p>
+            Here is the next persona I generated, <b>Bubbly Bonnie</b>:
+        </p>
+        <div>
+            <img src="assets/personas/bubbly-bonnie.jpg" width="600px">
+        </div>
+        <p>
+            Bonnie is excited about filling her bottle with sparkling water, but in a rush. This results in her overflowing her bottle and getting her hand all wet, which isn't convenient since she has to be in a meeting right now. On the plus side, she didn't have to touch anything, which satisfied her concerns about germs. Bonnie represents users by highlighting their sanitary concerns, excitement about bubbly water, overflowing incidents, and concern about efficiency. 
+        </p>
+
+
+    </section>
+
+    <section>
+        <h3>Storyboards</h3>
+
+        <p>
+            Now that I've generated two personas, it's time to contextualize their user journey. Let's focus on Chilly Billy and explore what his story looks like from beginning to end:
+        </p>
+        <div>
+            <img src="assets/personas/storyboard.jpg" width="950px">
+        </div>
+        <p>
+            With this storyboard in hand, we are one step closer to designing a better interface for the water dispenser system. We have a very clear idea of exactly what a user might struggle with, and as a result, we can help improve upon those pain points!
+        </p>
+
+    </section>
+</body>
+</html>
