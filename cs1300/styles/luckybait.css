@@ -1,0 +1,45 @@
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.no-bullet {
+    list-style-type: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.sidebar {
+    background-color: #EEEEEE;
+    float: left;
+}
+
+#main-content {
+    background-color: #EBFDFF;
+}
+
+.nav-button {
+    color: white;
+    background-color: #28393B;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #E6632F;
+}
+
+h3 {
+    color: #0F5D03;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
