@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(250, 253, 255);
 }
 
 section {
@@ -22,7 +23,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    color: rgb(104, 18, 3);
+    color: rgb(2, 67, 3);
     font-size: 3em;
     text-align: center;
     margin-bottom: 0px;
@@ -32,7 +33,7 @@ h2 {
     font-size: 1.6em;
     text-align: center;
     font-weight: normal;
-    color: #333;
+    color: rgb(2, 67, 3);
     margin-top: 0px;
     margin-bottom: 35px;
 }
@@ -41,8 +42,8 @@ h3 {
     font-size: 1.5em;
     margin-top: 0px;
     /* border-bottom: 2px solid #ddd; */
-    border-top: 10px solid rgba(106, 25, 25, 0.4);
-    color: rgb(106, 25, 25);
+    border-top: 10px solid rgba(2, 67, 3, 0.3);
+    color: rgb(2, 67, 3);
     padding-bottom: 0px;
     padding-top: 15px;
     margin-bottom: 0px;
@@ -78,10 +79,6 @@ div:has(img) {
     margin: 20px 0;
 }
 
-img#interface-sketch {
-    margin-right: 10px;
-}
-
 li {
     margin-bottom: 10px;
     font-size: 1.1em;
@@ -89,4 +86,14 @@ li {
 
 ul {
     margin-bottom: 22px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bold {
+    font-weight: 700;
 }
