@@ -4,6 +4,9 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+}
+
+.fake-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,4 +117,61 @@ li {
 
 ul {
     margin-bottom: 22px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.green {
+    color: rgb(11, 68, 16);
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.topname a {
+    margin-left: 20px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.navbar {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+}
+
+.topbar {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar a {
+    background-color: rgb(73, 73, 73);
+    padding: 10px 16px;
+    color: white;
+    text-decoration: none;
+    margin-right: 2px;
+    margin-top: 2px;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    background-color: grey;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxed-content {
+    color: grey;
+    margin: 20px 60px;
 }
