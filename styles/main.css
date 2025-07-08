@@ -13,6 +13,11 @@ body {
 
 section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 7vw;
 }
 
 .navbar {
@@ -110,14 +115,6 @@ p {
     transform: scale(1.1);
 }
 
-section.intro {
-    margin-top: 60px;
-}
-
-section.publications {
-    margin-top: 90px;
-}
-
 .centered-list {
     display: flex;
     flex-direction: column;
@@ -169,6 +166,10 @@ section.publications {
 
     .publication {
         width: 480px;
+    }
+
+    section.intro {
+        margin-top: 0px;
     }
 }
 
