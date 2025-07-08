@@ -5,22 +5,29 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathemusic</title>
-    <link href="./styles/accessible-components.css" rel="stylesheet">
+    <link href="./styles/lsys.css" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script> -->
 </head>
 
 <body>
-    <div class="header">
-        <div class="topname">
-            <a class="green bold" href="./index.html">Eric Nai-Li Chen</a>
+    <header>
+        <div class="center">
+          <h1>Undefined Behavior</h1>
         </div>
-        <div class="navbar">
-            <a href="./index.html">Home</a>
-            <a href="./about-me.html">About Me</a>
-            <a href="./cv.html">CV</a>
+        <div class="center">
+          <h2>exploring expression through mathematics and code</h2>
         </div>
-    </div>
-    <div class="fake-body">
+      </header>
+    <nav id="nav-bar">
+        <ul class="no-bullet">
+            <li><a href="./index.html">home</a></li>
+            <li><a href="./about.html">about</a></li>
+            <li><a href="./lsys.html">lsystems</a></li>
+            <li><a href="./mathemusic.html">mathemusic</a></li>
+        </ul>
+    </nav>
+    <main>
         <article>
             <div class="article-header">
                 <h1>Mathemusic</h1>
@@ -33,21 +40,21 @@
                     the black notes) you can hear the frequency rising steadily higher.
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/chromatic-piano-climb.wav"></audio>
+                    <audio controls src="audio/chromatic-piano-climb.wav"></audio>
                 </div>
                 <p>
                     Based on what you hear you might think that the frequency of the notes is increasing linearly. If we
                     were to plot the frequency of each note on a graph you might expect to see something like this:
                 </p>
                 <div class="center">
-                    <img src="assets/piano-graph-linear.png" alt="a graph depicting a linear relationship between notes on a keyboard and frequency in hertz"/>
+                    <img src="images/piano-graph-linear.png" alt="a graph depicting a linear relationship between notes on a keyboard and frequency in hertz"/>
                 </div>
                 <p>
                     But that would be inaccurate. As it turns out, frequency increases <b>exponentially</b> as you climb
                     chromatically. So the true picture looks something like this:
                 </p>
                 <div class="center">
-                    <img src="assets/piano-graph-exponential.png" alt="a graph depicting an exponential relationship between notes on a keyboard and frequency in hertz"/>
+                    <img src="images/piano-graph-exponential.png" alt="a graph depicting an exponential relationship between notes on a keyboard and frequency in hertz"/>
                 </div>
                 <p>
                     In other words, moving up by one note (which is called moving up a half step) corresponds to
@@ -69,7 +76,7 @@
                     function as input and re-maps the frequencies of a music file according to the function.
                 </p>
                 <div class="center">
-                    <img src="assets/python-function-diagram.png" alt="a normal midi file and a function are fed as input into a Python script to output a new, transformed midi file"/>
+                    <img src="images/python-function-diagram.png" alt="a normal midi file and a function are fed as input into a Python script to output a new, transformed midi file"/>
                 </div>
                 <p>
                     With this tool in hand, I could dream up any function and then listen to how that choice affected a
@@ -83,7 +90,7 @@
                     chromatically ascending on a piano sounds like with a linear frequency function.
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/chromatic-piano-climb-transformed-linear.wav"></audio>
+                    <audio controls src="audio/chromatic-piano-climb-transformed-linear.wav"></audio>
                 </div>
                 <p>
                     Weird, right? The notes sound like they increase by large jumps at the beginning and then smaller jumps as the pitch gets higher. Why might this be?
@@ -98,13 +105,13 @@
                     Having heard the weird sounding chromatic ascent with the linear frequency function, I was eager to try it out on a complete song. Here is the regular version of the song Fur Elise, which you might recognize:
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/fur-elise.wav"></audio>
+                    <audio controls src="audio/fur-elise.wav"></audio>
                 </div>
                 <p>
                     And here is Fur Elise with a linear frequency function:
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/fur-elise-tranformed-linear.wav"></audio>
+                    <audio controls src="audio/fur-elise-tranformed-linear.wav"></audio>
                 </div>
                 <p>
                     When I heard this for the first time I literally cried with laughter because it sounded so ridiculous! It is really interesting to me how the mood of the song has totally changed from somber and beautiful to something weirdly spooky and alien and absurd.
@@ -116,20 +123,20 @@
                     Now what if we mapped frequency to some other function besides a linear one? For example, what if we used a parabola?
                 </p>
                 <div class="center">
-                    <img src="assets/piano-graph-parabolic.png" alt="a graph depicting a quadratic relationship between notes on a keyboard and frequency in hertz"/>
+                    <img src="images/piano-graph-parabolic.png" alt="a graph depicting a quadratic relationship between notes on a keyboard and frequency in hertz"/>
                 </div>
                 <p>
                     Let's start with the chromatic ascent again. Here is what it sounds like with the quadratic frequency relationship:
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/chromatic-piano-climb-transformed-quadratic.wav"></audio>
+                    <audio controls src="audio/chromatic-piano-climb-transformed-quadratic.wav"></audio>
                 </div>
                 <p>
                     It doesn't really sound like an "ascent" anymore since the quadratic function is not monotonically increasing. The pitch decreases and then increases again as we climb up the piano.
                     This is what Fur Elise sounds like under this frequency mapping:
                 </p>
                 <div class="center">
-                    <audio controls src="assets/audio/fur-elise-transformed-quadratic.wav"></audio>
+                    <audio controls src="audio/fur-elise-transformed-quadratic.wav"></audio>
                 </div>
                 <p>
                     Once again the vibe of the song is totally unrecognizable! This one makes me think of some shady and suspenseful scene from a spy movie.
@@ -145,7 +152,7 @@
                 </p>
             </section>
         </article>
-    </div>
+    </main>
 </body>
 
 </html>

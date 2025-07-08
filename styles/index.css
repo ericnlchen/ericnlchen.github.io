@@ -1,173 +1,153 @@
-/* || GENERAL STYLES */
 
-html {
-    background-color: antiquewhite;
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 6px;
+    font-size: 20px;
 }
 
-/* || UTILITIES */
-
-.no-bullet{
-    list-style-type: none;
+.navbar {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
 }
 
-.typed {
-    font-family: 'Courier', 'Courier New', serif;
-    font-size: 1.7vw;
-}
-
-.typed-cursor {
-    font-size: 1.7vw;
-}
-
-@media (max-width: 1000px) {
-    .typed {
-        font-size: 4.5vw;
-    }
-    .typed-cursor {
-        font-size: 4.5vw;
-    }
-}
-
-@media (max-height: 450px) {
-    .typed {
-        font-size: 2vw;
-    }
-    .typed-cursor {
-        font-size: 2vw;
-    }
-}
-
-#about-me {
-    margin: 5%;
-    margin-top: 12%;
-    width: 70%;
-}
-
-
-@media (min-width: 701px) and (max-width: 1000px) {
-    #about-me {
-        margin: 3%;
-        margin-top: 20%;
-        width: 70%;
-    }
-}
-
-@media (max-width: 700px) {
-    #about-me {
-        margin: 3%;
-        margin-top: 40%;
-        width: 60%;
-    }
-}
-
-@media (max-height: 450px) {
-    #about-me {
-        margin-top: 15%;
-    }
-}
-
-#class-human-code {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 5%;
-}
-
-@media (max-width: 1000px) {
-    #class-human-code {
-        position: absolute;
-        top: 20vh;
-        left: 0;
-        margin: 5%;
-    }
-}
-
-@media (max-height: 450px) {
-    #class-human-code {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 5%;
-    }
-}
-
-.keyword {
-    color: #479c9c;
-}
-
-.typename {
-    color:indianred;
-}
-
-/* || SITEWIDE */
-
-#nav-bar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 2%;
-}
-
-#nav-bar a {
-    font-family: 'Courier', 'Courier New', serif;
-    color: #111;
-    text-align: center;
+.navbar a {
+    background-color: rgb(73, 73, 73);
+    padding: 10px 16px;
+    color: white;
     text-decoration: none;
-    font-size: 17px;
+    margin-right: 2px;
+    margin-top: 2px;
+    font-size: 18px;
 }
 
-@media (max-width: 1000px) {
-    #nav-bar a {
-        font-size: 3.8vw;
-    }
+.navbar a:hover {
+    background-color: grey;
 }
 
-@media (max-height: 450px) {
-    #nav-bar a {
-        font-size: 2vw;
-    }
-}
-
-/* || HOMEPAGE */
-
-#titles {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 5%;
-}
-
-#main-title {
-    background-color:#ffff73;
-    font-size: 7vw;
-    font-weight: 300;
+h1 {
+    font-size: 4vw;
     margin: 0;
+    font-weight: normal;
 }
 
-#sub-title {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
+#my-name {
+    font-weight: bold;
+    font-size: 5vw;
+    color: rgb(11, 68, 16);
+}
+
+#main-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content:flex-start;
+    flex-direction: column;
+    margin: 150px 12vw;
+}
+
+#main-content {
+    margin: 0 12vw;
+}
+
+h2 {
     font-size: 2vw;
-    font-weight: 300;
-    margin: 0;
+    font-weight: normal;
 }
 
-@media (max-width: 900px) {
-    #main-title {
-        font-size: 9.5vw;
+#projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    font-size: 1.2rem;
+}
+
+#projects a {
+    text-decoration: none;
+    color: black;
+}
+
+.project-box {
+    background-color: rgb(205, 205, 236);
+    height: 20vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: black;
+}
+
+#redesign-box {
+    background-image: url(../assets/lucky-bait-teaser.png);
+}
+
+#l-ink-box {
+    background-image: url(../assets/l-ink-teaser-3.svg);
+    background-position: center;
+    background-size: cover;
+}
+
+#accessible-components-box {
+    background-image: url(../assets/accordion-teaser.png);
+    background-size: cover;
+}
+
+#personas-box {
+    background-image: url(../assets/personas-teaser.png);
+}
+
+@media (max-width: 768px) {
+    #projects {
+        grid-template-columns: 1fr;
     }
-    #sub-title {
+    h2 {
         font-size: 4vw;
     }
+    .project-box {
+        height: 40vw;
+    }
 }
 
-@media (max-height: 450px) {
-    #main-title {
+@media (max-width: 480px) {
+    h1 {
         font-size: 6vw;
     }
-    #sub-title {
-        font-size: 2.7vw;
+    #my-name {
+        font-size: 7vw;
+    }
+    .navbar a {
+        font-size: 14px;
+    }
+    #projects {
+        font-size: 14px;
     }
 }
+
+.cool-effect {
+    color: rgb(255, 255, 255);
+    animation: shadowAnim 5s infinite ease-in-out;
+}
+
+@keyframes shadowAnim {
+    0% {
+        text-shadow: 0.3vw 0vw rgb(151, 0, 0);
+    }
+    20% {
+        text-shadow: 0vw 0.3vw rgb(0, 151, 10);
+    }
+    40% {
+        text-shadow: -0.3vw 0vw rgb(0, 151, 133);
+    }
+    65% {
+        text-shadow: 0vw -0.3vw rgb(151, 0, 133);
+    }
+    100% {
+        text-shadow: 0.3vw 0vw rgb(151, 0, 0);
+    }
+}
+
+.site-footer {
+    text-align: center;
+    width: 100%;
+    font-size: 0.9rem;
+    padding-top: 30px;
+  }
