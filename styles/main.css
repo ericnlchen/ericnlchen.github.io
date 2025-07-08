@@ -6,7 +6,7 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 6px;
     color: #434343;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
 }
@@ -24,7 +24,6 @@ section {
 .navbar a {
     padding: 10px 16px;
     margin: 0 0 10px 10px;
-    font-size: 20px;
     text-decoration: underline;
 }
 
@@ -55,13 +54,12 @@ a:hover {
 }
 
 .profile-image {
-    height: 260px;
+    height: 250px;
     border-style: solid;
     border-color: rgb(204, 204, 204);
 }
 
 p {
-    font-size: 20px;
     max-width: 700px;
     line-height: 1.4;
 }
@@ -87,11 +85,11 @@ p {
 
 .profile {
     display: block;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .profile-name {
-    font-size: 33px;
+    font-size: 30px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -175,14 +173,6 @@ section.publications {
 }
 
 @media (max-width: 480px) {
-    .navbar a {
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
     body {
         font-size: 14px;
     }
