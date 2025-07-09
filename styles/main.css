@@ -7,8 +7,13 @@ body {
     margin: 6px;
     color: #434343;
     font-size: 18px;
+    font-weight: 400;
     display: flex;
     flex-direction: column;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 section {
@@ -81,10 +86,6 @@ p {
     color: rgb(11, 68, 16);
 }
 
-.bold {
-    font-weight: bold;
-}
-
 .site-footer {
     text-align: center;
     width: 100%;
@@ -106,8 +107,8 @@ p {
 }
 
 .publications-header {
-    font-size: 28px;
-    margin-bottom: 40px;
+    font-size: 30px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +133,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 54px;
+    gap: 50px;
 }
 
 .publication {
@@ -151,7 +152,6 @@ p {
 }
 
 .pub-title {
-    font-weight: bold;
     margin-bottom: 5px;
 }
 
@@ -161,6 +161,10 @@ p {
 
 .highlight {
     background-color: yellow;
+}
+
+#nice-to-meet {
+    margin-top: 36px;
 }
 
 @media (max-width: 768px) {
@@ -199,7 +203,8 @@ p {
     }
 
     .publications-header {
-        font-size: 28px;
+        font-size: 24px;
+        margin-bottom: 50px;
     }
 }
 
