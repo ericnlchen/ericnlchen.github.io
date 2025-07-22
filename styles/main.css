@@ -6,11 +6,27 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 6px;
     color: #434343;
+    background-color: white;
     font-size: 18px;
     font-weight: 400;
     display: flex;
     flex-direction: column;
 }
+
+#background-canvas {
+    position: absolute;
+    background-color: rgb(251, 244, 235);;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 170px;
+    z-index: -1;
+    cursor: none;
+    display: none;
+    /* TODO: fix and remove display: none */
+}
+
+
 
 .bold {
     font-weight: bold;
