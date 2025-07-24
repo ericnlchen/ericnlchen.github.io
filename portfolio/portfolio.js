@@ -51,3 +51,33 @@ window.addEventListener("resize", () => {
 //     section.appendChild(bar);
 //   }
 // }
+
+const options = {
+  root: null, // viewport
+  rootMargin: "200px",
+  threshold: 0.25,
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    const video = entry.target;
+
+    if (entry.isIntersecting) {
+      if (!video.src) {
+        video.src = video.dataset.src;
+        video.load();
+      }
+
+      video.play().catch((err) => {
+        console.warn("Autoplay failed", err);
+      });
+    } else {
+      video.pause();
+    }
+  });
+}, options);
+
+// Observe each video
+document
+  .querySelectorAll(".lazy-video")
+  .forEach((video) => observer.observe(video));
