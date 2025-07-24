@@ -39,12 +39,14 @@ body {
     overflow-y: auto;
 }
 
+
 .slide-container {
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     width: 1920px;
+    transform-origin: top center;
 }
 
 section {
