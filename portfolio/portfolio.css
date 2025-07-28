@@ -64,8 +64,14 @@ section {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 26px;
+    font-size: 32px;
     z-index: 5;
+    color: green;
+}
+
+.back-button:hover {
+    color: rgb(111, 111, 111);
+    text-decoration: underline;
 }
 
 .main-title {
