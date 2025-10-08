@@ -228,13 +228,18 @@ p {
 .conference {
     display: inline-block;
     align-self: flex-start;
-    background-color: #e0f2fe;
-    color: #0369a1;
     padding: 0.25em 0.75em;
     border-radius: 9999px;
-    font-size: 11px;
     font-weight: 500;
     margin-bottom: 5px;
+}
+
+.chi {
+    background-color: #e0fee1;
+}
+
+.uist {
+    background-color: #e7e0fe;
 }
 
 img.teaser {
