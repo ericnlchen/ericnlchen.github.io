@@ -7,7 +7,7 @@ body, html {
 }
 
 #background-canvas {
-    position: fixed;
+    position: absolute;
     inset: 0;
     width: 100vw;
     height: 100vh;
@@ -177,6 +177,7 @@ a:hover {
 /* Updates */
 
 .updates-list {
+    background-color: white;
     padding: 10px;
     display: grid;
     grid-template-columns: 120px 1fr;
