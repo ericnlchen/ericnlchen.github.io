@@ -9,6 +9,7 @@ import {
 // For animation: Might need to give each branch a transform that translates it to its own origin
 
 const canvas = document.getElementById("background-canvas");
+const dragHandles = document.getElementsByClassName("drag-handle");
 
 let isDrawing = false;
 let currentBranch = null;
@@ -29,19 +30,22 @@ let branchCounter = null;
 //   }
 // }, 4);
 
-window.addEventListener("mousedown", (e) => {
-  isDrawing = true;
-  activeBranches = [];
-  branchCounter = 0;
-  const newPoint = getMousePosition(e);
-  lastPoint = newPoint;
-  currentBranch = createBranch(0, newPoint, 0, true); // isTrunk=true
-  addPointToBranch(currentBranch, newPoint);
-  canvas.appendChild(currentBranch.node);
-  activeBranches.push(currentBranch);
-});
+for (const dragHandle of dragHandles) {
+  dragHandle.addEventListener("mousedown", (e) => {
+    document.documentElement.style.cursor = "grabbing";
+    isDrawing = true;
+    activeBranches = [];
+    branchCounter = 0;
+    const newPoint = getMousePosition(e);
+    lastPoint = newPoint;
+    currentBranch = createBranch(0, newPoint, 0, true); // isTrunk=true
+    addPointToBranch(currentBranch, newPoint);
+    canvas.appendChild(currentBranch.node);
+    activeBranches.push(currentBranch);
+  });
+}
 
-window.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", (e) => {
   if (isDrawing) {
     const newPoint = getMousePosition(e);
     const dist = computeDistance(lastPoint, newPoint);
@@ -60,13 +64,17 @@ window.addEventListener("mousemove", (e) => {
   }
 });
 
-window.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", () => {
   isDrawing = false;
+  document.documentElement.style.cursor = "auto";
 });
 
-window.addEventListener("mouseleave", () => {
-  isDrawing = false;
-});
+// document.addEventListener("mouseout", (e) => {
+//   if (!e.relatedTarget) {
+//     console.log("leave")
+//     isDrawing = false;
+//   }
+// });
 
 /////////////////////////////////////////////
 
@@ -78,12 +86,12 @@ function processBranch(branch, newPoint, alpha, dist) {
     switch (symbol) {
       case "+":
         if (!branch.isTrunk) {
-          branch.heading += 0.4; // rad
+          branch.heading += 0.5; // rad
         }
         break;
       case "-":
         if (!branch.isTrunk) {
-          branch.heading -= 0.4; // rad
+          branch.heading -= 0.5; // rad
         }
         break;
       case "[":

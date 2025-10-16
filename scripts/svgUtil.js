@@ -19,8 +19,8 @@ export function addPointToNode(node, newPoint) {
 function createPolyline() {
   let poly = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
   poly.setAttribute("fill", "none");
-  poly.setAttribute("stroke", "green");
-  poly.setAttribute("stroke-width", "1");
+  poly.setAttribute("stroke", "#0eab00");
+  poly.setAttribute("stroke-width", "2");
   poly.setAttribute("points", ``);
   poly.setAttribute("stroke-linecap", "round");
   poly.setAttribute("stroke-linejoin", "round");

@@ -17,14 +17,6 @@ const rules = [
     input: "F",
     output: "F[-F]F[+F]F",
   },
-  {
-    input: "[",
-    output: "-[[-",
-  },
-  {
-    input: "]",
-    output: "]F[FF-]+]+",
-  },
 ];
 const iters = 7;
 
