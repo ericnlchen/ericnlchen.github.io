@@ -66,9 +66,9 @@ section {
     margin-bottom: 50px;
 }
 
-a {
+/* a {
     color: #0eab00;
-}
+} */
 
 a:hover {
     color: rgb(111, 111, 111);
@@ -211,6 +211,21 @@ a:hover {
     min-width: 120px;
 }
 
+.drag-handle {
+    display: inline-block;
+    border: solid rgb(157, 157, 157) 1px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 5px;
+    cursor: grab;
+    padding: 0 4px;
+    margin: 0 2px;
+}
+
+.drag-handle:hover {
+    background-color: rgb(203, 203, 203);
+    user-select:none;
+    -webkit-user-select:none;
+}
 
 /* .navbar a.active::before {
     content: '[';
