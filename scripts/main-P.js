@@ -4,5 +4,4 @@ export function mainP() {
     psHandle.addEventListener("mousedown", () => {
         console.log('ps')
     })
-
 }
