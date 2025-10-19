@@ -1,3 +1,14 @@
+export function createCircle(cx, cy, r = 20) {
+  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', String(cx));
+  circle.setAttribute('cy', String(cy));
+  circle.setAttribute('r', String(r));
+  circle.setAttribute('fill-opacity', '1');
+  // Set css blend mode of the circle
+  circle.setAttribute('style', 'mix-blend-mode: plus-lighter;');
+  return circle;
+}
+
 export function createNode() {
   const node = document.createElementNS("http://www.w3.org/2000/svg", "g");
   const nodeChildren = document.createElementNS(

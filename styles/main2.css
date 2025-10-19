@@ -225,9 +225,9 @@ a:hover {
     border: solid rgb(157, 157, 157) 1px;
     background-color: rgb(241, 241, 241);
     border-radius: 5px;
-    cursor: grab;
     padding: 0 4px;
     margin: 0 2px;
+    cursor: grab;
 }
 
 .drag-handle:hover {

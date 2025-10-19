@@ -8,7 +8,6 @@ import {
 
 // For animation: Might need to give each branch a transform that translates it to its own origin
 export function mainL() {
-
     const canvas = document.getElementById("background-canvas");
     const LInkHandle = document.getElementsByClassName("l-ink-handle")[0];
 
@@ -23,18 +22,18 @@ export function mainL() {
     //   console.log(canvas.children.length)
     // }, 600)
 
-
     LInkHandle.addEventListener("mousedown", (e) => {
-    document.documentElement.style.cursor = "grabbing";
-    isDrawing = true;
-    activeBranches = [];
-    branchCounter = 0;
-    const newPoint = getMousePosition(e);
-    lastPoint = newPoint;
-    currentStroke = createBranch(0, newPoint, 0, true); // isTrunk=true
-    addPointToBranch(currentStroke, newPoint);
-    canvas.appendChild(currentStroke.node);
-    activeBranches.push(currentStroke);
+        document.documentElement.style.cursor = "grabbing";
+        LInkHandle.style.cursor = "grabbing";
+        isDrawing = true;
+        activeBranches = [];
+        branchCounter = 0;
+        const newPoint = getMousePosition(e);
+        lastPoint = newPoint;
+        currentStroke = createBranch(0, newPoint, 0, true); // isTrunk=true
+        addPointToBranch(currentStroke, newPoint);
+        canvas.appendChild(currentStroke.node);
+        activeBranches.push(currentStroke);
     });
 
 
@@ -58,18 +57,19 @@ export function mainL() {
     });
 
     document.addEventListener("mouseup", () => {
-    if (!isDrawing) return;
-    document.documentElement.style.cursor = "auto";
-    if (currentStroke?.node) {
-        const node = currentStroke.node;
-        const anim = node.animate(
-        [{ opacity: 1 }, { opacity: 0 }],
-        {duration: 600}
-        );
-        anim.finished.then(() => { node.remove(); });
-    }
-    currentStroke = null;
-    isDrawing = false;
+        if (!isDrawing) return;
+        document.documentElement.style.cursor = "auto";
+        LInkHandle.style.cursor = "grab";
+        if (currentStroke?.node) {
+            const node = currentStroke.node;
+            const anim = node.animate(
+            [{ opacity: 1 }, { opacity: 0 }],
+            {duration: 600}
+            );
+            anim.finished.then(() => { node.remove(); });
+        }
+        currentStroke = null;
+        isDrawing = false;
     });
 
     // document.addEventListener("mouseout", (e) => {
@@ -80,87 +80,86 @@ export function mainL() {
     // });
 
     /////////////////////////////////////////////
+    function getMousePosition(evt) {
+        const CTM = canvas.getScreenCTM();
+        return {
+            x: (evt.clientX - CTM.e) / CTM.a,
+            y: (evt.clientY - CTM.f) / CTM.d,
+        };
+    }
 
     function processBranch(branch, newPoint, alpha, dist) {
-    // Iterate branch's L-string index, taking corresponding actions until reaching an F
-    let symbol = lString[branch.lStringIndex];
-    // While the current symbol is not an F
-    while (symbol !== "F" && symbol !== undefined) {
-        switch (symbol) {
-        case "+":
-            if (!branch.isTrunk) {
-            branch.heading += 0.5; // rad
+        // Iterate branch's L-string index, taking corresponding actions until reaching an F
+        let symbol = lString[branch.lStringIndex];
+        // While the current symbol is not an F
+        while (symbol !== "F" && symbol !== undefined) {
+            switch (symbol) {
+            case "+":
+                if (!branch.isTrunk) {
+                branch.heading += 0.5; // rad
+                }
+                break;
+            case "-":
+                if (!branch.isTrunk) {
+                branch.heading -= 0.5; // rad
+                }
+                break;
+            case "[":
+                // Add child branch
+                const childBranch = createBranch(
+                    branch.lStringIndex + 1,
+                    branch.lastPoint,
+                    branch.heading
+                );
+                addChildNode(branch.node, childBranch.node);
+                // Move parent lStringIndex to closing brace
+                try {
+                    branch.lStringIndex = indexOfClosingBrace(
+                        lString,
+                        branch.lStringIndex
+                    );
+                } catch (err) {
+                    console.error(err);
+                }
+                // Add new branch to active branches and processing stack
+                activeBranches.push(childBranch);
+                branchStack.push(childBranch);
+                break;
+            case "]":
+                // remove from active branches
+                const branchIndex = activeBranches.findIndex((b) => b.id === branch.id);
+                activeBranches.splice(branchIndex, 1);
+                branch.lStringIndex++;
+                return;
             }
-            break;
-        case "-":
-            if (!branch.isTrunk) {
-            branch.heading -= 0.5; // rad
-            }
-            break;
-        case "[":
-            // Add child branch
-            const childBranch = createBranch(
-            branch.lStringIndex + 1,
-            branch.lastPoint,
-            branch.heading
-            );
-            addChildNode(branch.node, childBranch.node);
-            // Move parent lStringIndex to closing brace
-            try {
-            branch.lStringIndex = indexOfClosingBrace(
-                lString,
-                branch.lStringIndex
-            );
-            } catch (err) {
-            console.error(err);
-            }
-            // Add new branch to active branches and processing stack
-            activeBranches.push(childBranch);
-            branchStack.push(childBranch);
-            break;
-        case "]":
-            // remove from active branches
-            const branchIndex = activeBranches.findIndex((b) => b.id === branch.id);
-            activeBranches.splice(branchIndex, 1);
             branch.lStringIndex++;
-            return;
+            symbol = lString[branch.lStringIndex];
         }
+        const newPointTransf = transformToBranch(alpha, dist, branch);
+        addPointToBranch(branch, newPointTransf);
         branch.lStringIndex++;
-        symbol = lString[branch.lStringIndex];
-    }
-    const newPointTransf = transformToBranch(alpha, dist, branch);
-    addPointToBranch(branch, newPointTransf);
-    branch.lStringIndex++;
-    }
+        }
 
-    function createBranch(lStringIndex, point, heading = 0, isTrunk = false) {
-    const node = createNode();
-    const branch = {
-        node: node,
-        lStringIndex: lStringIndex,
-        heading: heading,
-        lastPoint: null,
-        id: branchCounter,
-        isTrunk: isTrunk,
-    };
-    branchCounter++;
-    addPointToBranch(branch, point);
-    const poly = node.querySelector(":scope > polyline");
-    // poly.appendChild(getAnimation());
-    return branch;
+        function createBranch(lStringIndex, point, heading = 0, isTrunk = false) {
+        const node = createNode();
+        const branch = {
+            node: node,
+            lStringIndex: lStringIndex,
+            heading: heading,
+            lastPoint: null,
+            id: branchCounter,
+            isTrunk: isTrunk,
+        };
+        branchCounter++;
+        addPointToBranch(branch, point);
+        const poly = node.querySelector(":scope > polyline");
+        // poly.appendChild(getAnimation());
+        return branch;
     }
 
     function addPointToBranch(branch, newPoint) {
-    addPointToNode(branch.node, newPoint);
-    branch.lastPoint = newPoint;
-    }
-
-    function getMousePosition(evt) {
-    const CTM = canvas.getScreenCTM();
-    return {
-        x: (evt.clientX - CTM.e) / CTM.a,
-        y: (evt.clientY - CTM.f) / CTM.d,
-    };
+        addPointToNode(branch.node, newPoint);
+        branch.lastPoint = newPoint;
     }
 
     function transformToBranch(alpha, dist, branch) {
