@@ -22,7 +22,7 @@ export function mainL() {
     //   console.log(canvas.children.length)
     // }, 600)
 
-    LInkHandle.addEventListener("mousedown", (e) => {
+    LInkHandle.addEventListener("pointerdown", (e) => {
         document.documentElement.style.cursor = "grabbing";
         LInkHandle.style.cursor = "grabbing";
         isDrawing = true;
@@ -37,7 +37,7 @@ export function mainL() {
     });
 
 
-    document.addEventListener("mousemove", (e) => {
+    document.addEventListener("pointermove", (e) => {
     if (isDrawing) {
         const newPoint = getMousePosition(e);
         const dist = computeDistance(lastPoint, newPoint);
@@ -56,7 +56,7 @@ export function mainL() {
     }
     });
 
-    document.addEventListener("mouseup", () => {
+    document.addEventListener("pointerup", () => {
         if (!isDrawing) return;
         document.documentElement.style.cursor = "auto";
         LInkHandle.style.cursor = "grab";

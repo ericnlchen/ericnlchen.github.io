@@ -12,7 +12,7 @@ export function mainP() {
     let mousePos = null;
     let particles = [];
 
-    psHandle.addEventListener("mousedown", (e) => {
+    psHandle.addEventListener("pointerdown", (e) => {
         psHandle.style.cursor = "grabbing";
         document.documentElement.style.cursor = "grabbing";
         isDrawing = true;
@@ -70,14 +70,14 @@ export function mainP() {
 
     rafId = requestAnimationFrame(frame);
 
-    document.addEventListener("mouseup", () => {
+    document.addEventListener("pointerup", () => {
         if (!isDrawing) return;
         document.documentElement.style.cursor = "auto";
         psHandle.style.cursor = "grab";
         isDrawing = false;
     })
 
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("pointermove", (e) => {
         if (!isDrawing) return;
         mousePos = getMousePosition(e);
     })

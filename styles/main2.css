@@ -7,7 +7,7 @@ body, html {
 }
 
 #background-canvas {
-    position: absolute;
+    position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
@@ -180,11 +180,17 @@ a:hover {
     background-color: white;
     padding: 10px;
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 100px 1fr;
     border: solid rgb(157, 157, 157) 1px;
     height: 110px;
     overflow-y: scroll;
     gap: 20px;
+}
+
+@media (max-width: 520px) {
+    .updates-list {
+        column-gap: 6px;
+    }
 }
 
 .update-date {
@@ -194,8 +200,8 @@ a:hover {
 /* Publications */
 
 .publication {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     border-bottom: solid rgb(157, 157, 157) 0.5px;
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -216,7 +222,7 @@ a:hover {
     padding: 0.1em 0.75em;
     border-radius: 9999px;
     font-weight: 600;
-    min-width: 120px;
+    /* min-width: 120px; */
 }
 
 .drag-handle {
@@ -228,6 +234,10 @@ a:hover {
     padding: 0 4px;
     margin: 0 2px;
     cursor: grab;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .drag-handle:hover {
