@@ -21,7 +21,7 @@ const resizeSlides = () => {
   const viewportWidth = window.innerWidth;
   const sectionWidth = sections[0].offsetWidth;
   if (sectionWidth > viewportWidth) {
-    const scaleFactor = (0.8 * viewportWidth) / sectionWidth;
+    const scaleFactor = (0.75 * viewportWidth) / sectionWidth;
 
     sectionContainer.style.transform = `scale(${scaleFactor})`;
 
