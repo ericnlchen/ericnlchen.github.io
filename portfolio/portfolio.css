@@ -375,3 +375,14 @@ div.textbox {
 .textbox > p {
     margin: 0;
 }
+
+.category-label {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    writing-mode: sideways-lr;
+    font-size: 80px;
+    text-align: center;
+    height: 100vh;
+    color:rgb(126, 126, 126)
+}

@@ -41,24 +41,39 @@ window.addEventListener("resize", () => {
   resizeSlides();
 });
 
-// // Add indicators for new projects
-// for (const section of sections) {
-//   if (section.classList.contains("proj-title")) {
-//     const bar = document.createElement("div");
-//     bar.setAttribute("background-color", "black");
-//     bar.setAttribute("height", "20px");
-//     bar.setAttribute("width", "1000px");
-//     section.appendChild(bar);
-//   }
-// }
+// // Category label stuff
+// const categoryLabel = document.getElementsByClassName("category-label")[0];
+// categoryLabel.style.opacity = 1;
+// const trigger = document.getElementsByClassName("research-projects")[0];
 
+// const observer1 = new IntersectionObserver(
+//   (entries) => {
+//     const entry = entries[0];
+
+//     if (entry.isIntersecting) {
+//       // Trigger reached → fade in
+//       categoryLabel.style.opacity = 1;
+//     } else {
+//       // Trigger left viewport → fade out
+//       categoryLabel.style.opacity = 0;
+//     }
+//   },
+//   {
+//     root: null,          // viewport
+//     threshold: 0.2       // adjust: 0.0 = as soon as it touches, 1.0 = fully visible
+//   }
+// );
+
+// observer1.observe(trigger);
+
+// Video loading stuff
 const options = {
   root: null, // viewport
   rootMargin: "200px",
   threshold: 0.25,
 };
 
-const observer = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     const video = entry.target;
 
