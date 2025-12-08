@@ -10,11 +10,14 @@ export function createCircle(cx, cy, r = 20) {
 }
 
 export function createNode() {
+  // Creates a node structured as a branch <g>
   const node = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  // Add a group to hold child nodes
   const nodeChildren = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "g"
   );
+  // Add a polyline
   const nodePoly = createPolyline();
   node.appendChild(nodeChildren);
   node.appendChild(nodePoly);
