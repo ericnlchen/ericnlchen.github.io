@@ -17,6 +17,18 @@ export function mainL() {
   let branchStack = [];
   let lastPoint = null;
   let branchCounter = null;
+  // Check if we support composite add for ephemeral anim (janky...)
+  let supportsCompositeAdd = true;
+  const ua = navigator.userAgent;
+  const isSafari = ua.includes('Safari');
+  const isChrome = ua.includes('Chrome') || ua.includes('CriOS');
+  const isFirefox = ua.includes('Firefox') || ua.includes('FxiOS');
+  const isEdge = ua.includes('Edg');
+  const isOpera = ua.includes('OPR') || ua.includes('OPT');
+  if (isSafari && !isChrome && !isFirefox && !isEdge && !isOpera) {
+    supportsCompositeAdd = false;
+  }
+  console.log(`supportsCompositeAdd detected as: ${supportsCompositeAdd}`)
 
   // window.setInterval(() => {
   //   console.log(canvas.children.length)
@@ -154,24 +166,40 @@ export function mainL() {
       lastPoint: null,
       id: branchCounter,
       isTrunk: isTrunk,
-      originPoint: point
+      originPoint: point,
     };
     branchCounter++;
 
     // Add the branch's translation transform based on the point
-    node.setAttribute('transform', `translate(${point.x} ${point.y})`);
-    
+    node.setAttribute("transform", `translate(${point.x} ${point.y})`);
+
     // Add pre-transformed point to branch
-    addPointToBranch(branch, {x: 0, y: 0});
+    addPointToBranch(branch, { x: 0, y: 0 });
     // node.classList.add('segment-pop')
     // const poly = node.querySelector(":scope > polyline");
     // poly.appendChild(getAnimation());
-    const anim = node.animate([{ transform: `scale(0.05)` }, { transform: `scale(1)` }], {
-      duration: 300,
-      easing: 'ease-out',
-      fill: 'forwards',
-      composite: 'add'
-    });
+    if (!supportsCompositeAdd) {
+      const children = node.querySelector(":scope > g");
+      const anim = children.animate(
+        [{ transform: `scale(0.05)` }, { transform: `scale(1)` }],
+        {
+          duration: 300,
+          easing: "ease-out",
+          fill: "forwards",
+        }
+      );
+    }
+    else {
+      const anim = node.animate(
+        [{ transform: `scale(0.05)` }, { transform: `scale(1)` }],
+        {
+          duration: 300,
+          easing: "ease-out",
+          fill: "forwards",
+          composite: "add"
+        }
+      );
+    }
     return branch;
   }
 
@@ -181,10 +209,7 @@ export function mainL() {
     //     x: newPoint.x - branch.originPoint.x,
     //     y: newPoint.y - branch.originPoint.y
     // };
-    addPointToNode(
-        branch.node,
-        newPoint
-    );
+    addPointToNode(branch.node, newPoint);
     branch.lastPoint = newPoint;
   }
 
