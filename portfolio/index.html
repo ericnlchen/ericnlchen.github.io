@@ -217,11 +217,11 @@
                 <section class="pull proj-title" id="pull">
                     <div class="project-title-box">
                         <h1 class="project-title">PULL</h1> <!--crazy change, faces, change latents, QUICKLY-->
-                        <h2 class="project-subtitle">&nbsp;live autoencoding with interactive constraints</h2>
+                        <h2 class="project-subtitle">&nbsp;live autoencoding with interactive latents</h2>
                         <h3 class="project-org">Rhode Island School of Design: Drawing with Computers + Personal Project
                         </h3>
                         <h3 class="project-dates">2024.11&mdash;2024.12</h3>
-                        <h3 class="project-blurb">Exploring the tensions in representations of meaning</h3>
+                        <h3 class="project-blurb">Exploring representations of identity</h3>
                     </div>
                     <div class="project-title-overbar"></div>
                     <div class="project-splash-box" id="pull-splash-box">
@@ -240,7 +240,7 @@
                     <div class="textbox"
                         style="position: absolute; top: 190px; left: 140px; width: 1700px; z-index: 10;">
                         <p>
-                            This project started with the observation that <a
+                            This project started with a strange observation that <a
                                 href="https://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrices</a> provide a
                             natural connection from images to graphs. Can the data of an image be encoded within the
                             tensions of a network?
@@ -291,8 +291,7 @@
                         <br>
                         <p>
                             I also decided to try using the webcam feed as input rather than a still image, to create a
-                            mirror-like experience. Here are the results using two different autoencoders that I
-                            trained:
+                            mirror-like experience. Below see the network tensions change as I wave my hands around. Then, watch as I pull on one of the nodes to distort my own image:
                         </p>
                     </div>
                     <div class="textbox" style="position: absolute; top: 600px; left: 160px;">
@@ -324,7 +323,7 @@
                         </p>
                         <br>
                         <p>
-                            I also created a new interface to allow the user to morph their identity. Watch as I change
+                            I also created a new interface to allow the user to morph their identity&mdash;watch as I change
                             the
                             <span style="color: rgb(121, 251, 122);">tunable scale factors</span> below:
                         </p>
@@ -358,12 +357,12 @@
 
                 <section class="visual-code-studio proj-title">
                     <div class="project-title-box">
-                        <h1 class="project-title">Visual Code Studio</h1>
-                        <h2 class="project-subtitle">&nbsp;a knockoff gallery of bona-fide art</h2>
+                        <h1 class="project-title">Visual Interpreter</h1>
+                        <h2 class="project-subtitle">&nbsp;misinterpreting source code as drawing instructions</h2>
                         <h3 class="project-org">Rhode Island School of Design: Drawing with Computers + Personal Project
                         </h3>
                         <h3 class="project-dates">2024.10&mdash;2024.12</h3>
-                        <h3 class="project-blurb">Misinterpreting source code as drawing instructions</h3>
+                        <h3 class="project-blurb">Revealing hidden complexity in arbitrary programs</h3>
                     </div>
                     <div class="project-title-overbar"></div>
                     <div class="project-splash-box">
@@ -375,12 +374,11 @@
                     <div class="slide-title-top-left-box">
                         <div class="slide-title-top-left">Idea/Experiments</div>
                     </div>
-                    <div class="curr-proj-top-right">VCS</div>
+                    <div class="curr-proj-top-right">VI</div>
                     <div class="textbox" style="position: absolute; top: 160px; left: 130px; width: 1500px;">
                         <p>
-                            Systems like P5.js, Processing, and openFrameworks empower us to transform code into
-                            drawings.
-                            But complexity is hidden within code, regardless of intention. What if we could build a
+                            Some code is written specifically for the purpose of generating visual art (P5.js, Processing).
+                            Other code is not&mdash;but rich complexity is hidden within it just the same. What if we could build a
                             system
                             to reveal the inherent complexity in source code by mapping it to a visual representation?
                         </p>
@@ -401,7 +399,7 @@
                         </p>
                         <br>
                         <p>
-                            But I wasn't satisfied because the results seemed chaotic rather than structured as I
+                            But I wasn't satisfied because the results were chaotic and didn't revealing the source code's underlying structure as I
                             wanted.
                         </p>
                     </div>
@@ -417,7 +415,7 @@
                     <div class="slide-title-top-left-box">
                         <div class="slide-title-top-left">Implementation</div>
                     </div>
-                    <div class="curr-proj-top-right">VCS</div>
+                    <div class="curr-proj-top-right">VI</div>
                     <div class="textbox"
                         style="position: absolute; top: 180px; left: 130px; width: 1600px; z-index: 10;">
                         <p>
@@ -427,10 +425,10 @@
                         </p>
                         <br>
                         <p>
-                            I wrote a program to extract bytecode from any Python file, allowing me to map each bytecode
+                            I wrote a program to extract bytecode from Python source and map each bytecode
                             instruction to a pixel operation&mdash;for example, <span
                                 style="font-family: 'Courier New', Courier, monospace;">LOAD_CONST</span> moves the
-                            current
+                            current drawing
                             position and places a pixel, <span
                                 style="font-family: 'Courier New', Courier, monospace;">CALL_FUNCTION</span> changes the
                             current drawing color, etc. The parameters of the bytecode instructions become parameters
