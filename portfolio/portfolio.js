@@ -41,31 +41,6 @@ window.addEventListener("resize", () => {
   resizeSlides();
 });
 
-// // Category label stuff
-// const categoryLabel = document.getElementsByClassName("category-label")[0];
-// categoryLabel.style.opacity = 1;
-// const trigger = document.getElementsByClassName("research-projects")[0];
-
-// const observer1 = new IntersectionObserver(
-//   (entries) => {
-//     const entry = entries[0];
-
-//     if (entry.isIntersecting) {
-//       // Trigger reached → fade in
-//       categoryLabel.style.opacity = 1;
-//     } else {
-//       // Trigger left viewport → fade out
-//       categoryLabel.style.opacity = 0;
-//     }
-//   },
-//   {
-//     root: null,          // viewport
-//     threshold: 0.2       // adjust: 0.0 = as soon as it touches, 1.0 = fully visible
-//   }
-// );
-
-// observer1.observe(trigger);
-
 // Video loading stuff
 const options = {
   root: null, // viewport
@@ -96,3 +71,63 @@ const observer = new IntersectionObserver((entries) => {
 document
   .querySelectorAll(".lazy-video")
   .forEach((video) => observer.observe(video));
+
+// Category headers logic
+const categories = document.querySelectorAll(".category");
+const categoryLabel = document.getElementById("category-label");
+let activeCategory = null;
+function fadeCategoryLabelTo(newLabel) {
+  if (categoryLabel.textContent === newLabel) return;
+  categoryLabel.classList.add('is-fading-out');
+  const handleTransitionEnd = (e) => {
+    if (e.propertyName !== 'opacity') return;
+    categoryLabel.textContent = newLabel;
+    categoryLabel.classList.remove('is-fading-out');
+    categoryLabel.removeEventListener('transitionend', handleTransitionEnd);
+  };
+  categoryLabel.addEventListener('transitionend', handleTransitionEnd);
+}
+
+function fadeBackgroundTo(color) {
+  document.body.style.backgroundColor = color;
+}
+
+const categoryObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (!entry.rootBounds) continue;
+    const visibleHeight = entry.intersectionRect.height;
+    const viewportHeight = entry.rootBounds.height;
+    const viewportFraction = visibleHeight / viewportHeight;
+    entry.target.dataset.viewportFraction = viewportFraction;
+  }
+  let bestCategory = null;
+  let bestFraction = 0;
+
+  for (const category of categories) {
+    const f = parseFloat(category.dataset.viewportFraction || '0');
+    if (f > bestFraction) {
+      bestFraction = f;
+      bestCategory = category;
+    }
+  }
+
+  switch(bestCategory.id) {
+    case "research-projects":
+      fadeCategoryLabelTo("RESEARCH");
+      break;
+    case "course-projects":
+      fadeCategoryLabelTo("PROJECTS");
+      break;
+    case "art-projects":
+      fadeCategoryLabelTo("ART");
+      break;
+    default:
+      fadeCategoryLabelTo("");
+      break;
+  }
+}, {
+  root: null,
+  threshold: Array.from({ length: 21 }, (_, i) => i / 20) // 0, .05, .10, ..., 1.0
+});
+
+categories.forEach(category => categoryObserver.observe(category));
