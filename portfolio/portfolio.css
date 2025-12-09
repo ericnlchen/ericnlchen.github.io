@@ -141,7 +141,7 @@ section.pull .textbox {
 }
 
 section.pull .textbox a {
-    color: #94abf1;
+    color: #7ae987;
 }
 
 section.pull .vert-bar-left {
@@ -182,7 +182,7 @@ section.l-ink .project-title-overbar, section.l-ink .vert-bar-left {
 }
 
 section.adobe .project-title-overbar, section.adobe .vert-bar-left {
-    background-color: rgb(139, 42, 38);
+    background-color: rgb(207, 26, 20);
 }
 
 section.visual-code-studio .project-title-overbar, section.visual-code-studio .vert-bar-left {
