@@ -408,3 +408,13 @@ div.textbox {
     left: 6vw;
     font-size: 1.2vw;
 }
+
+svg#particle-container {
+    width: 1920px;
+    height: 1080px;
+}
+
+.slider {
+    width: 280px;
+    accent-color: #cf1a14;
+}

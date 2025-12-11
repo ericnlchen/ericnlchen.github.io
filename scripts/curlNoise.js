@@ -4,11 +4,11 @@ const noise = new Noise(Math.random());
 
 export function curlNoise(x, y, t) {
     const freq = 0.01;
-    const timeFreq = 0.01;
+    const timeFreq = 0.001;
 
     const amplitude = 400;
     // Referenced https://al-ro.github.io/projects/curl/
-    let eps = 0.0005;
+    let eps = 0.001;
 
     x *= freq;
     y *= freq;

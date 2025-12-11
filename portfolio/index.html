@@ -202,15 +202,101 @@
                     </div>
                     <div class="project-title-overbar"></div>
                     <div class="project-splash-box" id="adobe-splash-box" style="position: absolute; top: 10px; left: 240px; opacity: 1;">
-                        <video src="portfolio-assets/trim.mp4" width="1400" autoplay loop muted
+                        <video src="portfolio-assets/actionbrush.mp4" width="1400" autoplay loop muted
                             playsinline></video>
                     </div>
-                    <!-- <div style="position: absolute; left: 1500px; top: 840px; font-size: 30px;">
-                        UIST
+                </section>
+                <section class="adobe">
+                    <div class="slide-title-top-left-box">
+                        <div class="slide-title-top-left">Motivation</div>
+                    </div>
+                    <div class="curr-proj-top-right">Adobe</div>
+                    <div class="vert-bar-left"></div>
+                    <div class="horiz-bar-bottom"></div>
+                    <div class="textbox" style="position: absolute; top: 220px; left: 140px; width: 1600px; z-index: 10;">
+                        <p>
+                            I started my internship excited to leverage generative AI to enable a broad range of dynamic effects through freeform sketching. I envisioned an extension of L.ink that allowed aritsts to generate and draw with diverse elemental and magical brushes, with applications in motion graphics and interactive storytelling. (See my original video proposal <a href="https://www.youtube.com/watch?v=Pk52_vmpOV8">here</a>).
+                        </p>
+                        <br>
+                        <p>
+                            The first challenge was finding a representation expressive enough to enable a diverse range of special effects&mdash;we settled on <a href="https://en.wikipedia.org/wiki/Particle_system">particle systems</a>, where a large number of simple particles come together to create diverse and compelling effects. One strength of particle systems is that you can play with them interactively; try out a simplified example below!
+                        </p>
+                    </div>
+                    <div style="position: absolute; top: 600px; left: 500px; font-size: 30px; z-index: 10;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <label for="particle-size-slider">Particle Size:</label>
+                            <input
+                                id="particle-size-slider"
+                                class="slider"
+                                type="range"
+                                min="10"
+                                max="90"
+                                value="30"
+                            />
+                        </div>
+                        <br>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label for="particle-speed-slider">Emission Speed:</label>
+                            <input
+                                id="particle-speed-slider"
+                                class="slider"
+                                type="range"
+                                min="0"
+                                max="800"
+                                value="200"
+                            />
+                        </div>
+                        <br>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label for="gravity-slider">Gravity:</label>
+                            <input
+                                id="gravity-slider"
+                                class="slider"
+                                type="range"
+                                min="0"
+                                max="400"
+                                value="0"
+                            />
+                        </div>
+                        <br>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label for="turbulence-slider">Turbulence:</label>
+                            <input
+                                id="turbulence-slider"
+                                class="slider"
+                                type="range"
+                                min="0"
+                                max="1"
+                                value="0.2"
+                                step="0.1"
+                            />
+                        </div>
+                        <br>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label for="spread-slider">Spread:</label>
+                            <input
+                                id="spread-slider"
+                                class="slider"
+                                type="range"
+                                min="0"
+                                max="180"
+                                value="20"
+                            />
+                        </div>
+                        <!-- <span id="pa">50</span> -->
+                    </div>
+                    <div style="position: absolute; inset: 0px;">
+                        <svg id="particle-container"></svg>
+                    </div>
+                    <!-- <div class="textbox center" style="position: absolute; top: 240px; left: 280px;">
+                        <img src="portfolio-assets/lsys.gif" style="width: 450px;" />
+                        <p style="width: 610px;">
+                            In an L-system, the user has no control beyond specifying the initial state. As a result,
+                            they're detached from its growth.
+                        </p>
                     </div> -->
                 </section>
             </div>
-
 
             <div class="category" id="art-projects">
 
@@ -871,7 +957,7 @@
 
         </div>
     </div>
-    <script src="portfolio.js"></script>
+    <script src="portfolio.js" type="module"></script>
 </body>
 
 </html>
