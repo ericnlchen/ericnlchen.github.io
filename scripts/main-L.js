@@ -35,7 +35,7 @@ export function mainL() {
   // }, 600)
 
   LInkHandle.addEventListener("pointerdown", (e) => {
-    document.documentElement.style.cursor = "grabbing";
+    document.documentElement.style.cursor = "none";
     LInkHandle.style.cursor = "grabbing";
     isDrawing = true;
     activeBranches = [];

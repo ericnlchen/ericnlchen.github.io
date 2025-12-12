@@ -14,7 +14,7 @@ export function mainP() {
 
     psHandle.addEventListener("pointerdown", (e) => {
         psHandle.style.cursor = "grabbing";
-        document.documentElement.style.cursor = "grabbing";
+        document.documentElement.style.cursor = "none";
         isDrawing = true;
         mousePos = getMousePosition(e);
     })

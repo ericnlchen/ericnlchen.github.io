@@ -122,6 +122,9 @@ const categoryObserver = new IntersectionObserver((entries) => {
     case "art-projects":
       fadeCategoryLabelTo("ART");
       break;
+    case "other":
+      fadeCategoryLabelTo("OTHER");
+      break;
     default:
       fadeCategoryLabelTo("");
       break;
