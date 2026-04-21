@@ -68,7 +68,7 @@ ul {
 }
 
 section {
-    width: 800px;
+    width: 820px;
     margin-bottom: 40px;
 }
 
@@ -162,6 +162,10 @@ a:hover {
 
 .monospace {
     font-family: 'Courier New', Courier, monospace;
+}
+
+.gray {
+    color: gray;
 }
 
 /* Socials */
